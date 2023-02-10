@@ -32,7 +32,7 @@ Esummit 2023
                     <a href="{% url 'base:home' %}#merch" class="bg-zinc-900 px-3 py-1 rounded-sm w-fit ">Merch</a>
                     {% if not games_have_ended %}
                     {% if user.is_authenticated %}
-                        <a href="{% provider_login_url 'google' %}" class="bg-zinc-900 px-3 py-1 rounded-sm w-fit ">Go to Profile</a>
+                        <a href="{% url 'gamers:profile' %}" class="bg-zinc-900 px-3 py-1 rounded-sm w-fit ">Go to Profile</a>
                     {% else %}
                         <a href="{% provider_login_url 'google' %}" class="bg-zinc-900 px-3 py-1 rounded-sm w-fit ">Game Signup</a>
                     {% endif %}

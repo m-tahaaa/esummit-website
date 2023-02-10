@@ -25,7 +25,7 @@ SECRET_KEY = '%d^@$u&c#^sa99(5j6bje!hxz64-)fs56(5au%6)si$0ijx7+)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'base',
+    'hunt',
+    'gamers',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -126,10 +128,20 @@ USE_TZ = True
 
 SITE_ID = 1
 LOGIN_URL = '/accounts/login'
-# LOGIN_REDIRECT_URL = '/round-1'
+LOGIN_REDIRECT_URL = '/gamers/profile'
 SOCIALACCOUNT_LOGIN_ON_GET = True
 ACCOUNT_LOGOUT_ON_GET = True
-
+SOCIALACCOUNT_PROVIDERS = {
+    'google':{
+        'SCOPE':[
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS':{
+            'access_type':'online',
+        }
+    }
+}
 # Provider specific settings
 # SOCIALACCOUNT_PROVIDERS = {
 #     'google': {
@@ -151,6 +163,8 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'base/static'),
+    os.path.join(BASE_DIR, 'gamers/static'),
+    os.path.join(BASE_DIR, 'hunt/static'),
 )
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
