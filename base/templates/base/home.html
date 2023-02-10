@@ -15,33 +15,34 @@ Esummit 2023
         <div class="container grid lg:grid-cols-1">
             <div class="flex flex-col mx-auto max-w-xl my-auto gap-2">
                 <div class="w-full">
-                    <h1 class="text-5xl text-center lg:text-[140px] font-bold uppercase text-transparent bg-clip-text bg-gradient-to-br from-zinc-50 to-blue-200">E-summit Starts in</h1>
+                    <h1 class="text-5xl text-center lg:text-[140px] font-bold uppercase text-transparent bg-clip-text bg-gradient-to-br from-zinc-50 to-blue-200">{{msg}}</h1>
                 </div>
                 <div>
                     <h1 class="font-lg lg:font-2xl uppercase font-bold text-center tracking-widest underline underline-offset-4">Conceptualizing Creation</h1>
                 </div>
-                <div class="grid grid-cols-2 lg:grid-cols-3 list-none text-center gap-2">
+                <div class="grid grid-cols-2 lg:grid-cols-3 list-none text-center gap-2" id="counter">
                     <li class="uppercase text-lg"><span id="days" class="text-xl lg:text-5xl font-bold">34</span>Days</li>
                     <li class="uppercase text-lg"><span id="hours" class="text-xl lg:text-5xl font-bold">34</span>Hours</li>
                     <li class="uppercase text-lg col-span-2 lg:col-span-1"><span id="mins" class="text-xl lg:text-5xl font-bold">34</span>Minutes</li>
-                    <li class="hidden " id="time_diff">464646</li>
+                    <li class="hidden " id="time_diff">{{time_diff}}</li>
                     <li class="uppercase text-lg hidden"><span id="seconds" class="text-5xl font-bold">34</span>Seconds</li>
                 </div>
                 <div class="flex flex-row justify-center text-center font-bold uppercase text-xl gap-4 my-1">
                     <a href="{% url 'base:home' %}#passes" class="bg-zinc-900 px-3 py-1 rounded-sm w-fit">View Passes</a>
                     <a href="{% url 'base:home' %}#merch" class="bg-zinc-900 px-3 py-1 rounded-sm w-fit ">Merch</a>
+                    {% if not games_have_ended %}
+                    {% if user.is_authenticated %}
+                        <a href="{% provider_login_url 'google' %}" class="bg-zinc-900 px-3 py-1 rounded-sm w-fit ">Go to Profile</a>
+                    {% else %}
+                        <a href="{% provider_login_url 'google' %}" class="bg-zinc-900 px-3 py-1 rounded-sm w-fit ">Game Signup</a>
+                    {% endif %}
+                    {% else %}
+                    <a href="#" class="text-xl bg-gradient-to-r from-blue-400 to-purple-500 px-3 py-2 rounded font-bold uppercase">Leaderboard</a>
+                    {% endif %}
+                    
                 </div>
             </div>
-            <!-- <div class="lg:bg-zinc-900/70 rounded-md min-h-[50vh] flex flex-col justify-center align-middle lg:pl-8 gap-4">
-                <div class="text-lg lg:text-xl px-3 font-raleway">
-                    <h2>Find QR codes with the EDC logo all over Campus. Login to the website, scan QR earn points and Exchange them during E-Summit for cash prizes, backstage photos and more.</h2>
-                    <a href="{% url 'base:home' %}#learn-more" class="font-bold underline">Learn more</a>
-                </div>
-                
-                <div class="grid place-items-center">
-                        <a href="{% provider_login_url 'google' %}" class="text-xl bg-gradient-to-r from-blue-400 to-purple-500 px-3 py-2 rounded font-bold uppercase">Sign In</a>
-                </div>
-            </div> -->
+            </div>
         </div>
     </div>
 </header>
@@ -202,6 +203,34 @@ Esummit 2023
                 </div>
             </div>
         </section>
+    </div>
+    <div class="min-h-screen bg-gradient-to-tl from-slate-800 to-blue-900 py-4 grid place-items-center">
+        <section id="games" class="flex flex-col pt-16 justify-center my-auto">
+            <div>
+                <h1 class="text-xl text-center font-bold uppercase lg:text-4xl">Pre E-Summit Games</h1>
+                <h2 class="text-center text-lg py-2 font-raleway">Pre E-Summit events where you can win exciting prizes or get some special benefits during the upcoming E-summit</h2>
+            </div>
+            <div class="container flex flex-row flex-wrap gap-4 justify-center align-middle mx-auto place-items-center mt-12 px-4 my-auto">
+                <div class="bg-zinc-400/20 w-full rounded-xl backdrop-blur-lg p-3 flex flex-col justify-center align-middle gap-3 max-w-md uppercase stagger-card">
+                    <h2 class="text-xl font-bold uppercase text-center">Sticker HUNT</h2>
+                    <h2 class="font-raleway normal-case">Find QR codes with the EDC logo all over Campus. Login to the website, scan QR earn points and Exchange them during E-Summit for cash prizes, backstage photos and more.
+                    </h2>
+                    <li class="flex flex-row justify-center align-middle">
+                        <a href="#" class="bg-gradient-to-r from-fuchsia-400 to-purple-500 px-3 py-1 rounded-full font-bold w-fit mx-auto">Participate Now</a>
+                    </li>
+                </div>
+                <div class="bg-zinc-400/20 w-full rounded-xl backdrop-blur-lg p-3 flex flex-col justify-center align-middle gap-3 max-w-md uppercase stagger-card">
+                    <h2 class="text-xl font-bold uppercase text-center">Entreprenurship Quiz</h2>
+                    <h2 class="font-raleway normal-case">Questions get released every 12 hours. You answer these questions regarding entrepreneurship and get points. Exchange them during E-Summit for cash prizes, backstage photos and more.
+                    </h2>
+                    <li class="flex flex-row justify-center align-middle">
+                        <a href="#" class="bg-gradient-to-r from-fuchsia-400 to-purple-500 px-3 py-1 rounded-full font-bold w-fit mx-auto">Participate Now</a>
+                    </li>
+                </div>
+                
+            </div>
+        </section>
+    </div>
 </main>
 <script src="{% static 'base/js/changeTo.js' %}"></script>
 <script src="{% static 'base/js/countdown.js' %}"></script>

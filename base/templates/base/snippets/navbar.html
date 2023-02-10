@@ -7,10 +7,10 @@
       <ul class="flex flex-row gap-6 ">
         <li><a href="{% url 'base:home' %}#" class="nav-item">Home</a></li>
         <li><a href="https://edcnitd.co.in" class="nav-item">EDC</a></li>
-        <li><a href="#" class="nav-item">games</a></li>
+        <li><a href="{% url 'base:home' %}#games" class="nav-item">games</a></li>
         {% if user.is_authenticated %}
           <li><a href="#" class="px-3 bg-gradient-to-l from-emerald-400 to-red-400 nav-item">Profile</a></li>
-          <li><a href="#" class="px-3  bg-gradient-to-r from-blue-400 to-purple-500 nav-item">Logout</a></li>
+          <li><a href="{% url 'account_logout' %}" class="px-3  bg-gradient-to-r from-blue-400 to-purple-500 nav-item">Logout</a></li>
         {% else %}
           <li><a href="#" class="px-3  bg-gradient-to-r from-blue-400 to-purple-500 nav-item rounded py-1">Sign In</a></li>
         {% endif %}
@@ -26,11 +26,11 @@
   </ul>
   <nav id="mobile-menu" class="hidden flex-col justify-center bg-stone-900 min-h-[95vh]">
     <ul class="flex flex-col justify-center text-center gap-6">
-      <li><a href="#" class=" px-3 hover:bg-stone-700 py-2 rounded"onclick="toggleMenu()">Home</a></li>
-      <li><a href="#" class="px-3 hover:bg-stone-700 py-2 rounded">EDC</a></li>
-      <li><a href="#" class="px-3 hover:bg-stone-700 py-2 rounded" onclick="toggleMenu()">Incentives</a></li>
+      <li><a href="{% url 'base:home' %}" class=" px-3 hover:bg-stone-700 py-2 rounded"onclick="toggleMenu()">Home</a></li>
+      <li><a href="https://edcnitd.co.in" class="px-3 hover:bg-stone-700 py-2 rounded">EDC</a></li>
+      <li><a href="{% url 'base:home' %}#games" class="px-3 hover:bg-stone-700 py-2 rounded" onclick="toggleMenu()">Games</a></li>
       {% if user.is_authenticated %}
-        <li><a href="#" class="px-3 hover:bg-stone-700 py-2 rounded">Logout</a></li>
+        <li><a href="{% url 'account_logout' %}" class="px-3 hover:bg-stone-700 py-2 rounded">Logout</a></li>
       {% else %}
         <li><a href="#" class="px-3 hover:bg-stone-700 py-2 rounded">Register</a></li>
         <li><a href="#" class="px-3 hover:bg-stone-700 py-2 rounded">Login</a></li>
