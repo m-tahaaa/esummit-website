@@ -1,0 +1,45 @@
+.animation{
+    height: 100vh;
+    position: relative;
+    /* background-size: cover; */
+    animation: move 10s linear infinite;
+}
+@keyframes move {
+    0%{
+        background-position: 50vw 45vh;
+    }
+    100%{
+        background-position: -50vw -60vh;
+    }
+}
+
+.stagger-card{
+    opacity: 0;
+    transform: translateX(-100%);
+    filter: blur(5px);
+    transition: all 1s;
+}
+.stagger-card:nth-child(2){
+    transition-delay: 150ms;
+}
+
+.stagger-card:nth-child(3){
+    transition-delay: 150ms;
+}
+.stagger-card:nth-child(4){
+    transition-delay: 0ms;
+}
+
+.stagger-card:nth-child(5){
+    transition-delay: 150ms;
+}
+.stagger-card:nth-child(6){
+    transition-delay: 150ms;
+}
+
+.show{
+    opacity: 1;
+    filter: blur(0px);
+    transform: translateX(0);
+    
+}

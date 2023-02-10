@@ -1,0 +1,208 @@
+{% extends 'base/base.html' %}
+{% load socialaccount %}
+{% load static %}
+{% block title %}
+Esummit 2023
+{% endblock %}
+{% block head %}
+<!-- CSS files -->
+<!-- <link rel="stylesheet" href="{% static 'base/css/home.css' %}"> -->
+{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'base/css/home.css' %}">
+<header style="background-image:  url('{% static 'base/images/e-summit-black.png' %}');" class="w-full min-h-screen  grid place-items-center  animation bg-center ">
+    <div class="grid grid-cols-1 place-items-center my-auto w-full h-full bg-gradient-to-r from-fuchsia-900/80 via-indigo-900/90 to-purple-900/70">
+        <div class="container grid lg:grid-cols-1">
+            <div class="flex flex-col mx-auto max-w-xl my-auto gap-2">
+                <div class="w-full">
+                    <h1 class="text-5xl text-center lg:text-[140px] font-bold uppercase text-transparent bg-clip-text bg-gradient-to-br from-zinc-50 to-blue-200">E-summit Starts in</h1>
+                </div>
+                <div>
+                    <h1 class="font-lg lg:font-2xl uppercase font-bold text-center tracking-widest underline underline-offset-4">Conceptualizing Creation</h1>
+                </div>
+                <div class="grid grid-cols-2 lg:grid-cols-3 list-none text-center gap-2">
+                    <li class="uppercase text-lg"><span id="days" class="text-xl lg:text-5xl font-bold">34</span>Days</li>
+                    <li class="uppercase text-lg"><span id="hours" class="text-xl lg:text-5xl font-bold">34</span>Hours</li>
+                    <li class="uppercase text-lg col-span-2 lg:col-span-1"><span id="mins" class="text-xl lg:text-5xl font-bold">34</span>Minutes</li>
+                    <li class="hidden " id="time_diff">464646</li>
+                    <li class="uppercase text-lg hidden"><span id="seconds" class="text-5xl font-bold">34</span>Seconds</li>
+                </div>
+                <div class="flex flex-row justify-center text-center font-bold uppercase text-xl gap-4 my-1">
+                    <a href="{% url 'base:home' %}#passes" class="bg-zinc-900 px-3 py-1 rounded-sm w-fit">View Passes</a>
+                    <a href="{% url 'base:home' %}#merch" class="bg-zinc-900 px-3 py-1 rounded-sm w-fit ">Merch</a>
+                </div>
+            </div>
+            <!-- <div class="lg:bg-zinc-900/70 rounded-md min-h-[50vh] flex flex-col justify-center align-middle lg:pl-8 gap-4">
+                <div class="text-lg lg:text-xl px-3 font-raleway">
+                    <h2>Find QR codes with the EDC logo all over Campus. Login to the website, scan QR earn points and Exchange them during E-Summit for cash prizes, backstage photos and more.</h2>
+                    <a href="{% url 'base:home' %}#learn-more" class="font-bold underline">Learn more</a>
+                </div>
+                
+                <div class="grid place-items-center">
+                        <a href="{% provider_login_url 'google' %}" class="text-xl bg-gradient-to-r from-blue-400 to-purple-500 px-3 py-2 rounded font-bold uppercase">Sign In</a>
+                </div>
+            </div> -->
+        </div>
+    </div>
+</header>
+<main class="">
+    <div class="min-h-screen bg-gradient-to-r from-slate-800 to-indigo-800">
+        <section id="learn-more" class="container min-h-screen py-16 px-3 grid gap-4 mx-auto place-items-start h-fit my-auto">
+            <div class="lg:text-xl my-auto">
+                <h1 class="text-xl text-center font-bold uppercase lg:text-4xl">More about E-Summit</h1>
+                <h3 class="font-raleway">The Entrepreneurship Development Cell (EDC) at NIT Durgapur is proud to present its annual Entrepreneurship Summit (E-Summit), a platform that brings together aspiring entrepreneurs, established business leaders, investors, and innovators from across the country to exchange ideas, network, and create opportunities.</h3>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-center mx-auto px-4">
+                <li class="bg-zinc-800/70  flex flex-col h-full  p-3 rounded-x max-w-xs mx-auto stagger-card">
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fff" class="w-12 h-12 mx-auto">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
+                          </svg>
+                    </div>
+                    <h3 class="font-bold text-center uppercase">E-Talks</h3>
+                    <p class="font-raleway">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis suscipit repudiandae officiis animi iste temporibus voluptates libero quas saepe dicta!</p>
+                </li>
+                <li class="bg-zinc-800/70  flex flex-col h-full  p-3 rounded-x max-w-xs mx-auto stagger-card">
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fff" class="w-12 h-12 mx-auto my-auto">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" />
+                          </svg>
+                          
+                    </div>
+                    <h3 class="font-bold text-center uppercase">panel discussions</h3>
+                    <p class="font-raleway">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis suscipit repudiandae officiis animi iste temporibus voluptates libero quas saepe dicta!</p>
+                </li>
+                <li class="bg-zinc-800/70  flex flex-col h-full  p-3 rounded-x max-w-xs mx-auto stagger-card">
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fff" class="w-12 h-12 m-auto">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+                          </svg>
+                          
+                    </div>
+                    <h3 class="font-bold text-center uppercase">Events</h3>
+                    <p class="font-raleway">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis suscipit repudiandae officiis animi iste temporibus voluptates libero quas saepe dicta!</p>
+                </li>
+            </div>
+        </section>
+    </div>
+    <div class="min-h-screen " >
+        <video autoplay muted loop  data-src="{% static 'base/videos/esummit-2023-video.mp4' %}" class="w-full h-full object-cover absolute -z-10 lazy">
+            Your browser does not support the video tag.
+        </video>
+        <section id="passes" class="container min-h-screen py-16 px-3 grid gap-4 mx-auto place-items-start h-fit my-auto">
+            <div class="lg:text-xl mx-auto my-auto mix-blend-difference">
+                <h1 class="text-xl text-center font-bold uppercase lg:text-4xl">Passes</h1>
+                <h3 class="font-raleway text-center">Free access to the all NIT Durgapur Students. Passes start from just ₹99</h3>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 xl:grid-cols-3 w-full place-self-center px-4">
+                <div class="stagger-card">
+                    <div class="grid place-items-end py-4 rounded-t-xl px-3 bg-center bg-cover bg-no-repeat origin-bottom w-full min-h-[150px] max-w-xs mx-auto" style="background-image: linear-gradient(135deg, rgba(116, 0, 174, 0.904), rgba(2, 33, 169, 0.895)), url('{% static 'base/images/e-summit-black.png' %}');">
+                        <div class="flex flex-row w-full justify-between align-bottom">
+                            <li class="list-none flex justify-between align-bottom flex-row text-left w-full">
+                                <h2 class="text-xl lg:text-4xl font-bold uppercase h-fit bg-gradient-to-b from-yellow-100 via-yellow-500 to-amber-100 bg-clip-text text-transparent">GOLD</h2>
+                                <h3 class="mt-auto font-bold uppercase h-fit lg:text-xl ">₹99</h3>
+                            </li>
+                        </div>
+                    </div>
+                    <div class="bg-zinc-900/90 w-full min-h-[150px] rounded-b-xl max-w-xs mx-auto flex flex-col justify-start px-3 py-2 pb-4">
+                        <li>Benefits provided</li>
+                        <li class="list-disc">Lorem</li>
+                        <li class="list-disc">Ipsum</li>
+                        <li class="list-disc">Lorem</li>
+                        <li class="list-disc">Ipsum</li>
+                        <li class="list-disc">Lorem</li>
+                        <li class="list-disc">Ipsum</li>
+                        <li class="flex flex-row justify-center align-middle">
+                            <a href="#" class="bg-gradient-to-r from-fuchsia-400 to-purple-500 px-3 py-1 rounded-full font-bold w-fit mx-auto mt-4">Buy Now</a>
+                        </li>
+                    </div>
+                </div>
+                <div class="stagger-card">
+                    <div class="grid place-items-end py-4 rounded-t-xl px-3 bg-center bg-cover bg-no-repeat origin-bottom w-full min-h-[150px] max-w-xs mx-auto" style="background-image: linear-gradient(135deg, rgba(116, 0, 174, 0.904), rgba(2, 33, 169, 0.895)), url('{% static 'base/images/e-summit-black.png' %}');">
+                        <div class="flex flex-row w-full justify-between align-bottom">
+                            <li class="list-none flex justify-between align-bottom flex-row text-left w-full">
+                                <h2 class="text-xl lg:text-4xl font-bold uppercase h-fit bg-gradient-to-b from-zinc-200 via-gray-400 to-zinc-100 bg-clip-text text-transparent">Platinum</h2>
+                                <h3 class="mt-auto font-bold uppercase h-fit lg:text-xl ">₹199</h3>
+                            </li>
+                        </div>
+                    </div>
+                    <div class="bg-zinc-900/90 w-full min-h-[150px] rounded-b-xl max-w-xs mx-auto flex flex-col justify-start px-3 py-2 pb-4">
+                        <li>Benefits provided</li>
+                        <li class="list-disc">Lorem</li>
+                        <li class="list-disc">Ipsum</li>
+                        <li class="list-disc">Lorem</li>
+                        <li class="list-disc">Ipsum</li>
+                        <li class="list-disc">Lorem</li>
+                        <li class="list-disc">Ipsum</li>
+                        <li class="flex flex-row justify-center align-middle">
+                            <a href="#" class="bg-gradient-to-r from-fuchsia-400 to-purple-500 px-3 py-1 rounded-full font-bold w-fit mx-auto mt-4">Buy Now</a>
+                        </li>
+                    </div>
+                </div>
+                <div class="col-span-1 md:col-span-2 xl:col-span-1 stagger-card">
+                    <div class="grid place-items-end py-4 rounded-t-xl px-3 bg-center bg-cover bg-no-repeat origin-bottom w-full min-h-[150px] max-w-xs mx-auto" style="background-image: linear-gradient(135deg, rgba(116, 0, 174, 0.904), rgba(2, 33, 169, 0.895)), url('{% static 'base/images/e-summit-black.png' %}');">
+                        <div class="flex flex-row w-full justify-between align-bottom">
+                            <li class="list-none flex justify-between align-bottom flex-row text-left w-full">
+                                <h2 class="text-xl lg:text-4xl font-bold uppercase h-fit bg-gradient-to-b from-purple-400 to-sky-300 bg-clip-text text-transparent">VIP</h2>
+                                <h3 class="mt-auto font-bold uppercase h-fit lg:text-xl ">₹299</h3>
+                            </li>
+                        </div>
+                    </div>
+                    <div class="bg-zinc-900/90 w-full min-h-[150px] rounded-b-xl max-w-xs mx-auto flex flex-col justify-start px-3 py-2 pb-4">
+                        <li>Benefits provided</li>
+                        <li class="list-disc">Lorem</li>
+                        <li class="list-disc">Ipsum</li>
+                        <li class="list-disc">Lorem</li>
+                        <li class="list-disc">Ipsum</li>
+                        <li class="list-disc">Lorem</li>
+                        <li class="list-disc">Ipsum</li>
+                        <li class="flex flex-row justify-center align-middle">
+                            <a href="#" class="bg-gradient-to-r from-fuchsia-400 to-purple-500 px-3 py-1 rounded-full font-bold w-fit mx-auto mt-4">Buy Now</a>
+                        </li>
+                    </div>
+                </div>
+        </section>
+    </div>
+    <div class="min-h-screen bg-gradient-to-br from-slate-800 to-fuchsia-900 py-4">
+        <section id="merch" class="flex flex-col pt-16 justify-center my-auto">
+            <div>
+                <h1 class="text-xl text-center font-bold uppercase lg:text-4xl">Merch</h1>
+                <h2 class="text-center text-lg py-2 font-raleway">Our Merchandise. Starting at ₹350</h2>
+            </div>
+            <div class="container flex flex-row flex-wrap gap-4 justify-center align-middle mx-auto place-items-center mt-12 px-4">
+                <div class="bg-zinc-400/20 w-full rounded-xl backdrop-blur-lg p-3 flex flex-col justify-center align-middle gap-3 max-w-md uppercase stagger-card">
+                    <img src="{% static 'base/images/white-tshirt-transparent-front.png'%}" alt="" class="max-w-xs w-[60vw] col-span-2 object-contain mx-auto" id="front-w">
+                    <img src="{% static 'base/images/white-tshirt-transparent-back.png'%}" alt="" class="max-w-xs w-[60vw] col-span-2 object-contain mx-auto" id="back-w" style="display: none;">
+                    <div class="flex flex-row justify-center gap-4 bg-zinc-800/70 px-3 py-1 w-fit rounded mx-auto">
+                        <div class="cursor-pointer" onclick="changeto('front-w')" id="front-w-button">Front</div>
+                        <div class="opacity-50 cursor-pointer" onclick="changeto('back-w')" id="back-w-button">Back</div>
+                    </div>
+                    <div class="grid place-items-center px-2 grid-cols-2 align-middle">
+                        <h2 class="break-words font-bold text-lg lg:text-xl my-auto">Midnight Black</h2>
+
+                        <li class="flex flex-row justify-center align-middle">
+                            <a href="#" class="bg-gradient-to-r from-fuchsia-400 to-purple-500 px-3 py-1 rounded-full font-bold w-fit mx-auto">Buy Now</a>
+                        </li>
+                    </div>
+                </div>
+                <div class="bg-zinc-400/20 w-full rounded-xl backdrop-blur-lg p-3 flex flex-col justify-center align-middle gap-3 max-w-md uppercase stagger-card">
+                    <img src="{% static 'base/images/black-t-transparent-front.png'%}" alt="" class="max-w-xs w-[60vw] col-span-2 object-contain mx-auto" id="front-b">
+                    <img src="{% static 'base/images/black-t-transparent-back.png'%}" alt="" class="max-w-xs w-[60vw] col-span-2 object-contain mx-auto hidden" id="back-b">
+                    <div class="flex flex-row justify-center gap-4 bg-zinc-800/70 px-3 py-1 w-fit rounded mx-auto">
+                        <div class="cursor-pointer" onclick="changeto('front-b')" id="front-b-button">Front</div>
+                        <div class="opacity-50 cursor-pointer" onclick="changeto('back-b')" id="back-b-button">Back</div>
+                    </div>
+                    <div class="grid place-items-center px-2 grid-cols-2 align-middle">
+                        <h2 class="break-words font-bold text-lg lg:text-xl my-auto">Midnight Black</h2>
+
+                        <li class="flex flex-row justify-center align-middle">
+                            <a href="#" class="bg-gradient-to-r from-fuchsia-400 to-purple-500 px-3 py-1 rounded-full font-bold w-fit mx-auto">Buy Now</a>
+                        </li>
+                    </div>
+                </div>
+            </div>
+        </section>
+</main>
+<script src="{% static 'base/js/changeTo.js' %}"></script>
+<script src="{% static 'base/js/countdown.js' %}"></script>
+{% endblock %}
