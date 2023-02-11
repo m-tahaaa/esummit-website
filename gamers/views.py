@@ -2,6 +2,11 @@ from django.shortcuts import render,redirect
 from gamers.models import *
 from django.contrib import messages
 from allauth.socialaccount.models import SocialAccount
+import uuid
+from django.contrib.auth.decorators import login_required
+
+def get_code():
+    return 'H_'+uuid.uuid4().hex[:8].upper()
 
 def get_successfull_scans(request):
     gamer = Gamer.objects.get(user=request.user)
@@ -71,6 +76,7 @@ def get_rank(request):
     return rank
 
 # Create your views here.
+@login_required
 def profile(request):
     context = {}
     context = prepare_context(request)
@@ -89,6 +95,7 @@ def profile(request):
         context['responses'] = QuizResponse.objects.filter(gamer=context['gamer'])
     return render(request,'gamers/profile.html',context)
 
+@login_required
 def register(request):
     context = {}
     context = prepare_context(request)
@@ -103,6 +110,7 @@ def register(request):
             new_gamer.user = request.user
             new_gamer.college = request.POST.get('college')
             new_gamer.phone = request.POST.get('phone')
+            new_gamer.share_code = 'H_'+uuid.uuid4().hex[:8].upper()
             # print("college: "+ new_gamer.college)
             # if ref code in valid ref code points+ 10 for both parties
             # check if ref-code is not empty
