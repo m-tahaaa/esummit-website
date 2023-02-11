@@ -60,7 +60,7 @@ class QuizResponse(models.Model):
     answer_recieved = models.TextField()
     
     def __str__(self) -> str:
-        return self.gamer +' '+ str(self.get_question) + ' ' + self.answer_recieved
+        return str(self.gamer) +' '+ str(self.get_question) + ' ' + self.answer_recieved
 
     @property
     def get_question(self):

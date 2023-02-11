@@ -95,14 +95,20 @@ Profile
                     <h2 class="text-center font-bold lg:text-2xl">Questions Answered</h2>
                     {% if responses %}
                     <table class="table-auto mx-auto">
-                        <tr class="grid grid-cols-2 gap-3 font-bold tracking-widest">
-                            <td class="">Scan Location</td>
+                        <tr class="grid grid-cols-4 gap-3 font-bold tracking-widest">
+                            <td class="col-span-3">Question</td>
                             <td>Points Given</td>
                         </tr>
-                        {% for scan in scans %}
-                            <tr class="grid grid-cols-2 gap-3">
-                                <td class="">{{scan.get_qr_code.location}}</td>
-                                <td>{{scan.points_given}}</td>
+                        {% for response in responses %}
+                            <tr class="grid grid-cols-4 gap-3">
+                                <td class="col-span-3">{{response.get_question.value}}</td>
+                                <td>
+                                    {% if response.is_answer_valid %}
+                                        {{response.points_recieved}}
+                                    {% else %}
+                                    0
+                                    {% endif %}
+                                </td>
                             </tr>
                         {% endfor %}
                     </table>

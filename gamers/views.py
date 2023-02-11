@@ -86,6 +86,7 @@ def profile(request):
         context['gamers_count'] = len(order_by_points())
         context['rank'] = get_rank(request)
         context['scans'] = get_successfull_scans(request)
+        context['responses'] = QuizResponse.objects.filter(gamer=context['gamer'])
     return render(request,'gamers/profile.html',context)
 
 def register(request):
