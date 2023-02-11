@@ -14,12 +14,12 @@ function changeto(input) {
     document.getElementById(str).style.display="block";
     let inputBtn = document.getElementById(str+'-button');
     if(inputBtn.classList.contains('opacity-50')){
-        console.log(inputBtn.classList);
+        // console.log(inputBtn.classList);
         
-        console.log(inputBtn.classList);
+        // console.log(inputBtn.classList);
     }
     inputBtn.classList.remove('opacity-50');
     let btnToHide = document.getElementById(idToHide+'-button');
     btnToHide.classList.add('opacity-50');
-    console.log(idToHide)
+    // console.log(idToHide)
 }
