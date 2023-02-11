@@ -27,14 +27,14 @@ Esummit 2023
                     <li class="hidden " id="time_diff">{{time_diff}}</li>
                     <li class="uppercase text-lg hidden"><span id="seconds" class="text-5xl font-bold">34</span>Seconds</li>
                 </div>
-                <div class="flex flex-row justify-center text-center font-bold uppercase text-xl gap-4 my-1">
-                    <a href="{% url 'base:home' %}#passes" class="bg-zinc-900 px-3 py-1 rounded-sm w-fit">View Passes</a>
-                    <a href="{% url 'base:home' %}#merch" class="bg-zinc-900 px-3 py-1 rounded-sm w-fit ">Merch</a>
+                <div class="flex flex-row flex-wrap justify-center text-center font-bold uppercase text-xl gap-4 my-1">
+                    <a href="{% url 'base:home' %}#passes" class="bg-gradient-to-r from-pink-400/60 to-blue-400/70 px-3 py-1 rounded-md w-fit">View Passes</a>
+                    <a href="{% url 'base:home' %}#merch" class="bg-gradient-to-r from-pink-400/60 to-blue-400/70 px-3 py-1 rounded-md w-fit ">Merch</a>
                     {% if not games_have_ended %}
                     {% if user.is_authenticated %}
-                        <a href="{% url 'gamers:profile' %}" class="bg-zinc-900 px-3 py-1 rounded-sm w-fit ">Go to Profile</a>
+                        <a href="{% url 'gamers:profile' %}" class="bg-gradient-to-r from-pink-400/60 to-blue-400/70 px-3 py-1 rounded-md w-fit ">Go to Profile</a>
                     {% else %}
-                        <a href="{% provider_login_url 'google' %}" class="bg-zinc-900 px-3 py-1 rounded-sm w-fit ">Game Signup</a>
+                        <a href="{% provider_login_url 'google' %}" class="bg-gradient-to-r from-pink-400/60 to-blue-400/70 px-3 py-1 rounded-md w-fit ">Game Signup</a>
                     {% endif %}
                     {% else %}
                     <a href="#" class="text-xl bg-gradient-to-r from-blue-400 to-purple-500 px-3 py-2 rounded font-bold uppercase">Leaderboard</a>
@@ -86,16 +86,60 @@ Esummit 2023
             </div>
         </section>
     </div>
+    <div class="min-h-screen bg-gradient-to-br from-slate-800 to-fuchsia-900 py-4 grid place-items-center w-full">
+        <section id="merch" class="flex flex-col pt-16 justify-center my-auto w-full mb-20">
+            <div>
+                <h1 class="text-xl text-center font-bold uppercase lg:text-4xl">Merch</h1>
+                <h2 class="text-center text-lg py-2 font-raleway">Our Merchandise. Starting at<span class="font-bold font-ubuntu-mono"> ₹350</span><span class="line-through font-ubuntu-mono font-normal mx-3">₹450</span></h2>
+            </div>
+            <div class="container flex flex-row flex-wrap gap-4 justify-center align-middle mx-auto place-items-center mt-12 px-4">
+                <div class="bg-zinc-400/20 w-full rounded-xl backdrop-blur-lg p-3 flex flex-col justify-center align-middle gap-3 max-w-md uppercase stagger-card">
+                    <img src="{% static 'base/images/white-tshirt-transparent-front.png'%}" alt="" class="max-w-xs w-[60vw] col-span-2 object-contain mx-auto" id="front-w">
+                    <img src="{% static 'base/images/white-tshirt-transparent-back.png'%}" alt="" class="max-w-xs w-[60vw] col-span-2 object-contain mx-auto" id="back-w" style="display: none;">
+                    <div class="flex flex-row justify-center gap-4 bg-zinc-800/70 px-3 py-1 w-fit rounded mx-auto">
+                        <div class="cursor-pointer" onclick="changeto('front-w')" id="front-w-button">Front</div>
+                        <div class="opacity-50 cursor-pointer" onclick="changeto('back-w')" id="back-w-button">Back</div>
+                    </div>
+                    <div class="grid place-items-center px-2 grid-cols-2 align-middle">
+                        <h2 class="break-words font-bold text-lg lg:text-xl my-auto">Moonlit White</h2>
+
+                        <li class="flex flex-row justify-center align-middle">
+                            <a href="https://forms.gle/EdbTCb6141vv7PCu5" class="bg-gradient-to-r from-fuchsia-400 to-purple-500 px-3 py-1 rounded-full font-bold w-fit mx-auto">Buy Now</a>
+                        </li>
+                    </div>
+                </div>
+                <div class="bg-zinc-400/20 w-full rounded-xl backdrop-blur-lg p-3 flex flex-col justify-center align-middle gap-3 max-w-md uppercase stagger-card">
+                    <img src="{% static 'base/images/black-t-transparent-front.png'%}" alt="" class="max-w-xs w-[60vw] col-span-2 object-contain mx-auto" id="front-b">
+                    <img src="{% static 'base/images/black-t-transparent-back.png'%}" alt="" class="max-w-xs w-[60vw] col-span-2 object-contain mx-auto hidden" id="back-b">
+                    <div class="flex flex-row justify-center gap-4 bg-zinc-800/70 px-3 py-1 w-fit rounded mx-auto">
+                        <div class="cursor-pointer" onclick="changeto('front-b')" id="front-b-button">Front</div>
+                        <div class="opacity-50 cursor-pointer" onclick="changeto('back-b')" id="back-b-button">Back</div>
+                    </div>
+                    <div class="grid place-items-center px-2 grid-cols-2 align-middle">
+                        <h2 class="break-words font-bold text-lg lg:text-xl my-auto">Midnight Black</h2>
+
+                        <li class="flex flex-row justify-center align-middle">
+                            <a href="https://forms.gle/EdbTCb6141vv7PCu5" class="bg-gradient-to-r from-fuchsia-400 to-purple-500 px-3 py-1 rounded-full font-bold w-fit mx-auto">Buy Now</a>
+                        </li>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
     <div class="min-h-screen " >
-        <video autoplay muted loop  data-src="{% static 'base/videos/esummit-2023-video.mp4' %}" class="w-full h-full object-cover absolute -z-10 lazy">
+        <!-- <video autoplay muted loop  data-src="{% static 'base/videos/esummit-2023-video.mp4' %}" class="w-full h-full object-cover absolute -z-10 lazy">
             Your browser does not support the video tag.
-        </video>
+        </video> -->
         <section id="passes" class="container min-h-screen py-16 px-3 grid gap-4 mx-auto place-items-start h-fit my-auto">
             <div class="lg:text-xl mx-auto my-auto mix-blend-difference">
                 <h1 class="text-xl text-center font-bold uppercase lg:text-4xl">Passes</h1>
-                <h3 class="font-raleway text-center">Free access to the all NIT Durgapur Students. Passes start from just ₹99</h3>
+                <h3 class="font-raleway text-center">Coming Soon</h3>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 xl:grid-cols-3 w-full place-self-center px-4">
+            <!-- <div class="lg:text-xl mx-auto my-auto mix-blend-difference">
+                <h1 class="text-xl text-center font-bold uppercase lg:text-4xl">Passes</h1>
+                <h3 class="font-raleway text-center">Free access to the all NIT Durgapur Students. Passes start from just ₹99</h3>
+            </div> -->
+            <!-- <div class="grid grid-cols-1 md:grid-cols-2 gap-4 xl:grid-cols-3 w-full place-self-center px-4">
                 <div class="stagger-card">
                     <div class="grid place-items-end py-4 rounded-t-xl px-3 bg-center bg-cover bg-no-repeat origin-bottom w-full min-h-[150px] max-w-xs mx-auto" style="background-image: linear-gradient(135deg, rgba(116, 0, 174, 0.904), rgba(2, 33, 169, 0.895)), url('{% static 'base/images/e-summit-black.png' %}');">
                         <div class="flex flex-row w-full justify-between align-bottom">
@@ -162,46 +206,7 @@ Esummit 2023
                         </li>
                     </div>
                 </div>
-        </section>
-    </div>
-    <div class="min-h-screen bg-gradient-to-br from-slate-800 to-fuchsia-900 py-4">
-        <section id="merch" class="flex flex-col pt-16 justify-center my-auto">
-            <div>
-                <h1 class="text-xl text-center font-bold uppercase lg:text-4xl">Merch</h1>
-                <h2 class="text-center text-lg py-2 font-raleway">Our Merchandise. Starting at ₹350</h2>
-            </div>
-            <div class="container flex flex-row flex-wrap gap-4 justify-center align-middle mx-auto place-items-center mt-12 px-4">
-                <div class="bg-zinc-400/20 w-full rounded-xl backdrop-blur-lg p-3 flex flex-col justify-center align-middle gap-3 max-w-md uppercase stagger-card">
-                    <img src="{% static 'base/images/white-tshirt-transparent-front.png'%}" alt="" class="max-w-xs w-[60vw] col-span-2 object-contain mx-auto" id="front-w">
-                    <img src="{% static 'base/images/white-tshirt-transparent-back.png'%}" alt="" class="max-w-xs w-[60vw] col-span-2 object-contain mx-auto" id="back-w" style="display: none;">
-                    <div class="flex flex-row justify-center gap-4 bg-zinc-800/70 px-3 py-1 w-fit rounded mx-auto">
-                        <div class="cursor-pointer" onclick="changeto('front-w')" id="front-w-button">Front</div>
-                        <div class="opacity-50 cursor-pointer" onclick="changeto('back-w')" id="back-w-button">Back</div>
-                    </div>
-                    <div class="grid place-items-center px-2 grid-cols-2 align-middle">
-                        <h2 class="break-words font-bold text-lg lg:text-xl my-auto">Midnight Black</h2>
-
-                        <li class="flex flex-row justify-center align-middle">
-                            <a href="#" class="bg-gradient-to-r from-fuchsia-400 to-purple-500 px-3 py-1 rounded-full font-bold w-fit mx-auto">Buy Now</a>
-                        </li>
-                    </div>
-                </div>
-                <div class="bg-zinc-400/20 w-full rounded-xl backdrop-blur-lg p-3 flex flex-col justify-center align-middle gap-3 max-w-md uppercase stagger-card">
-                    <img src="{% static 'base/images/black-t-transparent-front.png'%}" alt="" class="max-w-xs w-[60vw] col-span-2 object-contain mx-auto" id="front-b">
-                    <img src="{% static 'base/images/black-t-transparent-back.png'%}" alt="" class="max-w-xs w-[60vw] col-span-2 object-contain mx-auto hidden" id="back-b">
-                    <div class="flex flex-row justify-center gap-4 bg-zinc-800/70 px-3 py-1 w-fit rounded mx-auto">
-                        <div class="cursor-pointer" onclick="changeto('front-b')" id="front-b-button">Front</div>
-                        <div class="opacity-50 cursor-pointer" onclick="changeto('back-b')" id="back-b-button">Back</div>
-                    </div>
-                    <div class="grid place-items-center px-2 grid-cols-2 align-middle">
-                        <h2 class="break-words font-bold text-lg lg:text-xl my-auto">Midnight Black</h2>
-
-                        <li class="flex flex-row justify-center align-middle">
-                            <a href="#" class="bg-gradient-to-r from-fuchsia-400 to-purple-500 px-3 py-1 rounded-full font-bold w-fit mx-auto">Buy Now</a>
-                        </li>
-                    </div>
-                </div>
-            </div>
+            </div> -->
         </section>
     </div>
     <div class="min-h-screen bg-gradient-to-tl from-slate-800 to-blue-900 py-4 grid place-items-center">
@@ -215,17 +220,19 @@ Esummit 2023
                     <h2 class="text-xl font-bold uppercase text-center">Sticker HUNT</h2>
                     <h2 class="font-raleway normal-case">Find QR codes with the EDC logo all over Campus. Login to the website, scan QR earn points and Exchange them during E-Summit for cash prizes, backstage photos and more.
                     </h2>
-                    <li class="flex flex-row justify-center align-middle">
+                    <h2 class="text-center font-bold text-xl">Coming Soon</h2>
+                    <!-- <li class="flex flex-row justify-center align-middle">
                         <a href="{% url 'hunt:home' %}" class="bg-gradient-to-r from-fuchsia-400 to-purple-500 px-3 py-1 rounded-full font-bold w-fit mx-auto">Participate Now</a>
-                    </li>
+                    </li> -->
                 </div>
                 <div class="bg-zinc-400/20 w-full rounded-xl backdrop-blur-lg p-3 flex flex-col justify-center align-middle gap-3 max-w-md uppercase stagger-card">
                     <h2 class="text-xl font-bold uppercase text-center">Entreprenurship Quiz</h2>
                     <h2 class="font-raleway normal-case">Questions get released every 12 hours. You answer these questions regarding entrepreneurship and get points. Exchange them during E-Summit for cash prizes, backstage photos and more.
                     </h2>
-                    <li class="flex flex-row justify-center align-middle">
+                    <h2 class="text-center font-bold text-xl">Coming Soon</h2>
+                    <!-- <li class="flex flex-row justify-center align-middle">
                         <a href="{% url 'quiz:home' %}" class="bg-gradient-to-r from-fuchsia-400 to-purple-500 px-3 py-1 rounded-full font-bold w-fit mx-auto">Participate Now</a>
-                    </li>
+                    </li> -->
                 </div>
                 
             </div>
