@@ -1,0 +1,77 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% load socialaccount %}
+{% block title %}
+Quiz
+{% endblock %}
+{% block head %}
+<!-- CSS files -->
+<link rel="stylesheet" href="{% static 'hunt/css/home.css' %}">
+{% endblock %}
+{% block content %}
+<header style="background-image: linear-gradient(90deg, rgba(249, 128, 23, 0.398), rgba(26, 69, 245, 0.481)), url('{% static 'base/images/edc-arrow.svg' %}');" class="w-full min-h-screen animation grid place-items-center">
+    <div class="grid lg:grid-cols-2 place-items-center my-auto container mx-auto">
+        <div class="grid grid-cols-1 mx-auto">
+            <div class="w-fit">
+                <h1 class="text-5xl text-center lg:text-[140px] font-bold uppercase text-transparent bg-clip-text bg-gradient-to-br from-zinc-50 to-amber-400">{{msg}}</h1>
+            </div>
+            <div class="grid grid-cols-2 lg:grid-cols-3 list-none text-center gap-2" id="counter">
+                <li class="uppercase text-lg"><span id="days" class="text-xl lg:text-5xl font-bold">34</span>Days</li>
+                <li class="uppercase text-lg"><span id="hours" class="text-xl lg:text-5xl font-bold">34</span>Hours</li>
+                <li class="uppercase text-lg col-span-2 lg:col-span-1"><span id="mins" class="text-xl lg:text-5xl font-bold">34</span>Minutes</li>
+                <li class="hidden " id="time_diff">{{time_diff}}</li>
+                <li class="uppercase text-lg hidden"><span id="seconds" class="text-5xl font-bold">34</span>Seconds</li>
+            </div>
+        </div>
+        <div class="lg:border-l-8 lg:border-zinc-50 min-h-[50vh] flex flex-col justify-center align-middle lg:pl-8 gap-4">
+            <div class="text-lg lg:text-xl px-3 font-raleway">
+                <h2>Questions are released every 12 Hours, anyone who answers a question correctly gets points. You can exchange these points for prizes.</h2>
+                <a href="{% url 'quiz:home' %}#learn-more" class="font-bold underline">Learn more</a>
+            </div>
+            
+            <div class="grid place-items-center gap-3">
+                {% if not has_ended %}
+                {% if user.is_authenticated %}
+                    <a href="{% url 'gamers:profile' %}" class="text-xl bg-gradient-to-r from-gray-900 to-zinc-800 px-3 py-2 rounded font-bold uppercase">Go to Profile</a>
+                    <a href="{% url 'quiz:play' %}" class="text-xl bg-gradient-to-r from-blue-400 to-purple-500 px-3 py-2 rounded font-bold uppercase">Play Now</a>
+                {% else %}
+                    <a href="{% provider_login_url 'google' %}" class="text-xl bg-gradient-to-r from-blue-400 to-purple-500 px-3 py-2 rounded font-bold uppercase">Sign In</a>
+                {% endif %}
+                {% else %}
+                <a href="#" class="text-xl bg-gradient-to-r from-blue-400 to-purple-500 px-3 py-2 rounded font-bold uppercase">Leaderboard</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</header>
+<main class="">
+    <div class="min-h-screen bg-gradient-to-r from-slate-800 to-blue-900">
+        <section id="learn-more" class="container min-h-screen py-16 px-3 grid lg:grid-cols-2 gap-4 mx-auto place-items-start h-fit my-auto">
+            <div class="lg:text-xl my-auto">
+                <h1 class="text-xl text-center font-bold uppercase lg:text-4xl">More about the Quiz</h1>
+                <h3 class="font-raleway">Welcome to the Entrepreneurship Quiz! Test your understanding of the key concepts of starting and running a successful business through short answer questions. Improve your skills and gain valuable insights into the world of entrepreneurship. Let's get started!</h3>
+            </div>
+            <div class="my-auto">
+                <h1 class="text-lg font-bold uppercase text-center lg:text-4xl">Rules</h1>
+                <ul class="flex flex-col gap-4 mt-3">
+                    <li class="bg-gradient-to-r from-fuchsia-500 to-purple-500 px-3 py-2 border-white rounded-md border-2 ">
+                        1. Questions are realesed every 12 Hours. Answer them before the next question starts.
+                    </li>
+                    <li class="bg-gradient-to-r from-fuchsia-500 to-purple-500 px-3 py-2 border-white rounded-md border-2 ">
+                        2. On succesfully answering your question you get 30 points
+                    </li>
+                    <li class="bg-gradient-to-r from-fuchsia-500 to-purple-500 px-3 py-2 border-white rounded-md border-2 ">
+                        3. There is no negative marks.
+                    </li>
+                    <li class="bg-gradient-to-r from-fuchsia-500 to-purple-500 px-3 py-2 border-white rounded-md border-2 ">
+                        4. By sharing your invite code with friends on registering you and your friends get 10 points each for each new registration.
+                    </li>
+                </ul>
+            </div>
+    
+        </section>
+    </div>
+    
+</main>
+<script src="{% static 'base/js/countdown.js' %}"></script>
+{% endblock %}

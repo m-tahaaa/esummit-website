@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from hunt.models import QRScan
+from quiz.models import Question
+from django.utils import timezone
 import uuid
 
 def get_code():
@@ -20,10 +22,17 @@ class Gamer(models.Model):
     @property
     def get_total_points(self):
         scans_list = SuccessfullScan.objects.all().filter(gamer=self)
+        responses = QuizResponse.objects.all().filter(gamer=self)
+        quiz_points = 0
         qr_points = 0
         for scan in scans_list:
             qr_points+=scan.points_given
-        total_points = self.points + qr_points
+        # print("responses")
+        for response in responses:
+            print(self.user.username,str(response.is_answer_valid))
+            if response.is_answer_valid:
+                quiz_points += response.points_recieved
+        total_points = self.points + qr_points + quiz_points
         return total_points
 
 class ClubMember(models.Model):
@@ -43,3 +52,29 @@ class SuccessfullScan(models.Model):
     @property
     def get_qr_code(self):
         return QRScan.objects.get(id=self.qr_code_id)
+
+class QuizResponse(models.Model):
+    gamer = models.ForeignKey(Gamer,on_delete=models.CASCADE)
+    question_id = models.IntegerField()
+    points_recieved = models.IntegerField(default=0)
+    answer_recieved = models.TextField()
+    
+    def __str__(self) -> str:
+        return self.gamer +' '+ str(self.get_question) + ' ' + self.answer_recieved
+
+    @property
+    def get_question(self):
+        return Question.objects.get(id=self.question_id)
+    
+    @property
+    def is_answer_valid(self):
+        if self.get_question.end_date <=timezone.now():
+                # check if answer is valid
+                valid_answers = self.get_question.get_answers()
+                # print("Valid answers: ",valid_answers)
+                if str(self.answer_recieved).lower() in valid_answers:
+                    return True
+                else:
+                    return False
+        else:
+            return False

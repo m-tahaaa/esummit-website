@@ -4,3 +4,4 @@ from gamers.models import *
 admin.site.register(Gamer)
 admin.site.register(SuccessfullScan)
 admin.site.register(ClubMember)
+admin.site.register(QuizResponse)

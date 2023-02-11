@@ -35,9 +35,9 @@ Profile
                         </div>
                     </div>
                     <div class="col-span-2 py-3 flex flex-wrap justify-around gap-3">
-                        <a href="{% url 'gamers:leaderboard' %}" class="font-bold uppercase underline underline-offset-8 rounded">Visit leaderboard</a>
-                        <a href="{% url 'hunt:home' %}" class="font-bold uppercase underline underline-offset-8 rounded">Visit Hunt Page</a>
-                        <a href="#" class="font-bold uppercase underline underline-offset-8 rounded">Visit Quiz Page</a>
+                        <a href="{% url 'gamers:leaderboard' %}" class="font-bold uppercase bg-zinc-800 px-2 text-sm py-1 rounded">Visit leaderboard</a>
+                        <a href="{% url 'hunt:home' %}" class="font-bold uppercase bg-zinc-800 px-2 text-sm py-1 rounded">Visit Hunt Page</a>
+                        <a href="{% url 'quiz:home' %}" class="font-bold uppercase bg-zinc-800 px-2 text-sm py-1 rounded">Visit Quiz Page</a>
                     </div>
                 </div>
                 
@@ -64,10 +64,12 @@ Profile
                             </td>
                         </tr>
                     </table>
-                    <div class="flex flex-col align-middle w-full justify-center mt-2">
-                        <a href="{% url 'hunt:scanner' %}" class="font-bold uppercase text-xl underline mx-auto">Scan QR</a>
+                    <div class="flex flex-row flex-wrap align-middle mx-auto gap-3 justify-center mt-2">
+                        <a href="{% url 'hunt:scanner' %}" class="font-bold uppercase text-sm bg-zinc-800 px-2 py-1 rounded mx-auto">Scan QR</a>
+                        <a href="{% url 'quiz:play' %}" class="font-bold uppercase text-sm bg-zinc-800 px-2 py-1 rounded mx-auto">Play Quiz</a>
                         {% if is_club_member %}
-                            <a href="{% url 'hunt:manage_qr' %}" class="font-bold uppercase text-xl underline mx-auto">Manage QRs</a>
+                            <a href="{% url 'hunt:manage_qr' %}" class="font-bold uppercase text-sm bg-zinc-800 px-2 py-1 rounded mx-auto">Manage QRs</a>
+                            <a href="{% url 'quiz:manage' %}" class="font-bold uppercase text-sm bg-zinc-800 px-2 py-1 rounded mx-auto">Manage Questions</a>
                         {% endif %}
                     </div>
                 </div>
@@ -75,6 +77,23 @@ Profile
                 <div class="col-span-2 lg:col-span-4 bg-gradient-to-br from-zinc-500 border-2 border-white to-slate-700 px-3 py-3 mx-auto w-full rounded flex flex-col justify-between">
                     <h2 class="text-center font-bold lg:text-2xl">Scans</h2>
                     {% if scans %}
+                    <table class="table-auto mx-auto">
+                        <tr class="grid grid-cols-2 gap-3 font-bold tracking-widest">
+                            <td class="">Scan Location</td>
+                            <td>Points Given</td>
+                        </tr>
+                        {% for scan in scans %}
+                            <tr class="grid grid-cols-2 gap-3">
+                                <td class="">{{scan.get_qr_code.location}}</td>
+                                <td>{{scan.points_given}}</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                    {% endif %}
+                </div>
+                <div class="col-span-2 lg:col-span-4 bg-gradient-to-br from-zinc-500 border-2 border-white to-slate-700 px-3 py-3 mx-auto w-full rounded flex flex-col justify-between">
+                    <h2 class="text-center font-bold lg:text-2xl">Questions Answered</h2>
+                    {% if responses %}
                     <table class="table-auto mx-auto">
                         <tr class="grid grid-cols-2 gap-3 font-bold tracking-widest">
                             <td class="">Scan Location</td>

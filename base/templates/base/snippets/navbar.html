@@ -12,6 +12,7 @@
         <li><a href="{% url 'gamers:leaderboard' %}" class="nav-item">Leaderboard</a></li>
         {% if user.is_authenticated %}
           <li><a href="{% url 'hunt:home' %}" class="nav-item">Hunt</a></li>
+          <li><a href="{% url 'quiz:home' %}" class="nav-item">Quiz</a></li>
           <li><a href="{% url 'gamers:profile' %}" class="nav-item">Profile</a></li>
           <li><a href="{% url 'account_logout' %}" class="px-3  bg-gradient-to-r from-blue-400 to-purple-500 nav-item rounded py-1">Logout</a></li>
         {% else %}
@@ -35,6 +36,7 @@
       <li><a href="{% url 'gamers:leaderboard' %}" class="px-3 hover:bg-stone-700 py-2 rounded" onclick="toggleMenu()">Leaderboard</a></li>
       {% if user.is_authenticated %}
         <li><a href="{% url 'hunt:home' %}" class="px-3 hover:bg-stone-700 py-2 rounded">Hunt</a></li>
+        <li><a href="{% url 'quiz:home' %}" class="px-3 hover:bg-stone-700 py-2 rounded">Quiz</a></li>
         <li><a href="{% url 'gamers:profile' %}" class="px-3 hover:bg-stone-700 py-2 rounded">Profile</a></li>
         <li><a href="{% url 'account_logout' %}" class="px-3 hover:bg-stone-700 py-2 rounded">Logout</a></li>
       {% else %}
