@@ -72,7 +72,7 @@ def play_quiz(request):
                 new_response = QuizResponse()
                 new_response.gamer = Gamer.objects.get(user = request.user)
                 new_response.question_id = current_question.id
-                new_response.points_recieved = current_question.points
+                new_response.points_recieved = 0
                 new_response.answer_recieved = answer_recieved
                 new_response.save()
                 messages.success(request,"You have submitted the answer for the question successfully. The points will be allocated once the current question expires.")
@@ -109,3 +109,46 @@ def manage(request):
         context['profile_img'] = social_account.extra_data.get('picture')
         context['questions'] = Question.objects.all()
     return render(request,'quiz/manage.html',context)
+
+def detail_q(request,q_id):
+    context = prepare_context(request)
+    if not context['is_club_member']:
+        # tell to register as a game user and then start playing
+        messages.info(request,"Restricted to club members only.")
+        return redirect('/gamers/profile')
+    else:
+        question = Question.objects.get(id=q_id)
+        context['question'] = question
+        context['reviewed_responses'] = QuizResponse.objects.filter(question_id = q_id).filter(reviewed=True)
+        context['responses'] = QuizResponse.objects.filter(question_id = q_id).filter(reviewed=False)
+    return render(request,'quiz/detail.html',context)
+
+def mark_answer_correct(request,response_id):
+    context = prepare_context(request)
+    if not context['is_club_member']:
+        # tell to register as a game user and then start playing
+        messages.info(request,"Restricted to club members only.")
+        return redirect('/gamers/profile')
+    else:
+        response = QuizResponse.objects.get(id=response_id)
+        # question = response.get_question
+        response.is_answer_correct = True
+        response.reviewed = True
+        response.points_recieved = response.get_question.points
+        response.save()
+        return redirect('/quiz/detail/'+str(response.question_id))
+
+def mark_answer_wrong(request,response_id):
+    context = prepare_context(request)
+    if not context['is_club_member']:
+        # tell to register as a game user and then start playing
+        messages.info(request,"Restricted to club members only.")
+        return redirect('/gamers/profile')
+    else:
+        response = QuizResponse.objects.get(id=response_id)
+        # question = response.get_question
+        response.is_answer_correct = False
+        response.reviewed = True
+        response.points_recieved = 0
+        response.save()
+        return redirect('/quiz/detail/'+str(response.question_id))

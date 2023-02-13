@@ -100,13 +100,18 @@ Profile
                             <td>Points Given</td>
                         </tr>
                         {% for response in responses %}
-                            <tr class="grid grid-cols-4 gap-3">
+                            <tr class="grid grid-cols-4 gap-3 border-t-2 border-white pt-2">
                                 <td class="col-span-3">{{response.get_question.value}}</td>
                                 <td>
-                                    {% if response.is_answer_valid %}
+                                    
+                                    {% if response.reviewed %}
+                                        {% if response.is_answer_valid %}
                                         {{response.points_recieved}}
+                                        {% else %}
+                                        Answers are yet to be released
+                                        {% endif %}
                                     {% else %}
-                                    0
+                                    Under Review
                                     {% endif %}
                                 </td>
                             </tr>
