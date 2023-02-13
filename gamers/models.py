@@ -29,7 +29,7 @@ class Gamer(models.Model):
             qr_points+=scan.points_given
         # print("responses")
         for response in responses:
-            print(self.user.username,str(response.is_answer_valid))
+            # print(self.user.username,str(response.is_answer_valid))
             if response.is_answer_valid:
                 quiz_points += response.points_recieved
         total_points = self.points + qr_points + quiz_points
@@ -48,7 +48,7 @@ class SuccessfullScan(models.Model):
     scanned_at = models.DateTimeField(auto_now_add=True)
     def __str__(self) -> str:
         return "scanned by " + self.gamer.user.email + " at " + self.scanned_at.isoformat()
-    
+
     @property
     def get_qr_code(self):
         return QRScan.objects.get(id=self.qr_code_id)
@@ -58,23 +58,20 @@ class QuizResponse(models.Model):
     question_id = models.IntegerField()
     points_recieved = models.IntegerField(default=0)
     answer_recieved = models.TextField()
-    
+    is_answer_correct = models.BooleanField(default=False)
+    reviewed = models.BooleanField(default=False)
+
     def __str__(self) -> str:
         return str(self.gamer) +' '+ str(self.get_question) + ' ' + self.answer_recieved
 
     @property
     def get_question(self):
         return Question.objects.get(id=self.question_id)
-    
+
     @property
     def is_answer_valid(self):
         if self.get_question.end_date <=timezone.now():
                 # check if answer is valid
-                valid_answers = self.get_question.get_answers()
-                # print("Valid answers: ",valid_answers)
-                if str(self.answer_recieved).lower() in valid_answers:
-                    return True
-                else:
-                    return False
+                return self.is_answer_correct
         else:
             return False

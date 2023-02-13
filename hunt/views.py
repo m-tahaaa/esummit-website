@@ -176,7 +176,7 @@ def edit_qr(request, qr_id):
     if not context['is_club_member']:
         # tell to register as a game user and then start playing
         messages.info(request,"Restricted to club members only.")
-        return redirect('/game/profile')
+        return redirect('/gamers/profile')
     else:
         qr_scan = QRScan.objects.get(id=qr_id)
         context['scan'] = qr_scan
@@ -186,5 +186,5 @@ def edit_qr(request, qr_id):
                 qr_scan.sponsor = request.POST.get('sponsor')
                 qr_scan.save()
                 messages.success(request,"Succesfully edited QR, QR_VAL="+str(qr_scan.code))
-                return redirect('/game/manage_qr')
-        return render(request,'game/edit_qr.html',context)
+                return redirect('/hunt/manage_qr')
+        return render(request,'hunt/edit_qr.html',context)
