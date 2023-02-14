@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="{% static 'base/css/tailwind.css' %}">
 <nav class="fixed top-0 left-0 h-[8vh] w-full z-50 " id="navbar">
   <ul class="flex flex-row justify-between w-4/5 max-w-screen-xl mx-auto my-auto h-full items-center font-semibold uppercase tracking-wider">
-    <li class="w-8 h-8"><img src="{% static 'base/images/favicon_dark.ico' %}" alt="edc logo" class="object-contain relative left-0 my-auto"></li>
+    <li class="w-8 h-8"><a href="https://edcnitd.co.in"><img src="{% static 'base/images/favicon_dark.ico' %}" alt="edc logo" class="object-contain relative left-0 my-auto"></a></li>
     <li class="hidden lg:block my-auto">
       <ul class="flex flex-row gap-6 ">
         <li><a href="{% url 'base:home' %}#" class="nav-item">Home</a></li>
