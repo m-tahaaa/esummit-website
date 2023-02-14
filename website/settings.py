@@ -131,7 +131,7 @@ USE_L10N = True
 USE_TZ = True
 
 SITE_ID = 1
-LOGIN_URL = '/accounts/login'
+LOGIN_URL = '/accounts/google/login'
 LOGIN_REDIRECT_URL = '/gamers/profile'
 SOCIALACCOUNT_LOGIN_ON_GET = True
 ACCOUNT_LOGOUT_ON_GET = True
