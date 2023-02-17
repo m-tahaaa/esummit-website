@@ -6,7 +6,7 @@ MID_POINTS=15
 MIN_POINTS=10
 
 def get_qr():
-    return 'QR_'+uuid.uuid4().hex[:9].upper()
+    return 'QR_'+uuid.uuid4().hex[:12].upper()
 
 # Create your models here.
 class QRScan(models.Model):

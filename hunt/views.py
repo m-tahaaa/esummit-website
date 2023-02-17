@@ -47,7 +47,7 @@ def scanner(request):
     context = prepare_context(request)
     if request.method == 'POST':
         qr_code = request.POST.get('qr-code')
-        print(qr_code)
+        # print(qr_code)
         if qr_code:
             try:
                 qr_scan = QRScan.objects.get(code = qr_code)
@@ -132,13 +132,20 @@ def add_qr(request):
     else:
         if request.method == 'POST':
             if 'save-btn' in request.POST:
+                if request.POST.get('quantity'):
+                    quantity = int(request.POST.get('quantity'))
+                else:
+                    quantity = 1
                 location = request.POST.get('location')
-                qr_scan = QRScan()
-                qr_scan.location = location
-                qr_scan.sponsor = request.POST.get('sponsor')
-                qr_scan.code = 'QR_'+uuid.uuid4().hex[:9].upper()
-                qr_scan.save()
-                messages.success(request,"Succesfully added QR,Sponsored by "+qr_scan.sponsor+" QR_VAL="+str(qr_scan.code))
+                sponsor = request.POST.get('sponsor')
+                while quantity > 0:
+                    qr_scan = QRScan()
+                    qr_scan.location = location
+                    qr_scan.sponsor = sponsor
+                    qr_scan.code = 'QR_'+uuid.uuid4().hex[:12].upper()
+                    qr_scan.save()
+                    quantity = quantity - 1
+                messages.success(request,"Succesfully added "+ str(quantity)+" QR(s),Sponsored by "+sponsor)
                 return redirect('/hunt/manage_qr')
         # print(Gamer.objects.get(user=request.user).user)
     return render(request,'hunt/add_qr.html',context)
