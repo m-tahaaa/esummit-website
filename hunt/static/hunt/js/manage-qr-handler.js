@@ -100,3 +100,11 @@ function downloadQR(input) {
       });
     qrCode.download({ name: 'QR_SCAN '+input, extension: "png" });
 }
+
+function downloadAll(){
+  let elements  = document.getElementsByClassName('downloadable');
+  for(const element of elements){
+    let inputText = element.getAttribute('data-download');
+    downloadQR(inputText);
+  }
+}
