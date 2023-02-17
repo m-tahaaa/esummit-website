@@ -1,5 +1,5 @@
 function downloadQR(input) {
-  console.log(input);
+  // console.log(input);
     const qrCode = new QRCodeStyling({
         "width": 300,
         "height": 300,
