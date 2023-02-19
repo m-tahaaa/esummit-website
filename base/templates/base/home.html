@@ -32,6 +32,7 @@ Esummit 2023
                     <a href="{% url 'base:home' %}#merch" class="bg-gradient-to-r from-pink-400/60 to-blue-400/70 px-3 py-1 rounded-md w-fit ">Merch</a>
                     {% if not games_have_ended %}
                     {% if user.is_authenticated %}
+                        <a href="{% url 'hunt:scanner' %}" class="bg-gradient-to-r from-pink-400/60 to-blue-400/70 px-3 py-1 rounded-md w-fit ">Scan QR</a>
                         <a href="{% url 'gamers:profile' %}" class="bg-gradient-to-r from-pink-400/60 to-blue-400/70 px-3 py-1 rounded-md w-fit ">Go to Profile</a>
                     {% else %}
                         <a href="{% provider_login_url 'google' %}" class="bg-gradient-to-r from-pink-400/60 to-blue-400/70 px-3 py-1 rounded-md w-fit ">Game Signup</a>

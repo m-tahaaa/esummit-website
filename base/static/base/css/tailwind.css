@@ -1260,6 +1260,10 @@ video {
   list-style-type: disc;
 }
 
+.list-decimal {
+  list-style-type: decimal;
+}
+
 .appearance-none {
   -webkit-appearance: none;
      -moz-appearance: none;
