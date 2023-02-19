@@ -9,7 +9,7 @@ The Hunt
 <link rel="stylesheet" href="{% static 'hunt/css/home.css' %}">
 {% endblock %}
 {% block content %}
-<header style="background-image: linear-gradient(90deg, rgba(173, 23, 249, 0.398), rgba(26, 69, 245, 0.481)), url('{% static 'base/images/edc-arrow.svg' %}');" class="w-full min-h-screen animation grid place-items-center">
+<header style="background-image: linear-gradient(90deg, rgba(167, 84, 1, 0.609), rgba(0, 29, 173, 0.621)), url('{% static 'base/images/edc-arrow.svg' %}');" class="w-full min-h-screen animation grid place-items-center">
     <div class="grid lg:grid-cols-2 place-items-center my-auto container mx-auto">
         <div class="grid grid-cols-1 mx-auto">
             <div class="w-fit">
@@ -24,7 +24,7 @@ The Hunt
             </div>
         </div>
         <div class="lg:border-l-8 lg:border-zinc-50 min-h-[50vh] flex flex-col justify-center align-middle lg:pl-8 gap-4">
-            <div class="text-lg lg:text-xl px-3 font-raleway">
+            <div class="text-lg lg:text-xl px-3 font-raleway font-semibold">
                 <h2>Find QR codes with the EDC logo all over Campus. Login to the website, scan QR earn points and Exchange them during E-Summit for cash prizes, backstage photos and more.</h2>
                 <a href="{% url 'hunt:home' %}#learn-more" class="font-bold underline">Learn more</a>
             </div>
