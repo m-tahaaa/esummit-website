@@ -63,7 +63,7 @@ Manage Qr
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
                                           </svg>
                                     </a>
-                                    <a href="#" onclick="downloadQR('{{scan.code}}-{{scan.location}}-{{scan.sponsor}}')" data-download='{{scan.code}}-{{scan.location}}-{{scan.sponsor}}' class="downloadable">
+                                    <a href="#" onclick="downloadQR('{{scan.code}}-{{scan.location}}-{{scan.sponsor}}')" data-download='{{scan.code}}' class="downloadable">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fff" class="w-6 h-6">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
                                           </svg>
@@ -77,6 +77,22 @@ Manage Qr
                         {% endfor %}
                     </table>
                     {% endif %}
+                    <div class="pagination text-xl font-bold">
+                        <center>
+                            {%if qr_scans.has_previous %} {# whether the previous page exists #}
+                                <a href="?page={{qr_scans.previous_page_number}}" class="paginator-btn"><</a> {# link to the prev page #}
+                            {% else %}
+                                <a href="#" class="paginator-btn disable"><</a> {# link to the prev page #}
+                            {% endif %}
+                                <span id="current-page">{{qr_scans.number}}</span> {# the current page number #}
+                              
+                            {%if qr_scans.has_next %} {# whether the next page exists #}
+                                <a href="?page={{qr_scans.next_page_number}}" class="paginator-btn">></a> {# link to the next page #}
+                            {% else %}
+                                <a href="#" class="paginator-btn disable">></a> {# link to the prev page #}
+                            {% endif %}
+                        </center>
+                        </div>
                 </div>
             </div>
         </div>
