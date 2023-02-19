@@ -33,7 +33,7 @@ Esummit 2023
                     {% if not games_have_ended %}
                     {% if user.is_authenticated %}
                         <a href="{% url 'hunt:scanner' %}" class="bg-gradient-to-r from-pink-400/60 to-blue-400/70 px-3 py-1 rounded-md w-fit ">Scan QR</a>
-                        <a href="{% url 'gamers:profile' %}" class="bg-gradient-to-r from-pink-400/60 to-blue-400/70 px-3 py-1 rounded-md w-fit ">Go to Profile</a>
+                        <!-- <a href="{% url 'gamers:profile' %}" class="bg-gradient-to-r from-pink-400/60 to-blue-400/70 px-3 py-1 rounded-md w-fit ">Go to Profile</a> -->
                     {% else %}
                         <a href="{% provider_login_url 'google' %}" class="bg-gradient-to-r from-pink-400/60 to-blue-400/70 px-3 py-1 rounded-md w-fit ">Game Signup</a>
                     {% endif %}
@@ -218,7 +218,7 @@ Esummit 2023
             </div>
             <div class="container flex flex-row flex-wrap gap-4 justify-center align-middle mx-auto place-items-center mt-12 px-4 my-auto">
                 <div class="bg-zinc-400/20 w-full rounded-xl backdrop-blur-lg p-3 flex flex-col justify-center align-middle gap-3 max-w-md uppercase stagger-card">
-                    <h2 class="text-xl font-bold uppercase text-center">Sticker HUNT</h2>
+                    <h2 class="text-xl font-bold uppercase text-center">QR HUNT</h2>
                     <h2 class="font-raleway normal-case">Find QR codes with the EDC logo all over Campus. Login to the website, scan QR earn points and Exchange them during E-Summit for cash prizes, backstage photos and more.
                     </h2>
                     <h2 class="text-center font-bold text-xl">Live Now</h2>
