@@ -7,6 +7,7 @@ from django.contrib import messages
 from gamers.models import *
 from django.contrib.auth.decorators import login_required
 from allauth.socialaccount.models import SocialAccount
+from django.core.paginator import Paginator,PageNotAnInteger,EmptyPage
 
 def get_successfull_scans(request):
     gamer = Gamer.objects.get(user=request.user)
@@ -116,7 +117,15 @@ def manage_qr(request):
         context['gamer'] = Gamer.objects.get(user=request.user)
         social_account = SocialAccount.objects.get(user=request.user)
         context['profile_img'] = social_account.extra_data.get('picture')
-        context['qr_scans'] = QRScan.objects.all()
+        paginatorObject = Paginator(QRScan.objects.all(),10)
+        pageNumber = request.GET.get('page')
+        try:
+            pageObj = paginatorObject.get_page(pageNumber)
+        except PageNotAnInteger:
+            pageObj = paginatorObject.get_page(1)
+        except EmptyPage:
+            pageObj = paginatorObject.get_page(paginatorObject.num_pages)
+        context['qr_scans'] = pageObj
         # print(context)
         # print(Gamer.objects.get(user=request.user).user)
     return render(request,'hunt/manage_qr.html',context)

@@ -9,6 +9,7 @@ function secondsToDhms(seconds) {
     var s = Math.floor(seconds % 60);
     if (d == 0) {
         document.getElementById("days").parentElement.classList.add("hidden");
+        document.getElementById("mins").parentElement.classList.remove("col-span-2");
         document.getElementById("seconds").parentElement.classList.remove("hidden");
     }
     document.getElementById("days").innerText = d ;
