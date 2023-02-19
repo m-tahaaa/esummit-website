@@ -17,3 +17,9 @@
 #html5-qrcode-input-range-zoom{
     background: transparent !important;
 }
+#scan-reader__dashboard button{
+    background-color: rgb(24, 24, 27) !important;
+    border-radius: 4px;
+    padding: 8px 12px !important;
+
+}

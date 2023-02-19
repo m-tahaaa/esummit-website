@@ -29,10 +29,11 @@ The Hunt
                 <a href="{% url 'hunt:home' %}#learn-more" class="font-bold underline">Learn more</a>
             </div>
             
-            <div class="grid place-items-center">
+            <div class="flex flex-row flex-wrap justify-center mx-auto align-middle gap-2 ">
                 {% if not has_ended %}
                 {% if user.is_authenticated %}
-                    <a href="{% url 'gamers:profile' %}" class="text-xl bg-gradient-to-r from-blue-400 to-purple-500 px-3 py-2 rounded font-bold uppercase">Go to Profile</a>
+                    <a href="{% url 'hunt:scanner' %}" class="text-xl bg-gradient-to-r from-blue-400 to-purple-500 px-3 py-1 rounded font-bold uppercase">Scan QR</a>
+                    <a href="{% url 'gamers:profile' %}" class="text-xl bg-gradient-to-r from-blue-400 to-purple-500 px-3 py-1 rounded font-bold uppercase">Go to Profile</a>
                 {% else %}
                     <a href="{% provider_login_url 'google' %}" class="text-xl bg-gradient-to-r from-blue-400 to-purple-500 px-3 py-2 rounded font-bold uppercase">Sign In</a>
                 {% endif %}
