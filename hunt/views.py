@@ -46,6 +46,10 @@ def home(request):
 def scanner(request):
     context = {}
     context = prepare_context(request)
+    if not context['is_game_user']:
+        # tell to register as a game user and then start playing
+        messages.info(request,"Please register as a gamer before starting to play")
+        return redirect('/gamers/register')
     if request.method == 'POST':
         qr_code = request.POST.get('qr-code')
         # print(qr_code)
