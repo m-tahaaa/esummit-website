@@ -38,7 +38,7 @@ Quiz
                     <a href="{% provider_login_url 'google' %}" class="text-xl bg-gradient-to-r from-blue-400 to-purple-500 px-3 py-2 rounded font-bold uppercase">Sign In</a>
                 {% endif %}
                 {% else %}
-                <a href="#" class="text-xl bg-gradient-to-r from-blue-400 to-purple-500 px-3 py-2 rounded font-bold uppercase">Leaderboard</a>
+                <a href="{% url 'gamers:leaderboard' %}" class="text-xl bg-gradient-to-r from-blue-400 to-purple-500 px-3 py-2 rounded font-bold uppercase">Leaderboard</a>
                 {% endif %}
             </div>
         </div>
