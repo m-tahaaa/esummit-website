@@ -24,16 +24,16 @@ Quiz
             </div>
         </div>
         <div class="lg:border-l-8 lg:border-zinc-50 min-h-[50vh] flex flex-col justify-center align-middle lg:pl-8 gap-4">
-            <div class="text-lg lg:text-xl px-3 font-raleway">
-                <h2>Questions are released every 12 Hours, anyone who answers a question correctly gets points. You can exchange these points for prizes.</h2>
+            <div class="text-lg lg:text-xl px-3 font-raleway font-semibold">
+                <h2>Questions are released every 24 Hours, anyone who answers a question correctly gets points. You can exchange these points for prizes.</h2>
                 <a href="{% url 'quiz:home' %}#learn-more" class="font-bold underline">Learn more</a>
             </div>
             
             <div class="grid place-items-center gap-3">
                 {% if not has_ended %}
                 {% if user.is_authenticated %}
-                    <a href="{% url 'gamers:profile' %}" class="text-xl bg-gradient-to-r from-gray-900 to-zinc-800 px-3 py-2 rounded font-bold uppercase">Go to Profile</a>
-                    <a href="{% url 'quiz:play' %}" class="text-xl bg-gradient-to-r from-blue-400 to-purple-500 px-3 py-2 rounded font-bold uppercase">Play Now</a>
+                    <a href="{% url 'gamers:profile' %}" class="text-xl bg-gradient-to-r from-blue-400 to-purple-500 px-3 py-1 rounded font-bold uppercase">Go to Profile</a>
+                    <a href="{% url 'quiz:play' %}" class="text-xl bg-gradient-to-r from-blue-400 to-purple-500 px-3 py-1 rounded font-bold uppercase">Play Now</a>
                 {% else %}
                     <a href="{% provider_login_url 'google' %}" class="text-xl bg-gradient-to-r from-blue-400 to-purple-500 px-3 py-2 rounded font-bold uppercase">Sign In</a>
                 {% endif %}
@@ -55,10 +55,10 @@ Quiz
                 <h1 class="text-lg font-bold uppercase text-center lg:text-4xl">Rules</h1>
                 <ul class="flex flex-col gap-4 mt-3">
                     <li class="bg-gradient-to-r from-fuchsia-500 to-purple-500 px-3 py-2 border-white rounded-md border-2 ">
-                        1. Questions are realesed every 12 Hours. Answer them before the next question starts.
+                        1. Questions are realesed every 24 Hours. Answer them before the next question starts.
                     </li>
                     <li class="bg-gradient-to-r from-fuchsia-500 to-purple-500 px-3 py-2 border-white rounded-md border-2 ">
-                        2. On succesfully answering your question you get 30 points
+                        2. On succesfully answering your question you get 250 points
                     </li>
                     <li class="bg-gradient-to-r from-fuchsia-500 to-purple-500 px-3 py-2 border-white rounded-md border-2 ">
                         3. There is no negative marks.
