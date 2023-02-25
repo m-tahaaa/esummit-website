@@ -2164,12 +2164,6 @@ video {
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
-.from-gray-900 {
-  --tw-gradient-from: #111827;
-  --tw-gradient-to: rgb(17 24 39 / 0);
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
-}
-
 .via-indigo-900\/90 {
   --tw-gradient-to: rgb(49 46 129 / 0);
   --tw-gradient-stops: var(--tw-gradient-from), rgb(49 46 129 / 0.9), var(--tw-gradient-to);
@@ -2235,10 +2229,6 @@ video {
 
 .to-amber-400 {
   --tw-gradient-to: #fbbf24;
-}
-
-.to-zinc-800 {
-  --tw-gradient-to: #27272a;
 }
 
 .decoration-slice {
