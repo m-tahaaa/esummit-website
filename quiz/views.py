@@ -36,6 +36,14 @@ def home(request):
     context['has_ended'] = end
     return render(request,'quiz/home.html',context)
 
+def has_attempted_current_question(request):
+    responses = QuizResponse.objects.filter(gamer = Gamer.objects.get(user = request.user))
+    current_question = Question.objects.filter(start_date__lte=timezone.now()).filter(end_date__gte=timezone.now()).first()
+    for response in responses:
+        if response.get_question == current_question:
+            return True
+    return False
+
 @login_required
 def play_quiz(request):
     context = prepare_context(request)
@@ -51,7 +59,7 @@ def play_quiz(request):
         msg = 'Answer the Question'
         end = False
         time_diff = (current_question.end_date - timezone.now()).total_seconds()
-        if QuizResponse.objects.filter(gamer = Gamer.objects.get(user = request.user)).count() > 0:
+        if has_attempted_current_question(request):
             messages.info(request,"You have already answered the currently active question")
             context['has_answered_already'] = True
             next_question = Question.objects.filter(start_date__gte=timezone.now()).first()
@@ -68,6 +76,9 @@ def play_quiz(request):
             if time_diff >= 0:
                 # gamer has submitted question in time
                 # save his answer and redirect to gamer/profile
+                if has_attempted_current_question(request):
+                    messages.info(request,"You have already answered the currently active question")
+                    return redirect('/gamers/profile')
                 answer_recieved = request.POST.get('answer')
                 new_response = QuizResponse()
                 new_response.gamer = Gamer.objects.get(user = request.user)
