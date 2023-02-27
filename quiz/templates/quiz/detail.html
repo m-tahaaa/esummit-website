@@ -13,7 +13,7 @@ Question Detail View
                 <div class="flex flex-row w-full justify-between align-bottom">
                     
                     <li class="list-none flex justify-end flex-col text-right">
-                        <h2 class="text-xl lg:text-4xl font-bold uppercase h-fit">ESUMMIT <span class="font-normal text-xl">Qusetion Detail</span></h2>
+                        <h2 class="text-xl lg:text-4xl font-bold uppercase h-fit">ESUMMIT <span class="font-normal text-xl">Question Detail</span></h2>
                     </li>
                 </div>
             </div>
@@ -25,14 +25,16 @@ Question Detail View
                 <h2 class="text-center font-bold lg:text-2xl">Responses Under Review</h2>
                 {% if responses %}
                 <table class="table-auto mx-auto w-[90%]">
-                    <tr class="grid grid-cols-6 gap-3 font-bold tracking-widest">
+                    <tr class="grid grid-cols-7 gap-3 font-bold tracking-widest">
+                        <td>Gamer Name</td>
                         <td class="col-span-3">Answer</td>
                         <td>Reviewed</td>
                         <td>Points Given</td>
                         <td class="text-center mx-auto">Mark Answer</td>
                     </tr>
                     {% for response in responses %}
-                        <tr class="grid grid-cols-6 gap-3 border-t-2 border-white pt-2">
+                        <tr class="grid grid-cols-7 gap-3 border-t-2 border-white pt-2">
+                            <td>{{response.gamer.user.first_name}} {{response.gamer.user.last_name}}</td>
                             <td class="col-span-3">{{response.answer_recieved}}</td>
                             <td>
                                 {% if response.reviewed %}
@@ -69,14 +71,17 @@ Question Detail View
                 <h2 class="text-center font-bold lg:text-2xl">Responses Reviewed</h2>
                 {% if reviewed_responses %}
                 <table class="table-auto mx-auto w-[90%]">
-                    <tr class="grid grid-cols-6 gap-3 font-bold tracking-widest">
+                    <tr class="grid grid-cols-7 gap-3 font-bold tracking-widest">
+                        <td>Gamer Name</td>
                         <td class="col-span-3">Answer</td>
                         <td>Reviewed</td>
                         <td>Points Given</td>
                         <td class="text-center mx-auto">Mark Answer</td>
                     </tr>
                     {% for response in reviewed_responses %}
-                        <tr class="grid grid-cols-6 gap-3 border-t-2 border-white pt-2">
+                        <tr class="grid grid-cols-7 gap-3 border-t-2 border-white pt-2">
+                            <td>{{response.gamer.user.first_name}} {{response.gamer.user.last_name}}</td>
+                            
                             <td class="col-span-3">{{response.answer_recieved}}</td>
                             <td>
                                 {% if response.reviewed %}
