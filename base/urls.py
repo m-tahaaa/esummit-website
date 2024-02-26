@@ -1,12 +1,15 @@
-from . import views
+from . views import *
 from django.urls import path
 from django.urls import path,include
 
 
 app_name = 'base'
 urlpatterns = [
-    path('', views.home,name='home'),
-    path('login',views.handleLogin,name='handleLogin'),
-    path('register',views.handleSignUp,name='handleSignUp')
+    path('', home, name='home'),
+    path('login', handleLogin, name='handleLogin'),
+    path('register', handleSignUp, name='handleSignUp'),
+    path('verify', verify, name='verify'),
+    path('merchandise',merch, name='merch'),
+    path('passes',passes, name='passes')
 
 ]
