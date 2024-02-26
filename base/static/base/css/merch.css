@@ -1,0 +1,185 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    /* background-color: #f4f4f4; */
+    color: #000;
+    background-image: url(https://png.pngtree.com/background/20230411/original/pngtree-natural-landscape-snow-mountain-background-picture-image_2390197.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.container {
+    max-width: 500px;
+    width: 90%;
+    min-width: 340px;
+    margin: 100px auto;
+    padding: 5%;
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: larger;
+}
+
+h2 {
+    text-align: center;
+    font-size: xx-large;
+    color: rgb(255, 0, 81);
+}
+
+.form-group {
+    position: relative;
+    margin-block: 50px;
+    transition: .3s;
+}
+.form-group:has(select){
+    margin-bottom: 75px;
+}
+
+.form-group:has(:focus) label , .form-group.highlight label{
+    translate: 5px -30px;
+    opacity: 1;
+    scale: .9;
+}
+label {
+    /* font-weight: bold; */
+    opacity: .8;
+    position: absolute;
+    top: 0;
+    left: 0;
+    translate: 10px 0;
+    transition: .3s;
+    scale: .8;
+    transform-origin: left center;
+}
+
+input[type="text"], input[type="email"]{
+    width: 100%;
+    /* padding: 10px; */
+    background-color: transparent;
+    border: none;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #0000003b;
+    outline: none;
+    /* border-radius: 4px; */
+    box-sizing: border-box;
+}
+
+.form-group:has(input)::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    border-radius: 3px;
+    background: linear-gradient(45deg,#d5007d,#e53935);
+    transform-origin: left bottom;
+    transition: .3s;
+    scale: 0;
+}
+.form-group:has(:focus)::after, .form-group.highlight::after{
+    scale: 1;
+}
+
+.form-group:has(select) label{
+    position: static;
+    display: inline-block;
+    scale: .8;
+}
+
+.form-group:has(select:focus) label , .form-group.highlight:has(select) label{
+    translate: 5px 0;
+    opacity: 1;
+    scale: .9;
+}
+
+select{
+    position: absolute;
+    display: inline-block;
+    width: 50%;
+    top: 0;
+    right: 0;
+    /* left: 75%; */
+    height: 20px;
+    border: 2px solid rgb(255, 0, 81);
+    border-radius: 2px;
+    background-color: transparent;
+    appearance: none;
+    overflow: visible;
+    border: none;
+    /* pointer-events: none; */
+}
+select#size{
+    width: 75%;
+}
+select#color{
+    width: 50%;
+}
+select::before{
+    /* content: ""; */
+    position: absolute;
+    height: 100%;
+    width: 50%;
+    border: 2px solid rgb(255, 0, 81);
+    border-radius: 2px;
+    pointer-events: none;
+}
+
+select:focus{
+    outline: none;
+}
+select option{
+    display: inline-block;
+    width: 50%;
+    text-align: center;
+    height: fit-content;
+    font-size: larger;
+    padding: 3px;
+    opacity: .5;
+}
+select option:hover{
+    background-color: rgb(255, 0, 81);
+}
+select#size option{
+    width: 16.66%;
+}
+select:focus option:checked{
+    background-color: rgb(255, 0, 81) !important;
+    color: #fff;
+    opacity: 1;
+}
+select option:checked{
+    background-color: transparent !important;
+    border: 2px solid rgb(255, 0, 81);
+    /* color: #fff; */
+    opacity: 1;
+    border-radius: 3px;
+}
+
+.clg .college, .out .outside{
+    opacity: 0;
+    height: 0;
+    margin: 0;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background: linear-gradient(45deg,#d5007d,#e53935);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+button[type="submit"]:hover {
+    background: linear-gradient(-45deg,#d5007d,#e53935);
+}

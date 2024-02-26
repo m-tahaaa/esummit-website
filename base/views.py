@@ -1,10 +1,14 @@
-from imaplib import _Authenticator
+# from imaplib import _Authenticator
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.shortcuts import redirect, render
 from base.models import *
 from django.utils import timezone
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
+import random
+from . mail import mail
 
 # Create your views here.
 def home(request):
@@ -38,49 +42,94 @@ def handleLogin(request):
     if request.method == 'POST':
         email = request.POST.get('email')
         password = request.POST.get('password')
-
-        # Retrieve user object by email
-        user = User.objects.filter(email=email).first()
-        if user is None:
-            messages.error(request, 'No user found with this email address.')
-            return redirect('/login')
-
-        # Authenticate user with email and password
-        user = authenticate(request, username=user.username, password=password)
+        user = authenticate(username=email, password=password)
+        print(user)
         if user is not None:
             login(request, user)
-            messages.success(request, 'Logged in successfully.')
-            return redirect('/details')
-        else:
-            messages.error(request, 'Invalid email or password.')
-            return redirect('/register')
-    else:
-        if request.user.is_authenticated:
             return redirect('/')
+
+        user = User.objects.filter(email=email).first()
+        user = authenticate(request, username=user.username, password=password)
+        print(user)
+        if user is not None:
+            login(request, user)
+            return redirect('/')
+
         return render(request, 'login.html')
-
-
-    
-
+    else:
+        return render(request, 'login.html')
 
 def handleSignUp(request):
     if request.method == 'POST':
-        username = request.POST['username']
-        email = request.POST['email']
-        password = request.POST['password']
-        confirm_password = request.POST['confirm_password']
-
-        # Check if passwords match
-        if password != confirm_password:
-            return render(request, 'registration.html', {'error_message': 'Passwords do not match'})
-
-        # Check if username is already taken
-        if User.objects.filter(email=email).exists():
-            return render(request, 'register.html', {'error_message': 'Username is already taken'})
-
-        # Create user
-        user = User.objects.create_user(username=username, email=email, password=password)
-        login(request, user)
-        return redirect('/login')  # Redirect to the home page after successful registration
+        request.session['username'] = request.POST.get('username')
+        request.session['email'] = request.POST.get('email')
+        request.session['password'] = request.POST.get('password')
+        # if 'get_otp' in request.POST:
+        generated_otp = random.randint(1000, 9999)
+        print(generated_otp)
+        request.session['generated_otp'] = generated_otp
+        mail(request.POST.get('email'), generated_otp)
+        return redirect('/verify')
     else:
         return render(request, 'register.html')
+
+def verify(request):
+    if request.method == 'POST':
+        username = request.session.get('username')
+        email = request.session.get('email')
+        password = request.session.get('password')
+        user_entered_otp = request.POST.get('otp')
+        if user_entered_otp == str(request.session.get('generated_otp')):
+            # user = User.(username=username, email=email, password=password)
+            user = User.objects.create_user(username, email, password)
+            user.save()
+            return redirect('/login')
+        else:
+            return render(request, 'verify.html', {'otp_failed': True})
+    else:
+        return render(request, 'verify.html')
+
+@login_required
+def merch(request):
+    if request.method == 'POST':
+        # Create a new Merches instance and save it to the database
+        merch = Merch.objects.create(
+            user=request.user,
+            name = request.POST.get('name'),
+            email = request.POST.get('email'),
+            phone_number = request.POST.get('phone_number'),
+            from_college = request.POST.get('from_college'),
+            reg_no = request.POST.get('reg_no'),
+            roll_no = request.POST.get('roll_no'),
+            hall_no = request.POST.get('hall_no'),
+            room_no = request.POST.get('room_no'),
+            address = request.POST.get('address'),
+            size = request.POST.get('size'),
+            color = request.POST.get('color'),
+            ref_id = request.POST.get('ref_id'),
+            verified=False
+        )
+        return HttpResponse("success")
+
+    # Render the form template for GET requests
+    return render(request, 'merch.html')
+
+@login_required
+def passes(request):
+    if request.method == 'POST':
+        # Create a new Merches instance and save it to the database
+        passes = Pass.objects.create(
+            user=request.user,
+            name = request.POST.get('name'),
+            email = request.POST.get('email'),
+            phone_number = request.POST.get('phone_number'),
+            address = request.POST.get('address'),
+            plan = request.POST.get('plan'),
+            ref_id = request.POST.get('ref_id'),
+            verified=False
+        )
+        return HttpResponse("success")
+
+    # Render the form template for GET requests
+    return render(request, 'pass.html')
+

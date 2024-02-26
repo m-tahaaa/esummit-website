@@ -85,6 +85,7 @@ AUTHENTICATION_BACKENDS =[
 
 WSGI_APPLICATION = 'website.wsgi.application'
 
+# AUTH_USER_MODEL = 'base.User'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
@@ -131,8 +132,8 @@ USE_L10N = True
 USE_TZ = True
 
 SITE_ID = 1
-LOGIN_URL = '/accounts/google/login'
-LOGIN_REDIRECT_URL = '/gamers/profile'
+LOGIN_URL = '/login'
+LOGIN_REDIRECT_URL = '/'
 SOCIALACCOUNT_LOGIN_ON_GET = True
 ACCOUNT_LOGOUT_ON_GET = True
 SOCIALACCOUNT_PROVIDERS = {

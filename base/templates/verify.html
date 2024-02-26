@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Login</title>
+    <title>User Registration</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -36,6 +37,7 @@
         }
 
         input[type="text"],
+        input[type="email"],
         input[type="password"] {
             width: 100%;
             padding: 10px;
@@ -61,19 +63,18 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
-        <h2>User Login</h2>
+        <h2>OTP Verification</h2>
         <form method="post">
             {% csrf_token %}
-            <label for="username">Usernamme or Email:</label>
-            <input type="text" id="username" name="email" required>
-
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-
-            <button type="submit">Login</button>
+            <label for="otp">OTP:</label>
+            <input type="otp" id="otp" name="otp">
+            <br>
+            <button type="submit">Verify OTP</button>
         </form>
     </div>
 </body>
+
 </html>
