@@ -1,21 +1,40 @@
 {% extends 'base.html' %}
 {% load socialaccount %}
 {% load static %}
-{% block title %}
-Esummit 2024
-{% endblock %}
+{% block title %} Esummit 2024 {% endblock %}
 {% block head %}
 <!-- CSS files -->
 <!-- <link rel="stylesheet" href="{% static 'base/css/home.css' %}"> -->
-<link rel="stylesheet" href="{% static 'base/css/home.css' %}">
-{% endblock %}
-{% block content %}
+<link rel="stylesheet" href="{% static 'base/css/home.css' %}" />
+{% endblock %} {% block content %}
 <main>
-    <section class="hero-section bg-grey-700 h-8"></section>
-    <section class="about-section"></section>
-    <section class="events-section"></section>
-    <section class="speakers-section"></section>
-    <section class="merch-section"></section>
-    <section class="pass-section"></section>
+  <section class="hero-section bg-grey-700 h-8"></section>
+  <section class="about-section"></section>
+
+  <section class="events-section w-full overflow-x-hidden">
+    <h2 class="text-center text-5xl font-[500]">Esummit's Event</h2>
+    <div class="container flex flex-wrap w-full m-5 justify-evenly overflow-x-hidden">
+      <div class="card w-1/4 p-auto m-8 bg-[#232829] rounded-xl p-2">
+        <div class="card-animation h-[40vh] ml-8"> 
+            <dotlottie-player src="https://lottie.host/005f667c-1121-41d7-bc37-83d8764be19c/t4JUhClKiv.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></dotlottie-player> </div>
+        <div class="intro text-white p-2 text-center">
+          <span>
+            <h2 class="text-center text-3xl mb-2 font-[400]"> 
+              Event Name </h2></span>
+            <p>Take the opportunity to explore the diverse design domains in our club and cultivate your aesthetics, access resources, and expand your portfolio.</p>
+            <button style="display: inline-block" class="inherit text-center items-center rounded-full whitespace-nowrap m-4 md:text-[18px] bg-blue-700 md:pr-5 md:py-2 text-[14px] px-3 py-1 outline-none duration-200 hover:bg-blue-400">
+                Register Now </button>
+        </div>
+      </div>
+      
+
+    </div>
+  </section>
+  <section class="speakers-section"></section>
+  <section class="merch-section"></section>
+  <section class="pass-section"></section>
+  {% block script %}
+  <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
+  {% endblock %}
 </main>
 {% endblock %}
