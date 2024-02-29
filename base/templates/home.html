@@ -52,9 +52,9 @@
         </p>
       </div>
     </section>
-    <section class="events-section w-full overflow-x-hidden">
+    <section class="events-section w-full overflow-x-hidden bg-[#272319]">
     <h2 class="text-center md:text-5xl sm:text-4xl text-3xl font-[500] mb-4 ">Esummit's Event</h2>
-    <div class="container grid md:grid-cols-3 md:gap-x-6 md:gap-y-6 sm:grid-cols-2 sm:gap-x-5 sm:gap-y-6 grid-cols-1 gap-y-4  w-[90%] mx-auto overflow-x-hidden ">
+    <div class="container grid grid-cols-2 md:grid-cols-3 md:gap-x-6 md:gap-y-6 sm:grid-cols-2 sm:gap-x-5 sm:gap-y-6 gap-y-4  w-[90%] mx-auto overflow-x-hidden ">
       <div class="card p-auto bg-[#232829] rounded-xl p-2 pb-16">
         <div class="card-animation h-[40vh] "> 
             <dotlottie-player src="https://lottie.host/005f667c-1121-41d7-bc37-83d8764be19c/t4JUhClKiv.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></dotlottie-player> </div>
@@ -163,8 +163,8 @@
   </main>
 {% endblock %}
 {% block script %}
+<script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
 <script src="{% static 'base/js/home.js' %}"></script>
