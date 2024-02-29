@@ -9,29 +9,52 @@
 {% endblock %}
 {% block content %}
   <main>
-    <section class="hero-section w-full h-screen gradient overflow-hidden" id="hero">
+    <section class="hero-section w-full h-screen gradient overflow-hidden text-center" id="hero">
       <div class="layer title absolute w-full h-full origin-center" data-depth='-0.7' data-scale='.5'>
-        <div class="content mx-auto top-1/4 relative w-1/2">
-          <img src="{% static 'base/images/logowhite.png' %}" alt="" srcset="">
+        <div class="content mx-auto top-1/4 relative w-5/6 md:w-1/2">
+          <img src="{% static 'base/images/logowhite.png' %}" alt="" srcset="" class="drop-shadow">
         </div>
       </div>
       <div class="layer layer1 absolute w-full h-full origin-bottom" data-depth='-0.3' data-scale='1'>
         <img src="{% static 'base/images/curve1.png' %}" alt="" class="size-full" />
       </div>
       <div class="layer layer2 absolute w-full h-full origin-bottom" data-depth='-0.2' data-scale='1.2'>
-        <img src="{% static 'base/images/light1.png' %}" alt="" class="size-full" />
+        <img src="{% static 'base/images/light1.png' %}" alt="" class="size-full scale-x-[2] md:scale-100" />
       </div>
       <div class="layer layer3 absolute w-full h-full origin-bottom" data-depth='-0.01' data-scale='1.5'>
-        <img src="{% static 'base/images/dark1.png' %}" alt="" class="size-full" />
+        <img src="{% static 'base/images/dark1.png' %}" alt="" class="size-full scale-x-[2] md:scale-100" />
       </div>
-      <div class="layer layer4 absolute w-full h-full " data-depth='0.20' data-scale='1'></div>
-      <div class="layer layer5 absolute w-full h-full" data-depth='0.20' data-scale='1'></div>
     </section>
-    <section class="about-section h-screen bg-[#282319] relative z-10">
-      
-    </section><section class="events-section w-full overflow-x-hidden">
+    <section class="about-section bg-[#282319] relative z-10 py-28">
+      <div class="lamp relative flex w-full flex-1 scale-y-125 justify-center isolate z-0 opacity-70">
+        <div class="absolute inset-auto right-1/2 h-56 overflow-visible w-1/2 bg-gradient-conic from-yellow-300 via-transparent to-transparent text-white [--conic-position:from_70deg_at_center_top]" style="background-image: conic-gradient(var(--conic-position), var(--tw-gradient-stops));opacity: 1; width: 50%;">
+          <div class="absolute  w-[100%] left-0 bg-[#282319] h-40 bottom-0 z-20 [mask-image:linear-gradient(to_top,white,transparent)]">
+          </div>
+          <div class="absolute  w-40 h-[100%] left-0 bg-[#282319] bottom-0 z-20 [mask-image:linear-gradient(to_right,white,transparent)]">
+          </div>
+        </div>
+        <div class="absolute inset-auto left-1/2 h-56 w-1/2 bg-gradient-conic from-transparent via-transparent to-yellow-300 text-white [--conic-position:from_290deg_at_center_top]" style="background-image: conic-gradient(var(--conic-position), var(--tw-gradient-stops)); opacity: 1; width: 50%;">
+          <div class="absolute  w-40 h-[100%] right-0 bg-[#282319]  bottom-0 z-20 [mask-image:linear-gradient(to_left,white,transparent)]">
+          </div>
+          <div class="absolute  w-[100%] right-0 bg-[#282319] h-40 bottom-0 z-20 [mask-image:linear-gradient(to_top,white,transparent)]">
+          </div>
+        </div>
+        <div class="absolute inset-auto z-50 h-36 w-[28rem] rounded-full bg-yellow-300 opacity-50 blur-3xl">
+        </div>
+        <div class="absolute inset-auto z-30 h-36 w-64 rounded-full bg-yellow-400 blur-2xl" style="width: 16rem;">
+        </div>
+        <div class="absolute inset-auto z-50 h-0.5 w-1/2 bg-yellow-100 " style="width: 50%;">
+        </div>
+      </div>
+      <div class="about-content relative z-20 mx-auto w-[800px] max-w-[90%] pt-52">
+        <h3 class="about text-6xl font-bold text-orange-300 text-center pb-8 text-shadow">About</h3>
+        <p class="text-center text-base text-orange-200 opacity-50 text-shadow">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam omnis aliquid quas illum! Accusantium iste fuga asperiores non ipsam repudiandae saepe impedit optio perspiciatis, ab doloribus veniam tempora eos aut eius sed modi ullam repellendus temporibus. Nisi eos quam dignissimos suscipit tempora delectus saepe, repellat soluta neque asperiores maxime, dolore magni reiciendis eaque aliquam tempore iure quo sint autem debitis perspiciatis voluptate. Sapiente aperiam blanditiis quas non voluptatum. Facilis voluptate sed quibusdam?
+        </p>
+      </div>
+    </section>
+    <section class="events-section w-full overflow-x-hidden bg-[#272319]">
     <h2 class="text-center md:text-5xl sm:text-4xl text-3xl font-[500] mb-4 ">Esummit's Event</h2>
-    <div class="container grid md:grid-cols-3 md:gap-x-6 md:gap-y-6 sm:grid-cols-2 sm:gap-x-5 sm:gap-y-6 grid-cols-1 gap-y-4  w-[90%] mx-auto overflow-x-hidden ">
+    <div class="container grid grid-cols-2 md:grid-cols-3 md:gap-x-6 md:gap-y-6 sm:grid-cols-2 sm:gap-x-5 sm:gap-y-6 gap-y-4  w-[90%] mx-auto overflow-x-hidden ">
       <div class="card p-auto bg-[#232829] rounded-xl p-2 pb-16">
         <div class="card-animation h-[40vh] "> 
             <dotlottie-player src="https://lottie.host/005f667c-1121-41d7-bc37-83d8764be19c/t4JUhClKiv.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></dotlottie-player> </div>
@@ -140,8 +163,8 @@
   </main>
 {% endblock %}
 {% block script %}
+<script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
 <script src="{% static 'base/js/home.js' %}"></script>
