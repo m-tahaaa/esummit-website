@@ -108,12 +108,16 @@ def merch(request):
             room_no = request.POST.get('room'),
             address = request.POST.get('address'),
             size = request.POST.get('size'),
+            payment= request.POST.get('payment'),
             verified=False
         )
         merch.save()
+        # print(request.POST['image'])
         proof =Proof.objects.create(user=request.user, image=request.FILES.get('image'))
+        
+        # print(request.FILES['image'])
         proof.save()
-        return HttpResponse("success")
+        return render(request, 'success.html')
 
     # Render the form template for GET requests
     return render(request, 'merch.html')

@@ -14,7 +14,6 @@ class EventDates(models.Model):
 
 class Merch(models.Model):
     SIZES = (
-        ('XS', 'XS'),
         ('S', 'S'),
         ('M', 'M'),
         ('L', 'L'),
@@ -29,6 +28,10 @@ class Merch(models.Model):
         ('Yes', 'Yes'),
         ('No', 'No')
     )
+    PAYMENT = (
+        ('Kshitiz', 'Kshitiz'),
+        ('Adarsh', 'Adarsh')
+    )
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
     email = models.EmailField(max_length=254)
@@ -40,11 +43,12 @@ class Merch(models.Model):
     room_no = models.CharField(max_length=5)
     address = models.CharField(max_length=50)
     size = models.CharField(choices=SIZES, max_length=5)
+    payment = models.CharField(choices=PAYMENT,max_length=50, blank=True)
     verified = models.BooleanField()
 
 class Proof(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to="images/")
+    image = models.FileField( upload_to="images/", blank=False)
     def __str__(self):
         return self.user.email + " | Payement proof"
     

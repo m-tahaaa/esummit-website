@@ -722,6 +722,14 @@ video {
   margin-top: 1.25rem;
 }
 
+.mt-1 {
+  margin-top: 0.25rem;
+}
+
+.mb-24 {
+  margin-bottom: 6rem;
+}
+
 .block {
   display: block;
 }
@@ -1333,6 +1341,11 @@ video {
   line-height: 1rem;
 }
 
+.text-5xl {
+  font-size: 3rem;
+  line-height: 1;
+}
+
 .font-\[400\] {
   font-weight: 400;
 }
@@ -1429,6 +1442,10 @@ video {
 
 .opacity-80 {
   opacity: 0.8;
+}
+
+.opacity-85 {
+  opacity: 0.85;
 }
 
 .shadow-orange-950 {
