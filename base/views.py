@@ -90,8 +90,10 @@ def verify(request):
     else:
         return render(request, 'verify.html')
 
-@login_required
+# @login_required
 def merch(request):
+    # if request.user.is_authenticated == False:
+    #     return redirect("/accounts/google/login/?next=/merch")
     if request.method == 'POST':
         # Create a new Merches instance and save it to the database        
         merch = Merch.objects.create(
