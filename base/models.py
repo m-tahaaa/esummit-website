@@ -40,10 +40,14 @@ class Merch(models.Model):
     room_no = models.CharField(max_length=5)
     address = models.CharField(max_length=50)
     size = models.CharField(choices=SIZES, max_length=5)
-    color = models.CharField(choices=COLORS,max_length=10)
-    ref_id = models.CharField(max_length=50)
     verified = models.BooleanField()
 
+class Proof(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to="images/")
+    def __str__(self):
+        return self.user.email + " | Payement proof"
+    
 class Pass(models.Model):
     PLANS = (
         ('Gold','Gold'),
