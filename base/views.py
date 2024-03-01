@@ -12,6 +12,7 @@ from . mail import mail
 
 # Create your views here.
 def home(request):
+    return redirect('/merch')
     context = {}
     event_dates = EventDates.objects.filter(type="home").order_by('-event_start').first()
     # print(event_dates)
@@ -92,23 +93,24 @@ def verify(request):
 @login_required
 def merch(request):
     if request.method == 'POST':
-        # Create a new Merches instance and save it to the database
+        # Create a new Merches instance and save it to the database        
         merch = Merch.objects.create(
             user=request.user,
             name = request.POST.get('name'),
             email = request.POST.get('email'),
             phone_number = request.POST.get('phone_number'),
             from_college = request.POST.get('from_college'),
-            reg_no = request.POST.get('reg_no'),
-            roll_no = request.POST.get('roll_no'),
-            hall_no = request.POST.get('hall_no'),
-            room_no = request.POST.get('room_no'),
+            reg_no = request.POST.get('reg'),
+            roll_no = request.POST.get('roll'),
+            hall_no = request.POST.get('hall'),
+            room_no = request.POST.get('room'),
             address = request.POST.get('address'),
             size = request.POST.get('size'),
-            color = request.POST.get('color'),
-            ref_id = request.POST.get('ref_id'),
             verified=False
         )
+        merch.save()
+        proof =Proof.objects.create(user=request.user, image=request.FILES.get('image'))
+        proof.save()
         return HttpResponse("success")
 
     # Render the form template for GET requests
