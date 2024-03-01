@@ -90,7 +90,7 @@ def verify(request):
     else:
         return render(request, 'verify.html')
 
-# @login_required
+@login_required
 def merch(request):
     # if request.user.is_authenticated == False:
     #     return redirect("/accounts/google/login/?next=/merch")
