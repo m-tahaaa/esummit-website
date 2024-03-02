@@ -1,88 +1,210 @@
-{% extends 'base.html' %}
 {% load socialaccount %}
 {% load static %}
-{% block title %}
-Esummit 2023
-{% endblock %}
-{% block head %}
-<!-- CSS files -->
-<!-- <link rel="stylesheet" href="{% static 'base/css/home.css' %}"> -->
-<link rel="stylesheet" href="{% static 'base/css/merch.css' %}">
-{% endblock %}
-{% block content %}
-<body>
-    <div class="container clg out">
-        <h2>Merches Form</h2>
-        <form method="post">
-            {% csrf_token %}
-            <div class="form-group">
-                <input type="text" id="name" name="name" required>
-                <label for="name">Name:</label>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'base/images/favicon.ico' %}">
+    <title>E-Summit'24 | Merchandise</title>
+    <link rel="stylesheet" href="{% static 'base/css/tailwind.css' %}">
+    <link rel="stylesheet" href="{% static 'base/css/merch.css' %}">
+</head>
+
+<body class="bg-yellow-950">
+    <aside class="md:fixed md:w-1/2 md:h-screen md:top-0 md:left-0 p-5">
+        <div
+            class=" sc bg-gradient-to-tr from-yellow-400 to-yellow-700 rounded-3xl  h-full p-6 md:px-14 overflow-scroll"
+            style="
+                    background-image: url({% static 'base/images/merch_bg.webp' %});
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                "
+            >
+            <div class="logo w-56 mx-auto">
+                <img src="{% static 'base/images/logoblack.png' %}" alt="" srcset="" style="filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.7));">
             </div>
-            <div class="form-group">
-                <input type="email" id="email" name="email" required>
-                <label for="email">Email:</label>
+            <div class="tshirt flex mt-4 justify-around">
+                <img src="{% static 'base/images/shirt.png' %}" alt="" srcset="" style="filter: drop-shadow(2px 4px px rgba(0, 0, 0, .7));">
             </div>
-            <div class="form-group">
-                <input type="text" id="phone_number" name="phone_number" pattern="\d{10}" title="Please enter 10 digits"
-                    required>
-                    <label for="phone_number">Phone Number:</label>
+            <div class="text-xl font-semibold md:font-bold mt-4 text-center opacity-70">Oversized and drop shoulder<br>
+
             </div>
-            <div class="form-group">
-                <label for="from_college" class="clg">Are you from <br>
-                     NIT Durgapur:</label>
-                <select id="from_college" name="from_college" size="2" required>
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
-                </select>
+            <div class="flex mt-3 justify-around items-center">
+                <div class="w-4/5">
+                    <div class="price text-5xl text-orange-950 font-extrabold">
+                        <span class="text-4xl">₹</span>399
+                    </div>
+                    <div class="w-fit flex gap-1">
+                        <div class="text-xxs md:text-base font-bold mt-1 text-nowrap ">Kshitiz:<br>Adarsh:<br>UPI ID:
+                            <br>
+                        </div>
+                        <div>
+                            <div class="text-xxs md:text-base font-medium mt-1 text-nowrap opacity-85"> 7259868646 <br>
+                                6206820030<br> shreychadha2109@okaxis <br>aadarsh.001279@okicici
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="qr w-32">
+                    <img src="{% static 'base/images/finalqr.png' %}" alt="" class="six">
+                </div>
             </div>
-            <div class="form-group college">
-                <label for="reg">Registration no:</label>
-                <input type="text" id="reg" name="reg" >
+            <div class="chart mt-4">
+                <img src="{% static 'base/images/chart.jpg' %}" alt="" srcset="">
             </div>
-            <div class="form-group college">
-                <label for="roll">Roll no:</label>
-                <input type="text" id="roll" name="roll" >
-            </div>
-            <div class="form-group college">
-                <label for="hall">Hall no:</label>
-                <input type="text" id="hall" name="hall" >
-            </div>
-            <div class="form-group college">
-                <label for="room">Room no:</label>
-                <input type="text" id="room" name="room" >
-            </div>
-            <div class="form-group outside">
-                <label for="address">Address:</label>
-                <input type="text" id="address" name="address" >
-            </div>
-            <div class="form-group">
-                <label for="size">Size:</label>
-                <select id="size" name="size" size="2" required>
-                    <option value="XS">XS</option>
-                    <option value="S">S</option>
-                    <option value="M">M</option>
-                    <option value="L">L</option>
-                    <option value="XL">XL</option>
-                    <option value="XXL">XXL</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="color">Color:</label>
-                <select id="color" name="color" size="2" required>
-                    <option value="Black">Black</option>
-                    <option value="White">White</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="ref_id">Reference ID:</label>
-                <input type="text" id="ref_id" name="ref_id" required>
-            </div>
-            <button type="submit">Submit</button>
-        </form>
+        </div>
+    </aside>
+    {% if user.is_authenticated %}
+    <div class="relative md:w-1/2 md:left-1/2 md:bg-yellow-950 py-5">
+        <div
+            class="contain bg-stone-950 max-w-[500px] w-11/12 min-w-[340px] mx-auto p-10 border-2 border-orange-400 rounded-2xl text-lg clg out text-orange-100 py-16">
+            <!-- <h2 class="text-center text-6xl text-orange-400">Merches Form</h2> -->
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group relative mb-12 transition-all duration-300">
+                    <input type="text" id="name" name="name"
+                        class="w-full mx-auto bg-transparent pb-3 border-b border-stone-600 outline-none text-sm opacity-50"
+                        value="{{ user.first_name }} {{ user.last_name }}"
+                        readonly
+                        required>
+                    <label for="name"
+                        class="absolute top-0 left-0 translate-x-0 transition-all duration-300 scale-90 opacity-50 transform-origin-left">Name:</label>
+                </div>
+                <div class="form-group relative mb-12 transition-all duration-300">
+                    <input type="email" id="email" name="email"
+                        class="w-full mx-auto bg-transparent pb-3 border-b border-stone-600 outline-none text-sm opacity-50"
+                        value="{{ user.email }}"
+                        readonly
+                        required>
+                    <label for="email"
+                        class="absolute top-0 left-0 translate-x-0 transition-all duration-300 scale-90 opacity-50 transform-origin-left">Email:</label>
+                </div>
+                <div class="form-group relative mb-12 transition-all duration-300">
+                    <input type="text" id="phone_number" name="phone_number" pattern="\d{10}"
+                        title="Please enter 10 digits"
+                        class="w-full mx-auto bg-transparent pb-3 border-b border-stone-600 outline-none text-sm opacity-50"
+                        required>
+                    <label for="phone_number"
+                        class="absolute top-0 left-0 translate-x-0 transition-all duration-300 scale-90 opacity-50 transform-origin-left">Phone
+                        Number:</label>
+                </div>
+                <div class="last form-group relative mb-12 transition-all duration-300 toggle">
+                    <label for="from_college"
+                        class="static top-0 left-0 -translate-y-2 translate-x-0 transition-all duration-300 scale-90 opacity-50 transform-origin-left inline-block">Are
+                        you from<br>NIT Durgapur:</label>
+                    <div class="radio-container inline-block right-0 absolute">
+                        <input type="radio" id="from_college_yes" name="from_college" value="Yes" class="hidden"
+                            required>
+                        <label for="from_college_yes" class="radio-label px-3 py-1 cursor-pointer static opacity-50"
+                            aria-checked="true">Yes</label>
+                        <input type="radio" id="from_college_no" name="from_college" value="No" class="hidden" required>
+                        <label for="from_college_no"
+                            class="radio-label px-3 py-1 cursor-pointer static opacity-50">No</label>
+                    </div>
+                </div>
+
+                <div class="form-group college relative mb-12 transition-all duration-300">
+                    <label for="reg_no"
+                        class="absolute top-0 left-0 translate-x-0 transition-all duration-300 scale-90 opacity-50 transform-origin-left">Registration
+                        no:</label>
+                    <input type="text" id="reg_no" name="reg"
+                        class="w-full mx-auto bg-transparent pb-3 border-b border-stone-600 outline-none text-sm opacity-50">
+                </div>
+                <div class="form-group college relative mb-12 transition-all duration-300">
+                    <label for="roll"
+                        class="absolute top-0 left-0 translate-x-0 transition-all duration-300 scale-90 opacity-50 transform-origin-left">
+                        Roll no:</label>
+                    <input type="text" id="roll" name="roll"
+                        class="w-full mx-auto bg-transparent pb-3 border-b border-stone-600 outline-none text-sm opacity-50">
+                </div>
+                <div class="form-group college relative mb-12 transition-all duration-300">
+                    <label for="hall"
+                        class="absolute top-0 left-0 translate-x-0 transition-all duration-300 scale-90 opacity-50 transform-origin-left">
+                        Hall no:</label>
+                    <input type="text" id="hall" name="hall"
+                        class="w-full mx-auto bg-transparent pb-3 border-b border-stone-600 outline-none text-sm opacity-50">
+                </div>
+                <div class="form-group college relative mb-12 transition-all duration-300 ">
+                    <label for="room"
+                        class="absolute top-0 left-0 translate-x-0 transition-all duration-300 scale-90 opacity-50 transform-origin-left">Room
+                        no:</label>
+                    <input type="text" id="room" name="room"
+                        class="w-full mx-auto bg-transparent pb-3 border-b border-stone-600 outline-none text-sm opacity-50">
+                </div>
+                <div class="form-group outside relative mb-12 transition-all duration-300">
+                    <p class="absolute left-0 translate-x-0 transition-all duration-300 scale-90 opacity-50 transform-origin-left"
+                    style="top: -55px; left: -15px; margin-top: 5px; margin-bottom: 5px">* Additional ₹80 for shipping</p>
+                    <label for="address"
+                        class="absolute top-1 left-0 translate-x-0 transition-all duration-300 scale-90 opacity-50 transform-origin-left">Address:</label>
+                    <input type="text" id="address" name="address"
+                        class="w-full mx-auto bg-transparent pb-3 border-b border-stone-600 outline-none text-sm opacity-50">
+                </div>
+                <!-- <div class="form-group">
+                    <label for="size"
+                        class="absolute top-0 left-0 translate-x-10 transition duration-300 scale-80 transform-origin-left">Size:</label>
+                    <select id="size" name="size" size="2" required>
+                        <option value="XS">XS</option>
+                        <option value="S">S</option>
+                        <option value="M">M</option>
+                        <option value="L">L</option>
+                        <option value="XL">XL</option>
+                        <option value="XXL">XXL</option>
+                    </select>
+                </div> -->
+                <div class="form-group last relative mb-24 transition-all duration-300">
+                    <label for="size"
+                        class="absolute top-0 left-0 translate-x-0 transition-all duration-300 scale-90 transform-origin-left opacity-50">Size:</label>
+                    <div class="flex flex-wrap items-center justify-evenly translate-y-8">
+                        <input type="radio" id="size-S" name="size" value="S" required class="sr-only">
+                        <label for="size-S" class="px-3 py-1 cursor-pointer static opacity-50">S</label>
+
+                        <input type="radio" id="size-M" name="size" value="M" required class="sr-only">
+                        <label for="size-M" class=" px-3 py-1 cursor-pointer static opacity-50">M</label>
+
+                        <input type="radio" id="size-L" name="size" value="L" required class="sr-only">
+                        <label for="size-L" class="px-3 py-1 cursor-pointer static opacity-50">L</label>
+
+                        <input type="radio" id="size-XL" name="size" value="XL" required class="sr-only">
+                        <label for="size-XL" class="px-3 py-1 cursor-pointer static opacity-50">XL</label>
+
+                        <input type="radio" id="size-XXL" name="size" value="XXL" required class="sr-only">
+                        <label for="size-XXL" class="px-3 py-1 cursor-pointer static opacity-50">XXL</label>
+                    </div>
+                </div>
+                <div class="last form-group relative mb-12 transition-all duration-300">
+                    <label for="from_college"
+                        class="static top-0 left-0 -translate-y-2 translate-x-0 transition-all duration-300 scale-90 opacity-50 transform-origin-left inline-block">Payment made to:</label>
+                    <div class="radio-container inline-block left-0 absolute mb-4" style="display: flex; justify-content: center; align-items: center">
+                        <input type="radio" id="kshitiz" name="payment" value="Kshitiz" class="hidden" required>
+                        <label for="kshitiz" class="radio-label px-3 py-1 cursor-pointer static opacity-50"               aria-checked="true">Kshitiz</label>
+                        <input type="radio" id="adarsh" name="payment" value="Adarsh" class="hidden" required>
+                        <label for="adarsh"                           class="radio-label px-3 py-1 cursor-pointer static opacity-50">Adarsh</label>
+                    </div>
+                </div>
+                <div class="last form-group relative mb-12 transition-all duration-300">
+                    <label for="image"
+                        class="absolute top-0 left-0 translate-x-0 transition-all duration-300 scale-90 opacity-50 transform-origin-left">Payment
+                        proof:</label>
+                    <input type="file" id="image" name="image"
+                        class="w-full mx-auto bg-transparent pb-3 outline-none text-sm opacity-50 pt-10" required>
+                </div>
+                <button type="submit" class="">Submit</button>
+            </form>
+        </div>
     </div>
+    {% else %}
+    <div class="relative md:w-1/2 md:left-1/2 md:bg-yellow-950 py-5 flex justify-center items-center">
+        <div class="contain bg-stone-950 max-w-[500px] w-11/12 min-w-[340px] mx-auto p-10 border-2 border-orange-400 rounded-2xl text-lg clg out text-orange-100 py-16 flex justify-center items-center flex-col mb-5">
+            <h1 class="text-center" style="margin-bottom: 30px; font-size: 30px">Get your E-Summit'24 Merchandise today!</h1>
+            <a href="/accounts/google/login/?next=/merch" class="flex justify-center items-center text-center p-3 bg-gradient-to-tr from-yellow-400 to-yellow-700 rounded w-48 text-orange-950 font-extrabold">Buy now</a>
+        </div>
+    </div>
+    {% endif %}
 </body>
-{% endblock %}
-{% block script %}
 <script src="{% static 'base/js/form.js' %}"></script>
-{% endblock %}
+
+</html>

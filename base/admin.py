@@ -4,3 +4,4 @@ from base.models import *
 admin.site.register(EventDates)
 admin.site.register(Merch)
 admin.site.register(Pass)
+admin.site.register(Proof)

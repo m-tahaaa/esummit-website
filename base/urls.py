@@ -9,7 +9,7 @@ urlpatterns = [
     path('login', handleLogin, name='handleLogin'),
     path('register', handleSignUp, name='handleSignUp'),
     path('verify', verify, name='verify'),
-    path('merchandise',merch, name='merch'),
-    path('passes',passes, name='passes')
-
+    path('merch',merch, name='merch'),
+    path('passes',passes, name='passes'),
+    path('success', successPage, name='successPage'),
 ]

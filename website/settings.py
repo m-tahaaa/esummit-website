@@ -79,7 +79,7 @@ TEMPLATES = [
 ]
 
 AUTHENTICATION_BACKENDS =[
-    'django.contrib.auth.backends.ModelBackend',
+    # 'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
@@ -132,8 +132,9 @@ USE_L10N = True
 USE_TZ = True
 
 SITE_ID = 1
-LOGIN_URL = '/login'
-LOGIN_REDIRECT_URL = '/'
+
+LOGIN_URL = '/accounts/google/login/'
+LOGIN_REDIRECT_URL = '/merch'
 SOCIALACCOUNT_LOGIN_ON_GET = True
 ACCOUNT_LOGOUT_ON_GET = True
 SOCIALACCOUNT_PROVIDERS = {

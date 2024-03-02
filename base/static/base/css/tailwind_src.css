@@ -30,7 +30,7 @@ html {
     text-shadow: #000000 1px 6px 10px, #f3d69b 0px -3px 10px;
 }
 
-.drop-shadow {
+.drop-shadow{
     filter: drop-shadow(0 4px 4px #ffd380) drop-shadow(0 -4px 4px #291a3c);
 }
 
