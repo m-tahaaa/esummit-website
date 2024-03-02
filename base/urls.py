@@ -10,6 +10,6 @@ urlpatterns = [
     path('register', handleSignUp, name='handleSignUp'),
     path('verify', verify, name='verify'),
     path('merch',merch, name='merch'),
-    path('passes',passes, name='passes')
-
+    path('passes',passes, name='passes'),
+    path('success', successPage, name='successPage'),
 ]
