@@ -13,6 +13,9 @@ function change(item) {
 const inputs = document.querySelectorAll('input[type="text"], input[type="email"] , select' );
 
 inputs.forEach(function(item, index) {
+    if (item.value != '') {
+        item.parentNode.classList.add('highlight');
+    }
     item.addEventListener('input', function() {
         var inputValue = item.value;
     
@@ -37,6 +40,6 @@ document.querySelectorAll('input[type="radio"]').forEach(function(radioInput) {
     });
 });
 
-document.getElementById('from_college').addEventListener('input', function(e){
-    change(this);
-})
+// document.getElementById('from_college').addEventListener('input', function(e){
+//     change(this);
+// })
