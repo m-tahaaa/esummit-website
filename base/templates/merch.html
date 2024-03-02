@@ -17,7 +17,7 @@
         <div
             class=" sc bg-gradient-to-tr from-yellow-400 to-yellow-700 rounded-3xl  h-full p-6 md:px-14 overflow-scroll"
             style="
-                    background-image: url({% static 'base/images/merch_bg.png' %});
+                    background-image: url({% static 'base/images/merch_bg.webp' %});
                     background-position: center;
                     background-repeat: no-repeat;
                     background-size: cover;
@@ -136,8 +136,10 @@
                         class="w-full mx-auto bg-transparent pb-3 border-b border-stone-600 outline-none text-sm opacity-50">
                 </div>
                 <div class="form-group outside relative mb-12 transition-all duration-300">
+                    <p class="absolute left-0 translate-x-0 transition-all duration-300 scale-90 opacity-50 transform-origin-left"
+                    style="top: -55px; left: -15px; margin-top: 5px; margin-bottom: 5px">* Additional ₹80 for shipping</p>
                     <label for="address"
-                        class="absolute top-0 left-0 translate-x-0 transition-all duration-300 scale-90 opacity-50 transform-origin-left">Address:</label>
+                        class="absolute top-1 left-0 translate-x-0 transition-all duration-300 scale-90 opacity-50 transform-origin-left">Address:</label>
                     <input type="text" id="address" name="address"
                         class="w-full mx-auto bg-transparent pb-3 border-b border-stone-600 outline-none text-sm opacity-50">
                 </div>
