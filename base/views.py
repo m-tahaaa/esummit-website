@@ -90,7 +90,7 @@ def verify(request):
     else:
         return render(request, 'verify.html')
 
-@login_required
+# @login_required
 def merch(request):
     # if request.user.is_authenticated == False:
     #     return redirect("/accounts/google/login/?next=/merch")
@@ -117,10 +117,13 @@ def merch(request):
         
         # print(request.FILES['image'])
         proof.save()
-        return render(request, 'success.html')
+        return redirect('/success')
 
     # Render the form template for GET requests
     return render(request, 'merch.html')
+
+def successPage(request):
+    return render(request, 'success.html')
 
 @login_required
 def passes(request):

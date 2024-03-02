@@ -15,7 +15,14 @@
 <body class="bg-yellow-950">
     <aside class="md:fixed md:w-1/2 md:h-screen md:top-0 md:left-0 p-5">
         <div
-            class=" sc bg-gradient-to-tr from-yellow-400 to-yellow-700 rounded-3xl  h-full p-6 md:px-14 overflow-scroll">
+            class=" sc bg-gradient-to-tr from-yellow-400 to-yellow-700 rounded-3xl  h-full p-6 md:px-14 overflow-scroll"
+            style="
+                    background-image: url({% static 'base/images/merch_bg.webp' %});
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                "
+            >
             <div class="logo w-56 mx-auto">
                 <img src="{% static 'base/images/logoblack.png' %}" alt="" srcset="" style="filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.7));">
             </div>
@@ -43,7 +50,7 @@
 
                 </div>
                 <div class="qr w-32">
-                    <img src="{% static 'base/images/qr.jpg' %}" alt="" class="six">
+                    <img src="{% static 'base/images/finalqr.png' %}" alt="" class="six">
                 </div>
             </div>
             <div class="chart mt-4">
@@ -51,6 +58,7 @@
             </div>
         </div>
     </aside>
+    {% if user.is_authenticated %}
     <div class="relative md:w-1/2 md:left-1/2 md:bg-yellow-950 py-5">
         <div
             class="contain bg-stone-950 max-w-[500px] w-11/12 min-w-[340px] mx-auto p-10 border-2 border-orange-400 rounded-2xl text-lg clg out text-orange-100 py-16">
@@ -60,6 +68,8 @@
                 <div class="form-group relative mb-12 transition-all duration-300">
                     <input type="text" id="name" name="name"
                         class="w-full mx-auto bg-transparent pb-3 border-b border-stone-600 outline-none text-sm opacity-50"
+                        value="{{ user.first_name }} {{ user.last_name }}"
+                        readonly
                         required>
                     <label for="name"
                         class="absolute top-0 left-0 translate-x-0 transition-all duration-300 scale-90 opacity-50 transform-origin-left">Name:</label>
@@ -67,6 +77,8 @@
                 <div class="form-group relative mb-12 transition-all duration-300">
                     <input type="email" id="email" name="email"
                         class="w-full mx-auto bg-transparent pb-3 border-b border-stone-600 outline-none text-sm opacity-50"
+                        value="{{ user.email }}"
+                        readonly
                         required>
                     <label for="email"
                         class="absolute top-0 left-0 translate-x-0 transition-all duration-300 scale-90 opacity-50 transform-origin-left">Email:</label>
@@ -124,8 +136,10 @@
                         class="w-full mx-auto bg-transparent pb-3 border-b border-stone-600 outline-none text-sm opacity-50">
                 </div>
                 <div class="form-group outside relative mb-12 transition-all duration-300">
+                    <p class="absolute left-0 translate-x-0 transition-all duration-300 scale-90 opacity-50 transform-origin-left"
+                    style="top: -55px; left: -15px; margin-top: 5px; margin-bottom: 5px">* Additional ₹80 for shipping</p>
                     <label for="address"
-                        class="absolute top-0 left-0 translate-x-0 transition-all duration-300 scale-90 opacity-50 transform-origin-left">Address:</label>
+                        class="absolute top-1 left-0 translate-x-0 transition-all duration-300 scale-90 opacity-50 transform-origin-left">Address:</label>
                     <input type="text" id="address" name="address"
                         class="w-full mx-auto bg-transparent pb-3 border-b border-stone-600 outline-none text-sm opacity-50">
                 </div>
@@ -164,7 +178,7 @@
                 <div class="last form-group relative mb-12 transition-all duration-300">
                     <label for="from_college"
                         class="static top-0 left-0 -translate-y-2 translate-x-0 transition-all duration-300 scale-90 opacity-50 transform-origin-left inline-block">Payment made to:</label>
-                    <div class="radio-container inline-block right-0 absolute">
+                    <div class="radio-container inline-block left-0 absolute mb-4" style="display: flex; justify-content: center; align-items: center">
                         <input type="radio" id="kshitiz" name="payment" value="Kshitiz" class="hidden" required>
                         <label for="kshitiz" class="radio-label px-3 py-1 cursor-pointer static opacity-50"               aria-checked="true">Kshitiz</label>
                         <input type="radio" id="adarsh" name="payment" value="Adarsh" class="hidden" required>
@@ -182,6 +196,14 @@
             </form>
         </div>
     </div>
+    {% else %}
+    <div class="relative md:w-1/2 md:left-1/2 md:bg-yellow-950 py-5 flex justify-center items-center">
+        <div class="contain bg-stone-950 max-w-[500px] w-11/12 min-w-[340px] mx-auto p-10 border-2 border-orange-400 rounded-2xl text-lg clg out text-orange-100 py-16 flex justify-center items-center flex-col mb-5">
+            <h1 class="text-center" style="margin-bottom: 30px; font-size: 30px">Get your E-Summit'24 Merchandise today!</h1>
+            <a href="/accounts/google/login/?next=/merch" class="flex justify-center items-center text-center p-3 bg-gradient-to-tr from-yellow-400 to-yellow-700 rounded w-48 text-orange-950 font-extrabold">Buy now</a>
+        </div>
+    </div>
+    {% endif %}
 </body>
 <script src="{% static 'base/js/form.js' %}"></script>
 
