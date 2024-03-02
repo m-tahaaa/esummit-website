@@ -26,3 +26,8 @@ html{
 .drop-shadow{
     filter: drop-shadow(0 4px 4px #ffd380) drop-shadow(0 -4px 4px #291a3c);
 }
+.neu{
+    border-radius: 38px;
+    background: linear-gradient(145deg, #242017, #2b251b);
+    box-shadow:  7px 7px 19px #1e1a13, -7px -7px 19px #322c1f;
+}
