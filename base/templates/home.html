@@ -12,23 +12,22 @@
   <section class="hero-section w-full h-screen gradient overflow-hidden text-center" id="hero">
     <div class="layer title absolute w-full h-full origin-center" data-depth='-0.7' data-scale='.5'>
       <div class="content mx-auto top-1/4 relative w-5/6 md:w-1/2">
-        <img src="{% static 'base/images/logowhite.png' %}" alt="" srcset="" class="drop-shadow">
+        <img src="{% static 'base/images/logowhite.png' %}" alt="" srcset="" class="drop-shadow-var">
       </div>
     </div>
     <div class="layer layer1 absolute w-full h-full origin-bottom" data-depth='-0.3' data-scale='1'>
-      <img src="{% static 'base/images/curve1.png' %}" alt="" class="size-full" />
+      <img src="{% static 'base/images/curve1.png' %}" alt="" class="size-full scale-150" />
     </div>
     <div class="layer layer2 absolute w-full h-full origin-bottom" data-depth='-0.2' data-scale='1.2'>
-      <img src="{% static 'base/images/light1.png' %}" alt="" class="size-full scale-x-[2] md:scale-100" />
+      <img src="{% static 'base/images/light1.png' %}" alt="" class="size-full scale-x-[2.4] md:scale-100" />
     </div>
     <div class="layer layer3 absolute w-full h-full origin-bottom" data-depth='-0.01' data-scale='1.5'>
-      <img src="{% static 'base/images/dark1.png' %}" alt="" class="size-full scale-x-[2] md:scale-100" />
+      <img src="{% static 'base/images/dark1.png' %}" alt="" class="size-full scale-x-[2.4] md:scale-100" />
     </div>
   </section>
   <section class="about-section bg-[#282319] relative z-10 py-28">
-    <div class="lamp relative flex w-full flex-1 scale-y-125 justify-center isolate z-0 opacity-40">
-      <div
-        class="absolute inset-auto right-1/2 h-56 overflow-visible w-1/2 bg-gradient-conic from-yellow-300 via-transparent to-transparent text-white [--conic-position:from_70deg_at_center_top]"
+    <div class="lamp relative flex w-full flex-1 scale-y-125 justify-center isolate z-0 opacity-100">
+      <div class="absolute inset-auto right-1/2 h-56 overflow-visible w-1/2 bg-gradient-conic from-orange-300 via-transparent to-transparent text-white [--conic-position:from_70deg_at_center_top]"
         style="background-image: conic-gradient(var(--conic-position), var(--tw-gradient-stops));opacity: 1; width: 50%;">
         <div
           class="absolute  w-[100%] left-0 bg-[#282319] h-40 bottom-0 z-20 [mask-image:linear-gradient(to_top,white,transparent)]">
@@ -37,8 +36,7 @@
           class="absolute  w-40 h-[100%] left-0 bg-[#282319] bottom-0 z-20 [mask-image:linear-gradient(to_right,white,transparent)]">
         </div>
       </div>
-      <div
-        class="absolute inset-auto left-1/2 h-56 w-1/2 bg-gradient-conic from-transparent via-transparent to-yellow-300 text-white [--conic-position:from_290deg_at_center_top]"
+      <div class="absolute inset-auto left-1/2 h-56 w-1/2 bg-gradient-conic from-transparent via-transparent to-orange-300 text-white [--conic-position:from_290deg_at_center_top]"
         style="background-image: conic-gradient(var(--conic-position), var(--tw-gradient-stops)); opacity: 1; width: 50%;">
         <div
           class="absolute  w-40 h-[100%] right-0 bg-[#282319]  bottom-0 z-20 [mask-image:linear-gradient(to_left,white,transparent)]">
@@ -47,16 +45,16 @@
           class="absolute  w-[100%] right-0 bg-[#282319] h-40 bottom-0 z-20 [mask-image:linear-gradient(to_top,white,transparent)]">
         </div>
       </div>
-      <div class="absolute inset-auto z-50 h-36 w-[28rem] rounded-full bg-yellow-300 opacity-50 blur-3xl">
+      <div class="absolute inset-auto z-50 h-36 w-[28rem] rounded-full bg-orange-300 opacity-50 blur-3xl">
       </div>
-      <div class="absolute inset-auto z-30 h-36 w-64 rounded-full bg-yellow-400 blur-2xl" style="width: 16rem;">
+      <div class="absolute inset-auto z-30 h-36 w-64 rounded-full bg-orange-300 blur-2xl" style="width: 16rem;">
       </div>
-      <div class="absolute inset-auto z-50 h-0.5 w-1/2 bg-yellow-100 " style="width: 50%;">
+      <div class="absolute inset-auto z-50 h-0.5 w-1/2 bg-orange-200 " style="width: 50%;">
       </div>
     </div>
     <div class="about-content relative z-20 mx-auto w-[800px] max-w-[90%] pt-32">
       <h3 class="about text-6xl font-bold text-orange-300 text-center pb-8 text-shadow">About</h3>
-      <p class="text-center text-base text-orange-200 opacity-50 text-shadow">Lorem ipsum dolor sit amet consectetur
+      <p class="text-center text-base text-orange-200 opacity-50 ">Lorem ipsum dolor sit amet consectetur
         adipisicing elit. Magnam omnis aliquid quas illum! Accusantium iste fuga asperiores non ipsam repudiandae saepe
         impedit optio perspiciatis, ab doloribus veniam tempora eos aut eius sed modi ullam repellendus temporibus. Nisi
         eos quam dignissimos suscipit tempora delectus saepe, repellat soluta neque asperiores maxime, dolore magni
@@ -65,255 +63,239 @@
       </p>
     </div>
   </section>
-  <section class="events-section w-full overflow-x-hidden bg-[#272319] py-12">
-    <h3 class="about text-4xl font-bold text-orange-400 text-center pb-8 ">Events</h3>
-    <div class="container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 md:gap-x-12 md:gap-y-12  sm:gap-x-8 sm:gap-y-8 gap-y-8  w-[90%] mx-auto  relative">
-      <div class="card bg-[#232829] rounded-xl p-2 pb-16 neu relative overflow-hidden">
-        <div class="card-animation">
-          <dotlottie-player src="https://lottie.host/005f667c-1121-41d7-bc37-83d8764be19c/t4JUhClKiv.json"
-            background="transparent" speed="1" style="width: auto; height: auto;" loop autoplay></dotlottie-player>
+  <section class="events-section w-full bg-[#282319] p-8 py-40 h-[4500px] md:h-[2000px]">
+    <h3 class="about text-6xl font-bold md:tracking-widest text-orange-300 text-center mb-20 ">Our Events</h3>
+    <div class="container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 md:gap-x-24 md:gap-y-24  sm:gap-x-12 sm:gap-y-12 gap-y-8  w-[90%] mx-auto  relative">
+      <div class="card bg-[#232829] rounded-3xl neu relative overflow-hidden">
+        <div class="card-animation size-full p-8 pb-24 transition-all duration-700">
+          <dotlottie-player src="https://lottie.host/75166e9a-27bf-4c62-9af1-4520e6d0526e/oGcF8a5Afd.json"
+            background="transparent" speed="1" style="width: auto; height: auto;" loop autoplay id="auction"></dotlottie-player>
         </div>
-        <div class="intro w-full h-1/2 absolute translate-y-full text-white p-2 text-center">
+        <div class="intro transition-all duration-700 rounded-3xl left-0  backdrop-blur-md w-full absolute text-orange-300 p-4 text-center -translate-y-20 ">
           <span>
-            <h2 class="text-center md:text-3xl text-2xl mb-2 font-[400]">
-              Event Name </h2>
+            <h2 class="text-center md:text-4xl text-3xl pb-6 font-bold">
+              Auction Arcadia</h2>
           </span>
-          <p>Take the opportunity to explore the diverse design domains in our club and cultivate your aesthetics,
-            access resources, and expand your portfolio.</p>
-          <button style="display: inline-block"
+          <p class="font-medium opacity-50">Revive passion, reignite dreams. IPL auction awaits to build your dream team.</p>
+          <!-- <button style="display: inline-block"
             class="inherit text-center items-center rounded-full whitespace-nowrap m-4 md:text-[18px] bg-blue-700 md:pr-5 md:py-2 text-[14px] px-3 py-1 outline-none duration-200 hover:bg-blue-400">
-            Register Now </button>
+            Register Now </button> -->
         </div>
       </div>
-      <div class="card bg-[#232829] rounded-xl p-8 pb-16 neu relative overflow-hidden">
-        <div class="card-animation">
+      <div class="card bg-[#232829] rounded-3xl neu relative overflow-hidden">
+        <div class="card-animation size-full p-8 pb-24 transition-all duration-700">
           <dotlottie-player src="https://lottie.host/896aba05-bb4c-473e-9ca3-d9846f45a6cd/nfK3H64fXe.json"
             background="transparent" speed="1" style="width: auto; height: auto;" loop autoplay></dotlottie-player>
         </div>
-        <div class="intro w-full h-1/2 absolute translate-y-full text-white p-2 text-center">
+        <div class="intro transition-all duration-700 rounded-3xl left-0  backdrop-blur-md w-full absolute text-orange-300 p-4 text-center -translate-y-20 ">
           <span>
-            <h2 class="text-center md:text-3xl text-2xl mb-2 font-[400]">
-              Event Name </h2>
+            <h2 class="text-center md:text-4xl text-3xl pb-6 font-bold">
+              Startup Expo </h2>
           </span>
-          <p>Take the opportunity to explore the diverse design domains in our club and cultivate your aesthetics,
-            access resources, and expand your portfolio.</p>
-          <button style="display: inline-block"
+          <p class="font-medium opacity-50">Showcase your products, explore innovations, gain insights from expert panels.</p>
+          <!-- <button style="display: inline-block"
             class="inherit text-center items-center rounded-full whitespace-nowrap m-4 md:text-[18px] bg-blue-700 md:pr-5 md:py-2 text-[14px] px-3 py-1 outline-none duration-200 hover:bg-blue-400">
-            Register Now </button>
+            Register Now </button> -->
         </div>
       </div>
-      <div class="card bg-[#232829] rounded-xl p-8 pb-16 neu relative overflow-hidden">
-        <div class="card-animation ">
-          <dotlottie-player src="https://lottie.host/75f57555-3bcd-413d-b1b4-1c0df95d8112/qaFWY8GsbM.json"
-            background="transparent" speed="1" style="width: auto; height: auto;" loop autoplay></dotlottie-player>
+      <div class="card bg-[#232829] rounded-3xl neu relative overflow-hidden">
+        <div class="card-animation size-full p-8 pb-24 transition-all duration-700 ">
+          <dotlottie-player src="https://lottie.host/75166e9a-27bf-4c62-9af1-4520e6d0526e/oGcF8a5Afd.json"
+            background="transparent" speed="1" style="width: auto; height: auto;" loop autoplay id="auction"></dotlottie-player>
         </div>
-        <div class="intro w-full h-1/2 absolute translate-y-full text-white p-2 text-center">
+        <div class="intro transition-all duration-700 rounded-3xl left-0  backdrop-blur-md w-full absolute text-orange-300 p-4 text-center -translate-y-20 ">
           <span>
-            <h2 class="text-center md:text-3xl text-2xl mb-2 font-[400]">       Event Name </h2>
+            <h2 class="text-center md:text-4xl text-3xl pb-6 font-bold">
+              Intenship Fair </h2>
           </span>
-          <p>Take the opportunity to explore the diverse design domains in our club and cultivate your aesthetics,
-            access resources, and expand your portfolio.</p>
-          <button style="display: inline-block"
-            class="inherit text-center items-center rounded-full whitespace-nowrap m-4 md:text-[18px] bg-blue-700 md:pr-5 md:py-2 text-[14px] px-3 py-1 outline-none duration-200 hover:bg-blue-400">Register Now </button>
-        </div>
-      </div>
-      <div class="card bg-[#232829] rounded-xl p-8  neu relative overflow-hidden">
-        <div class="card-animation">
-          <dotlottie-player src="https://lottie.host/d3262450-440b-47e3-9305-da3823e17a8f/CwhfxO3Tvj.json" background="transparent" speed="1" style="width: auto; height: auto;" loop autoplay></dotlottie-player>
-        </div>
-        <div class="intro w-full h-1/2 absolute translate-y-full text-white p-2 text-center">
-          <span>
-            <h2 class="text-center md:text-3xl text-2xl mb-2 font-[400]">
-              Event Name </h2>
-          </span>
-          <p>Take the opportunity to explore the diverse design domains in our club and cultivate your aesthetics,
-            access resources, and expand your portfolio.</p>
-          <button style="display: inline-block"
+          <p class="font-medium opacity-50">Companies recruit interns, fostering networking and exploration.</p>
+          <!-- <button style="display: inline-block"
             class="inherit text-center items-center rounded-full whitespace-nowrap m-4 md:text-[18px] bg-blue-700 md:pr-5 md:py-2 text-[14px] px-3 py-1 outline-none duration-200 hover:bg-blue-400">
-            Register Now </button>
+            Register Now </button> -->
         </div>
       </div>
-      <div class="card bg-[#232829] rounded-xl p-8 pb-16 neu relative overflow-hidden">
-        <div class="card-animation">
-
-          <dotlottie-player src="https://lottie.host/170268a0-eba3-4a76-a96d-799ed5c6afb4/F3wjGrNLgv.json"
-            background="transparent" speed="1" style="width: auto; height: auto;" loop autoplay></dotlottie-player>
-        </div>
-        <div class="intro w-full h-1/2 absolute translate-y-full text-white p-2 text-center">
-          <span>
-            <h2 class="text-center md:text-3xl text-2xl mb-2 font-[400]">
-              Event Name </h2>
-          </span>
-          <p>Take the opportunity to explore the diverse design domains in our club and cultivate your aesthetics,
-            access resources, and expand your portfolio.</p>
-          <button style="display: inline-block"
-            class="inherit text-center items-center rounded-full whitespace-nowrap m-4 md:text-[18px] bg-blue-700 md:pr-5 md:py-2 text-[14px] px-3 py-1 outline-none duration-200 hover:bg-blue-400">
-            Register Now </button>
-        </div>
-      </div>
-      <div class="card bg-[#232829] rounded-xl p8 pb-16 neu relative overflow-hidden">
-        <div class="card-animation ">
+      <div class="card bg-[#232829] rounded-3xl neu relative overflow-hidden">
+        <div class="card-animation size-full p-8 pb-24 transition-all duration-700 ">
           <dotlottie-player src="https://lottie.host/67865aca-4640-4622-8b55-8a00493d5e41/LmkVZc5avl.json"
             background="transparent" speed="1" style="width: auto; height: auto;" loop autoplay></dotlottie-player>
         </div>
-        <div class="intro w-full h-1/2 absolute translate-y-full text-white p-2 text-center">
+        <div class="intro transition-all duration-700 rounded-3xl left-0  backdrop-blur-md w-full absolute text-orange-300 p-4 text-center -translate-y-20 ">
           <span>
-            <h2 class="text-center md:text-3xl text-2xl mb-2 font-[400]">
-              Event Name </h2>
+            <h2 class="text-center md:text-4xl text-3xl pb-6 font-bold">
+              Pitchfest</h2>
           </span>
-          <p>Take the opportunity to explore the diverse design domains in our club and cultivate your aesthetics,
-            access resources, and expand your portfolio.</p>
-          <button style="display: inline-block"
+          <p class="font-medium opacity-50">An event where entrepreneurs pitch their business ideas.</p>
+          <!-- <button style="display: inline-block"
             class="inherit text-center items-center rounded-full whitespace-nowrap m-4 md:text-[18px] bg-blue-700 md:pr-5 md:py-2 text-[14px] px-3 py-1 outline-none duration-200 hover:bg-blue-400">
-            Register Now </button>
+            Register Now </button> -->
         </div>
       </div>
-      <div class="card bg-[#232829] rounded-xl p-8 pb-16 neu relative overflow-hidden">
-        <div class="card-animation">
-          <dotlottie-player src="https://lottie.host/896aba05-bb4c-473e-9ca3-d9846f45a6cd/nfK3H64fXe.json"
-            background="transparent" speed="1" style="width: auto; height: auto;" loop autoplay></dotlottie-player>
+      <div class="card bg-[#232829] rounded-3xl neu relative overflow-hidden">
+        <div class="card-animation size-full p-8 pb-24 transition-all duration-700">
+          <dotlottie-player src="https://lottie.host/170268a0-eba3-4a76-a96d-799ed5c6afb4/F3wjGrNLgv.json"
+            background="transparent" speed="1" style="width: auto; height: auto;" loop autoplay id="ran">
+          <!-- <dotlottie-player src="https://lottie.host/896aba05-bb4c-473e-9ca3-d9846f45a6cd/nfK3H64fXe.json"
+            background="transparent" speed="1" style="width: auto; height: auto;" loop autoplay></dotlottie-player> -->
         </div>
-        <div class="intro w-full h-1/2 absolute translate-y-full text-white p-2 text-center">
+        <div class="intro transition-all duration-700 rounded-3xl left-0  backdrop-blur-md w-full absolute text-orange-300 p-4 text-center -translate-y-20 ">
           <span>
-            <h2 class="text-center md:text-3xl text-2xl mb-2 font-[400]">
-              Event Name </h2>
+            <h2 class="text-center md:text-4xl text-3xl pb-6 font-bold">
+              Rannit-E</h2>
           </span>
-          <p>Take the opportunity to explore the diverse design domains in our club and cultivate your aesthetics,
-            access resources, and expand your portfolio.</p>
-          <button style="display: inline-block"
+          <p class="font-medium opacity-50">Real-life business scenarios analyzed for insights and learning.</p>
+          <!-- <button style="display: inline-block"
             class="inherit text-center items-center rounded-full whitespace-nowrap m-4 md:text-[18px] bg-blue-700 md:pr-5 md:py-2 text-[14px] px-3 py-1 outline-none duration-200 hover:bg-blue-400">
-            Register Now </button>
+            Register Now </button> -->
         </div>
       </div>
-      <div class="card bg-[#232829] rounded-xl p-8 pb-16 neu relative overflow-hidden">
-        <div class="card-animation">
+      <div class="card bg-[#232829] rounded-3xl neu relative overflow-hidden">
+        <div class="card-animation size-full p-8 pb-24 transition-all duration-700">
+          <dotlottie-player src="https://lottie.host/d3262450-440b-47e3-9305-da3823e17a8f/CwhfxO3Tvj.json"
+            background="transparent" speed="1" style="width: auto; height: auto;" loop autoplay id="ror"></dotlottie-player>
+        </div>
+        <div class="intro transition-all duration-700 rounded-3xl left-0  backdrop-blur-md w-full absolute text-orange-300 p-4 text-center -translate-y-20 ">
+          <span>
+            <h2 class="text-center md:text-4xl text-3xl pb-6 font-bold">
+              Rings Of Rivals</h2>
+          </span>
+          <p class="font-medium opacity-50">Empower the gaming content creation industry, and be a part of the game of rivals</p>
+          <!-- <button style="display: inline-block"
+            class="inherit text-center items-center rounded-full whitespace-nowrap m-4 md:text-[18px] bg-blue-700 md:pr-5 md:py-2 text-[14px] px-3 py-1 outline-none duration-200 hover:bg-blue-400">
+            Register Now </button> -->
+        </div>
+      </div>
+      <div class="card bg-[#232829] rounded-3xl neu relative overflow-hidden">
+        <div class="card-animation size-full p-8 pb-24 transition-all duration-700">
+          <dotlottie-player src="https://lottie.host/005f667c-1121-41d7-bc37-83d8764be19c/t4JUhClKiv.json"          background="transparent" speed="1" style="width: auto; height: auto;" loop autoplay id="quiz"></dotlottie-player>
+        </div>
+        <div class="intro transition-all duration-700 rounded-3xl left-0  backdrop-blur-md w-full absolute text-orange-300 p-4 text-center -translate-y-20 ">
+          <span>
+            <h2 class="text-center md:text-4xl text-3xl pb-6 font-bold">
+              Quiz-E-Preneuer</h2>
+          </span>
+          <p class="font-medium opacity-50">A quiz-based competition for aspiring entrepreneurs.</p>
+          <!-- <button style="display: inline-block"
+            class="inherit text-center items-center rounded-full whitespace-nowrap m-4 md:text-[18px] bg-blue-700 md:pr-5 md:py-2 text-[14px] px-3 py-1 outline-none duration-200 hover:bg-blue-400">
+            Register Now </button> -->
+        </div>
+      </div>
+      <!-- <div class="card bg-[#232829] rounded-3xl neu relative overflow-hidden">
+        <div class="card-animation size-full p-8 pb-24 transition-all duration-700">
           <dotlottie-player src="https://lottie.host/75f57555-3bcd-413d-b1b4-1c0df95d8112/qaFWY8GsbM.json"
             background="transparent" speed="1" style="width: auto; height: auto;" loop autoplay></dotlottie-player>
         </div>
-        <div class="intro w-full h-1/2 absolute translate-y-full text-white p-2 text-center">
+        <div class="intro transition-all duration-700 rounded-3xl left-0  backdrop-blur-md w-full absolute text-orange-300 p-4 text-center -translate-y-20 ">
           <span>
-            <h2 class="text-center md:text-3xl text-2xl mb-2 font-[400]">
+            <h2 class="text-center md:text-4xl text-3xl pb-6 font-bold">
               Event Name </h2>
           </span>
-          <p>Take the opportunity to explore the diverse design domains in our club and cultivate your aesthetics, access resources, and expand your portfolio.</p>
+          <p class="font-medium opacity-50">Take the opportunity to explore the diverse design domains in our club and cultivate your aesthetics,
+            access resources, and expand your portfolio.</p>
           <button style="display: inline-block"
             class="inherit text-center items-center rounded-full whitespace-nowrap m-4 md:text-[18px] bg-blue-700 md:pr-5 md:py-2 text-[14px] px-3 py-1 outline-none duration-200 hover:bg-blue-400">
             Register Now </button>
         </div>
-      </div>
-
+      </div> -->
     </div>
   </section>
   <section class="speakers-section overflow-hidden bg-[#282319]">
+    <div class="absolute top-0 bottom-0 left-0 right-0 bg-gradient-to-r from-[#282319] via-transparent to-[#282319] z-40"></div>
     <div>
-      <h1 class="text-xl text-center font-bold uppercase lg:text-4xl text-white ">
-        Speakers
-      </h1>
+      <h3 class="about text-6xl font-bold md:tracking-widest text-orange-300 text-center py-24 ">Past Speakers</h3>
     </div>
-    <div class="speaker-container flex my-20 w-full h-screen flex-nowrap">
-      <div
-        class="speaker w-40 h-full flex-1 shrink-0 grow basis-2/5 text-white text-6xl justify-center items-center rounded-lg mx-6">
-        <img src="/static/base/images/nova.jpeg" class="w-[500px] object-cover mb-4 bg-cover" id="back-b" />
-        <div class="item_info">
-          <h1 class="text-white text-center font-semibold text-3xl my-2">Iqlipse Nova <br />
-            <h2 class="font-medium text-center text-zinc-300 text-xl "> Co-Founder, BigBrain Co.| Influencer </h2>
+    <div class="speaker-container flex w-full h-screen flex-nowrap gap-0 px-[10vw]">
+      <!-- <div class="speaker anim h-full flex-1 shrink-0 grow basis-4/5 md:basis-3/5 text-white text-6xl justify-center items-center rounded-lg mx-auto">
+      <dotlottie-player src="https://lottie.host/5cb7f93f-c40f-46e2-8fc0-067f87032b0d/rFFqfvP1cY.json" class="w-full h-72" background="transparent" speed="1" loop autoplay></dotlottie-player>
+      </div> -->
+      <div class="speaker speaker1 h-full flex-1 shrink-0 grow basis-4/5 md:basis-1/4 text-white text-6xl justify-center items-center rounded-lg ">
+        <img src="{% static 'base/images/nova.png' %}" class="w-60 h-60  rounded-b-full overflow-hidden  object-cover mb-10 bg-cover glow mx-auto" id="back-b" />
+        <div class="item_info text-orange-300 text-center">
+          <h1 class="text-center font-medium text-xl">Iqlipse Nova <br />
+            <h2 class="font-normal text-base opacity-50"> Co-Founder, BigBrain Co.| Influencer </h2>
           </h1>
         </div>
       </div>
-      <div
-        class="speaker w-40 h-full flex-1 shrink-0 grow basis-2/5 text-white text-6xl justify-center items-center rounded-lg">
-        <img src="/static/base/images/prajakta-koli.png" class="w-[500px] object-cover mb-4 bg-cover" id="back-b" />
-        <div class="item_info">
-          <h1 class="text-white text-center font-semibold text-3xl my-2">Prajakta Koli<br />
-            <h2 class="font-medium text-center text-zinc-300 text-xl "> Influencer </h2>
+      <div class="speaker speaker2 w-40 h-full flex-1 shrink-0 grow basis-4/5 md:basis-1/4 text-white text-6xl justify-center items-center rounded-lg">
+        <img src="{% static 'base/images/koli.png' %}" class="w-60 h-60  rounded-b-full overflow-hidden  object-cover mb-10 bg-cover glow mx-auto" id="back-b" />
+        <div class="item_info text-orange-300 text-center">
+          <h1 class="text-center font-medium text-xl">Prajakta Koli<br />
+            <h2 class="font-normal text-base opacity-50"> Influencer </h2>
           </h1>
         </div>
       </div>
-      <div
-        class="speaker w-40 h-full flex-1 shrink-0 grow basis-2/5 text-white text-6xl justify-center items-center rounded-lg">
-        <img src="/static/base/images/Kiran-Bedi.jpg" class="w-[500px] object-cover mb-4 bg-cover" id="back-b" />
-        <div class="item_info">
-          <h1 class="text-white text-center font-semibold text-3xl my-2">Kiran Bedi<br />
-            <h2 class="font-medium text-center text-zinc-300 text-xl "> Former LG Puducherry| IPS</h2>
+      <div class="speaker w-40 h-full flex-1 shrink-0 grow basis-4/5 md:basis-1/4 text-white text-6xl justify-center items-center rounded-lg">
+        <img src="{% static 'base/images/bedi.png' %}" class="w-60 h-60  rounded-b-full overflow-hidden  object-cover mb-10 bg-cover glow mx-auto" id="back-b" />
+        <div class="item_info text-orange-300 text-center">
+          <h1 class="text-center font-medium text-xl">Kiran Bedi<br />
+            <h2 class="font-normal text-base opacity-50"> Former LG Puducherry| IPS</h2>
           </h1>
         </div>
       </div>
-      <div
-        class="speaker w-40 h-full flex-1 shrink-0 grow basis-2/5 text-white text-6xl justify-center items-center rounded-lg">
-        <img src="/static/base/images/abhiandniyu.jpg" class="w-[500px] object-cover mb-4 bg-cover" id="back-b" />
-        <div class="item_info">
-          <h1 class="text-white text-center font-semibold text-3xl my-2">Abhi & Niyu<br />
-            <h2 class="font-medium text-center text-zinc-300 text-xl "> Influencer </h2>
+      <div class="speaker w-40 h-full flex-1 shrink-0 grow basis-4/5 md:basis-1/4 text-white text-6xl justify-center items-center rounded-lg">
+        <img src="{% static 'base/images/couple.png' %}" class="w-60 h-60  rounded-b-full overflow-hidden  object-cover mb-10 bg-cover glow mx-auto" id="back-b" />
+        <div class="item_info text-orange-300 text-center">
+          <h1 class="text-center font-medium text-xl">Abhi & Niyu<br />
+            <h2 class="font-normal text-base opacity-50"> Influencer </h2>
           </h1>
         </div>
       </div>
-      <div
-        class="speaker w-40 h-full flex-1 shrink-0 grow basis-2/5 text-white text-6xl justify-center items-center rounded-lg">
-        <img src="/static/base/images/anubhavd.jpg" class="w-[500px] object-cover mb-4 bg-cover" id="back-b" />
-        <div class="item_info">
-          <h1 class="text-white text-center font-semibold text-3xl my-2">Anubhav Dubey<br />
-            <h2 class="font-medium text-center text-zinc-300 text-xl "> Founder, Chai Sutta Bar| Influencer</h2>
+      <div class="speaker w-40 h-full flex-1 shrink-0 grow basis-4/5 md:basis-1/4 text-white text-6xl justify-center items-center rounded-lg">
+        <img src="{% static 'base/images/dubey.png' %}" class="w-60 h-60  rounded-b-full overflow-hidden  object-cover mb-10 bg-cover glow mx-auto" id="back-b" />
+        <div class="item_info text-orange-300 text-center">
+          <h1 class="text-center font-medium text-xl">Anubhav Dubey<br />
+            <h2 class="font-normal text-base opacity-50"> Founder, Chai Sutta Bar| Influencer</h2>
           </h1>
         </div>
       </div>
-      <div
-        class="speaker w-40 h-full flex-1 shrink-0 grow basis-2/5 text-white text-6xl justify-center items-center rounded-lg">
-        <img src="/static/base/images/babbar.jpeg" class="w-[500px] object-cover mb-4 bg-cover" id="back-b" />
-        <div class="item_info">
-          <h1 class="text-white text-center font-semibold text-3xl my-2">Love Babbar<br />
-            <h2 class="font-medium text-center text-zinc-300 text-xl "> Founder, Codehelp </h2>
+      <div class="speaker w-40 h-full flex-1 shrink-0 grow basis-4/5 md:basis-1/4 text-white text-6xl justify-center items-center rounded-lg">
+        <img src="{% static 'base/images/babbar.png' %}" class="w-60 h-60  rounded-b-full overflow-hidden  object-cover mb-10 bg-cover glow mx-auto" id="back-b" />
+        <div class="item_info text-orange-300 text-center">
+          <h1 class="text-center font-medium text-xl">Love Babbar<br />
+            <h2 class="font-normal text-base opacity-50"> Founder, Codehelp </h2>
           </h1>
         </div>
       </div>
-      <div
-        class="speaker w-40 h-full flex-1 shrink-0 grow basis-2/5 text-white text-6xl justify-center items-center rounded-lg">
-        <img src="/static/base/images/Sandeep-Jain.jpg" class="w-[500px] object-cover mb-4 bg-cover" id="back-b" />
-        <div class="item_info">
-          <h1 class="text-white text-center font-semibold text-3xl my-2">Sandeep Jain<br />
-            <h2 class="font-medium text-center text-zinc-300 text-xl "> Founder, GeeksForGeeks </h2>
+      <div class="speaker w-40 h-full flex-1 shrink-0 grow basis-4/5 md:basis-1/4 text-white text-6xl justify-center items-center rounded-lg">
+        <img src="{% static 'base/images/sandeep.png' %}" class="w-60 h-60  rounded-b-full overflow-hidden  object-cover mb-10 bg-cover glow mx-auto" id="back-b" />
+        <div class="item_info text-orange-300 text-center">
+          <h1 class="text-center font-medium text-xl">Sandeep Jain<br />
+            <h2 class="font-normal text-base opacity-50"> Founder, GeeksForGeeks </h2>
           </h1>
         </div>
       </div>
-      <div
-        class="speaker w-40 h-full flex-1 shrink-0 grow basis-2/5 text-white text-6xl justify-center items-center rounded-lg">
-        <img src="/static/base/images/riya.png" class="w-[500px] object-cover mb-4 bg-cover" id="back-b" />
-        <div class="item_info">
-          <h1 class="text-white text-center font-semibold text-3xl my-2">Riya Upreti<br />
-            <h2 class="font-medium text-center text-zinc-300 text-xl "> Founder, Fobet| Influencer </h2>
+      <div class="speaker w-40 h-full flex-1 shrink-0 grow basis-4/5 md:basis-1/4 text-white text-6xl justify-center items-center rounded-lg">
+        <img src="{% static 'base/images/riya.png' %}" class="w-60 h-60  rounded-b-full overflow-hidden  object-cover mb-10 bg-cover glow mx-auto" id="back-b" />
+        <div class="item_info text-orange-300 text-center">
+          <h1 class="text-center font-medium text-xl">Riya Upreti<br />
+            <h2 class="font-normal text-base opacity-50"> Founder, Fobet| Influencer </h2>
           </h1>
         </div>
       </div>
-      <div
-        class="speaker w-40 h-full flex-1 shrink-0 grow basis-2/5 text-white text-6xl justify-center items-center rounded-lg">
-        <img src="/static/base/images/ishansharma.webp" class="w-[500px] object-cover mb-4 bg-cover" id="back-b" />
-        <div class="item_info">
-          <h1 class="text-white text-center font-semibold text-3xl my-2">Ishan Sharma<br />
-            <h2 class="font-medium text-center text-zinc-300 text-xl "> Founder, MarkitUp| Influencer </h2>
+      <div class="speaker w-40 h-full flex-1 shrink-0 grow basis-4/5 md:basis-1/4 text-white text-6xl justify-center items-center rounded-lg">
+        <img src="{% static 'base/images/ishan.png' %}" class="w-60 h-60  rounded-b-full overflow-hidden  object-cover mb-10 bg-cover glow mx-auto" id="back-b" />
+        <div class="item_info text-orange-300 text-center">
+          <h1 class="text-center font-medium text-xl">Ishan Sharma<br />
+            <h2 class="font-normal text-base opacity-50"> Founder, MarkitUp| Influencer </h2>
           </h1>
         </div>
       </div>
-      <div
-        class="speaker w-40 h-full flex-1 shrink-0 grow basis-2/5 text-white text-6xl justify-center items-center rounded-lg">
-        <img src="/static/base/images/AmanDhattarwal.jpeg" class="w-[500px] object-cover mb-4 bg-cover" id="back-b" />
-        <div class="item_info">
-          <h1 class="text-white text-center font-semibold text-3xl my-2">Aman Dhattarwal<br />
-            <h2 class="font-medium text-center text-zinc-300 text-xl "> Founder, Apna College</h2>
+      <div class="speaker w-40 h-full flex-1 shrink-0 grow basis-4/5 md:basis-1/4 text-white text-6xl justify-center items-center rounded-lg">
+        <img src="{% static 'base/images/aman.png' %}" class="w-60 h-60  rounded-b-full overflow-hidden  object-cover mb-10 bg-cover glow mx-auto" id="back-b" />
+        <div class="item_info text-orange-300 text-center">
+          <h1 class="text-center font-medium text-xl">Aman Dhattarwal<br />
+            <h2 class="font-normal text-base opacity-50"> Founder, Apna College</h2>
           </h1>
         </div>
       </div>
-      <div
-        class="speaker w-40 h-full flex-1 shrink-0 grow basis-2/5 text-white text-6xl justify-center items-center rounded-lg">
-        <img src="/static/base/images/Bhanu-Pathak.jpg" class="w-[500px] object-cover mb-4 bg-cover" id="back-b" />
-        <div class="item_info">
-          <h1 class="text-white text-center font-semibold text-3xl my-2">Bhanu Pathak<br />
-            <h2 class="font-medium text-center text-zinc-300 text-xl "> Founder, Growshow Media| Influencer</h2>
+      <div class="speaker w-40 h-full flex-1 shrink-0 grow basis-4/5 md:basis-1/4 text-white text-6xl justify-center items-center rounded-lg">
+        <img src="{% static 'base/images/bhanu.png' %}" class="w-60 h-60  rounded-b-full overflow-hidden  object-cover mb-10 bg-cover glow mx-auto" id="back-b" />
+        <div class="item_info text-orange-300 text-center">
+          <h1 class="text-center font-medium text-xl">Bhanu Pathak<br />
+            <h2 class="font-normal text-base opacity-50"> Founder, Growshow Media| Influencer</h2>
           </h1>
         </div>
       </div>
-
-
-
-
+    </div>
   </section>
 
   <section class="merch-section"></section>
