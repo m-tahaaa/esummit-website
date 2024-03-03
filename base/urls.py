@@ -12,4 +12,6 @@ urlpatterns = [
     path('merch',merch, name='merch'),
     path('passes',passes, name='passes'),
     path('success', successPage, name='successPage'),
+    path('coming-soon', comingsoonPage, name='comingsoonPage'),
+
 ]

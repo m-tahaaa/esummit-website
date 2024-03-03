@@ -144,3 +144,6 @@ def passes(request):
     # Render the form template for GET requests
     return render(request, 'pass.html')
 
+def comingsoonPage(request):
+    return render(request, "pass2.html")
+
