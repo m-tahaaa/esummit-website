@@ -32,21 +32,6 @@ gsap.utils.toArray(".layer").forEach(layer => {
 });
 
 
-gsap.from(".lamp", {
-    scrollTrigger: sectionTrigger,
-    scale: .5,
-    opacity: .2,
-    y: 200,
-    duration: .3
-})
-
-gsap.from(".about-content", {
-    scrollTrigger: sectionTrigger,
-    opacity: 0,
-    y: 50,
-    duration: .3
-})
-
 // const speakers = document.querySelector('.speakers')
 // const items = gsap.utils.toArray('.speakers item')
 // const texts = gsap.utils.toArray('.item_info')
