@@ -2,18 +2,40 @@
 @tailwind components;
 @tailwind utilities;
 
-.nav-item{
+.nav-item {
     @apply my-auto text-xl;
 }
-html{
+
+html {
     scroll-behavior: smooth;
 }
-.error{
+
+.error {
     @apply bg-gradient-to-r from-orange-500 to-amber-500 text-white px-4 py-2 rounded flex flex-row justify-between align-middle;
 }
-.info{
+
+.info {
     @apply bg-gradient-to-r from-blue-500 to-purple-500 text-white px-4 py-2 rounded flex flex-row justify-between align-middle;
 }
-.success{
+
+.success {
     @apply bg-gradient-to-r from-teal-500 to-emerald-500 text-white px-4 py-2 rounded flex flex-row justify-between align-middle;
+}
+
+.gradient {
+    background-image: linear-gradient(0deg, #ffc24d 0%, #2d1c43 100%);
+}
+
+.text-shadow {
+    text-shadow: #000000 1px 6px 10px, #f3d69b 0px -3px 10px;
+}
+
+.drop-shadow{
+    filter: drop-shadow(0 4px 4px #ffd380) drop-shadow(0 -4px 4px #291a3c);
+}
+
+.neu {
+    border-radius: 38px;
+    background: linear-gradient(145deg, #242017, #2b251b);
+    box-shadow: 7px 7px 19px #1e1a13, -7px -7px 19px #322c1f;
 }

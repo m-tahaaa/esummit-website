@@ -12,7 +12,7 @@ from . mail import mail
 
 # Create your views here.
 def home(request):
-    return redirect('/merch')
+    # return redirect('/merch')
     context = {}
     event_dates = EventDates.objects.filter(type="home").order_by('-event_start').first()
     # print(event_dates)

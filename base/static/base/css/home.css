@@ -75,12 +75,15 @@
 /* footer */
 /*  */
 .footer {
-    background-color: rgb(23, 23, 23);
+    background-color: #2d281d;
     color: white;
     display: flex;
     width: 100%;
-    height: 400px;
     padding-top: 50px;
+}
+
+.footer a {
+    color: #FDE68A;
 }
 
 .leftFooter {
@@ -91,7 +94,7 @@
 }
 
 .leftFooterContent {
-    border-left: 5px solid rgb(230, 0, 127);
+    border-left: 5px solid #f7c605;
 }
 
 .leftFooterContent h2 {
@@ -156,7 +159,7 @@
 }
 
 .circle:hover {
-    background-color: rgb(230, 0, 127);
+    background-color: #FDE68A;
     cursor: pointer;
 }
 
@@ -183,7 +186,7 @@
 .usefulLinks {
     padding-top: 20px;
     font-size: 15px;
-    margin-left: 14px;
+    margin-left: 0px;
 }
 
 .rightFooter ul {
@@ -197,7 +200,7 @@
 }
 
 .usefulLinks a:hover {
-    color: rgb(230, 0, 127);
+    color: #FDE68A;
 }
 
 /* footer responsive */
