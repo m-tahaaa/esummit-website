@@ -1293,6 +1293,10 @@ video {
   padding-bottom: 2rem;
 }
 
+.pr-24 {
+  padding-right: 6rem;
+}
+
 .pt-10 {
   padding-top: 2.5rem;
 }
@@ -1596,6 +1600,10 @@ html {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
+.font-Laila {
+  font-family: 'Laila';
+}
+
 .hover\:bg-blue-400:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(96 165 250 / var(--tw-bg-opacity));
@@ -1872,4 +1880,3 @@ html {
 .rtl\:space-x-reverse:where([dir="rtl"], [dir="rtl"] *) > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 1;
 }
-
