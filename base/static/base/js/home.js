@@ -32,21 +32,6 @@ gsap.utils.toArray(".layer").forEach(layer => {
 });
 
 
-gsap.from(".lamp", {
-    scrollTrigger: sectionTrigger,
-    scale: .5,
-    opacity: .2,
-    y: 200,
-    duration: .3
-})
-
-gsap.from(".about-content", {
-    scrollTrigger: sectionTrigger,
-    opacity: 0,
-    y: 50,
-    duration: .3
-})
-
 // const speakers = document.querySelector('.speakers')
 // const items = gsap.utils.toArray('.speakers item')
 // const texts = gsap.utils.toArray('.item_info')
@@ -95,15 +80,47 @@ const cards = gsap.utils.toArray(".speaker");
 
 const cardsWrapper = document.querySelector(".speaker-container");
 
-gsap.to(cardsWrapper, {
-    x: () => window.innerWidth - cardsWrapper.scrollWidth,
-    ease: "none",
-    scrollTrigger: {
-        trigger: ".speakers-section",
-        start: "top top",
-        end: "+=" + (cards.length / 2) * 100 + "%",
-        scrub: true,
-        pin: true,
-        markers: true
-    }
-});
+window.addEventListener('load',()=>{
+    gsap.to(cardsWrapper, {
+        x: () => window.innerWidth*(.9) - cardsWrapper.scrollWidth,
+        ease: "none",
+        scrollTrigger: {
+            trigger: ".speakers-section",
+            start: "top top",
+            end: "+=" + (cards.length / 2) * 100 + "%",
+            scrub: 1,
+            pin: true,
+            markers: false
+        }
+    });
+})
+
+// gsap.utils.toArray(".speaker").forEach( (speaker, i) => {
+//     gsap.from(speaker, {
+//         scrollTrigger: {
+//             trigger: speaker,
+//             start: i* cardsWrapper.offsetWidth /11 + "px 40%",
+//             end: "+="+ window.offsetWidth *.4 + "px",
+//             scrub: 1,
+//             markers: true
+//         },
+//         scale: .5,
+//         opacity: .5
+//     })
+// })
+
+// cards.forEach((card, index) => {
+//     gsap.from(card, {
+//         opacity: 0,
+//         x: () => index * 100, // Adjust the animation position based on the index of the card
+//         ease: "power1.inOut", // Choose the easing function
+//         duration: 1, // Set the duration of the animation
+//         scrollTrigger: {
+//             trigger: card,
+//             start: "top bottom", // Change the start position of the animation as needed
+//             end: "bottom top", // Change the end position of the animation as needed
+//             scrub: true, // Allow the animation to scrub along with the scroll
+//             markers: true // Show markers for debugging
+//         }
+//     });
+// });
