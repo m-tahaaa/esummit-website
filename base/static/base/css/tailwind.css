@@ -708,10 +708,6 @@ video {
   margin-top: 12rem;
 }
 
-.mt-2 {
-  margin-top: 0.5rem;
-}
-
 .mt-8 {
   margin-top: 2rem;
 }
@@ -930,6 +926,11 @@ video {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+.-translate-y-\[4\.8rem\] {
+  --tw-translate-y: -4.8rem;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
 .scale-90 {
   --tw-scale-x: .9;
   --tw-scale-y: .9;
@@ -1137,6 +1138,21 @@ video {
   background-color: rgb(24 24 27 / var(--tw-bg-opacity));
 }
 
+.bg-\[\#282113\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(40 33 19 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#2a1f0b\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(42 31 11 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#2b1a07\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(43 26 7 / var(--tw-bg-opacity));
+}
+
 .bg-gradient-to-tr {
   background-image: linear-gradient(to top right, var(--tw-gradient-stops));
 }
@@ -1263,14 +1279,19 @@ video {
   padding-bottom: 1rem;
 }
 
-.py-40 {
-  padding-top: 10rem;
-  padding-bottom: 10rem;
-}
-
 .py-5 {
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
+}
+
+.py-20 {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.py-40 {
+  padding-top: 10rem;
+  padding-bottom: 10rem;
 }
 
 .pb-16 {
@@ -1299,6 +1320,18 @@ video {
 
 .pt-10 {
   padding-top: 2.5rem;
+}
+
+.pt-4 {
+  padding-top: 1rem;
+}
+
+.pt-20 {
+  padding-top: 5rem;
+}
+
+.pb-5 {
+  padding-bottom: 1.25rem;
 }
 
 .text-center {
@@ -1678,6 +1711,10 @@ html {
     top: 20%;
   }
 
+  .md\:top-20 {
+    top: 5rem;
+  }
+
   .md\:order-1 {
     order: 1;
   }
@@ -1730,16 +1767,13 @@ html {
     width: auto;
   }
 
-  .md\:w-2\/5 {
-    width: 40%;
-  }
-
   .md\:w-full {
     width: 100%;
   }
 
-  .md\:max-w-\[768px\] {
-    max-width: 768px;
+  .md\:w-max {
+    width: -moz-max-content;
+    width: max-content;
   }
 
   .md\:basis-1\/4 {
@@ -1824,9 +1858,9 @@ html {
     padding-bottom: 0.5rem;
   }
 
-  .md\:py-24 {
-    padding-top: 6rem;
-    padding-bottom: 6rem;
+  .md\:py-28 {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
   }
 
   .md\:pr-5 {
@@ -1838,6 +1872,11 @@ html {
     line-height: 2.5rem;
   }
 
+  .md\:text-6xl {
+    font-size: 3.75rem;
+    line-height: 1;
+  }
+
   .md\:text-\[18px\] {
     font-size: 18px;
   }
@@ -1845,11 +1884,6 @@ html {
   .md\:text-base {
     font-size: 1rem;
     line-height: 1.5rem;
-  }
-
-  .md\:text-6xl {
-    font-size: 3.75rem;
-    line-height: 1;
   }
 
   .md\:font-bold {

@@ -38,7 +38,7 @@ body{
     text-shadow: #00000080 0 3px 5px, #f3d69b73 0px -3px 5px;
 }
 .drop-shadow-var{
-    filter: drop-shadow(0 2px 2px #ffd38075) drop-shadow(0 -2px 2px #291a3c77);
+    filter: drop-shadow(0 2px 2px #ffd38075) drop-shadow(0 -2px 2px #291a3c39);
 }
 .neu{
     /* border-radius: 38px; */
