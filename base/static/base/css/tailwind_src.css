@@ -22,3 +22,6 @@ html {
     @apply bg-gradient-to-r from-teal-500 to-emerald-500 text-white px-4 py-2 rounded flex flex-row justify-between align-middle;
 }
 
+.font-Laila {
+    font-family: 'Laila';
+}
