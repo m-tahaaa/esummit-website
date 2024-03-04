@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="{% static 'base/css/tailwind.css' %}">
 <nav class="fixed w-screen z-20 top-0 start-0 backdrop-blur-md">
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-  <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+  <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse pr-24">
       <img src="{% static 'base/images/edc-logo.png' %}" class="h-8 px2" alt="EDC Logo">
   </a>
   <div class="buttons flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse md:w-[16vw]">
@@ -19,7 +19,7 @@
       <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden" aria-controls="navbar-sticky" aria-expanded="false" onclick="document.querySelector('#navbar-sticky').classList.toggle('hidden')">
         <span class="sr-only">Open main menu</span>
         <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+            <path stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
         </svg>
     </button>
   </div>
@@ -27,13 +27,19 @@
   <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
     <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0  ">
       <li>
-        <a href="#" class="block py-2 px-3 rounded md:bg-transparent text-yellow-500 md:p-0 text-center" aria-current="page">Home</a>
+        <a href="/#" class="block py-2 px-3 rounded md:bg-transparent text-yellow-500 md:p-0 text-center" aria-current="page">Home</a>
       </li>
       <li>
         <a href="https://edcnitd.co.in/" class="block py-2 px-3 text-yellow-100 rounded  hover:bg-transparent md:hover:text-orange-500 md:p-0 text-center">EDC</a>
       </li>
       <li>
         <a href="/coming-soon" class="block py-2 px-3 text-yellow-100 rounded hover:bg-transparent md:hover:text-orange-500 md:p-0 text-center">Passes</a>
+      </li>
+      <li>
+        <a href="/#events" class="block py-2 px-3 text-yellow-100 rounded hover:bg-transparent md:hover:text-orange-500 md:p-0 text-center">Events</a>
+      </li>
+      <li>
+        <a href="/#speakers" class="block py-2 px-3 text-yellow-100 rounded hover:bg-transparent md:hover:text-orange-500 md:p-0 text-center">Speakers</a>
       </li>
       <li class="md:hidden">
         <a href="https://esummit.edcnitd.co.in/merch" class="block py-2 px-3 text-yellow-100 rounded hover:bg-transparent md:hover:text-orange-500 md:p-0 text-center">Buy Merch</a>
