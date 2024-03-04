@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %} Esummit 2024 {% endblock %}
+{% block title %} E-Summit'24 {% endblock %}
 {% block head %}
   <!-- CSS files -->
   <!-- <link rel="stylesheet" href="{% static 'base/css/home.css' %}"> -->
@@ -42,9 +42,12 @@
 </html> {% endcomment %}
 
 {% block content %}
-<section class="coming-soon section bg-[#282319] relative z-10 py-28  wow fadeInUp overflow-hidden pt-17.5 lg:pt-22.5 xl:pt-27.5" >
+{% comment %} <section class="coming-soon section bg-[#282319] relative z-10 py-28  wow fadeInUp overflow-hidden pt-17.5 lg:pt-22.5 xl:pt-27.5" >
     <div class="comingsoon items-center bg-[232819] content relative flex flex-col md:flex-row gap-10 mt-48 ml-[30%] mb-10 md:p-10 md:w-[90vw]">
         <h1 class="content text-6xl font-bold text-orange-300 text-center pb-8 text-shadow">Coming Soon!<h1>
     </div>
+</section> {% endcomment %}
+<section class="bg-[#282319] p-2" style="width: 100vw; height: 75vh; display: flex; justify-content: center; align-items: center;">
+    <h1 class="text-6xl font-bold text-orange-300 text-shadow text-center">Coming Soon!</h1>
 </section>
 {% endblock  %}
