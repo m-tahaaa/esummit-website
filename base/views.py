@@ -149,7 +149,7 @@ def comingsoonPage(request):
     return render(request, "pass2.html")
 
 
-@login_required
+# @login_required
 def data(request):
     if request.user.is_superuser:
         response = HttpResponse(content_type='text/csv')
