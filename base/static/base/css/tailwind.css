@@ -712,6 +712,10 @@ video {
   margin-top: 5rem;
 }
 
+.ml-\[30\%\] {
+  margin-left: 30%;
+}
+
 .block {
   display: block;
 }
