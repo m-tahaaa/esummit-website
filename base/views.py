@@ -9,6 +9,7 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 import random
 from . mail import mail
+import csv
 
 # Create your views here.
 def home(request):
@@ -147,3 +148,20 @@ def passes(request):
 def comingsoonPage(request):
     return render(request, "pass2.html")
 
+
+@login_required
+def data(request):
+    if request.user.is_superuser:
+        response = HttpResponse(content_type='text/csv')
+        response['Content-Disposition'] = 'attachment; filename="merch.csv"'
+
+        writer = csv.writer(response)
+        writer.writerow(['Name', 'Mobile', 'Email', 'Size', 'Payment'])
+
+        merch_items = Merch.objects.all().values_list('name', 'phone_number', 'email', 'size', 'payment')
+        for merch_item in merch_items:
+            writer.writerow(merch_item)
+
+        return response
+    else:
+       return redirect('/')
