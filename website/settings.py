@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'hunt',
     'quiz',
     'gamers',
+    'qr',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -65,7 +66,10 @@ ROOT_URLCONF = 'website.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'base', 'templates'),
+            os.path.join(BASE_DIR, 'qr', 'templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -172,6 +176,7 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'gamers/static'),
     os.path.join(BASE_DIR, 'hunt/static'),
     os.path.join(BASE_DIR, 'quiz/static'),
+    os.path.join(BASE_DIR, 'qr/static'),
 )
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
