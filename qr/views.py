@@ -31,7 +31,12 @@ def home(request):
     context['time_diff'] = int(time_diff)
     context['has_ended'] = end
     return render(request,'qr/home.html',context)
-    # return render(request, 'qr/home.html')
 
 def profile(request):
     return render(request,'qr/profile.html')
+
+def scanner(request):
+    return render(request,'qr/scanner.html')
+
+def leaderboard(request):
+    return render(request, 'qr/leaderboard.html')
