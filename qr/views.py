@@ -1,6 +1,8 @@
 from django.contrib.auth.models import User
 from django.contrib import messages
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render,redirect
+from base.models import EventDates
+from django.utils import timezone
 from . models import *
 from . rules import *
 from django.utils import timezone
@@ -29,6 +31,42 @@ def checkBonus(collection, card):
 
 # Create your views here.
 
+def home(request):
+    # context = prepare_context(request)
+    event_dates = EventDates.objects.filter(type="hunt").order_by('-event_start').first()
+    # print(event_dates)
+    context ={}
+    msg = "Hunt has ended"
+    time_diff = -1
+    end = True
+    if event_dates is not None:
+        current_time = timezone.now()
+        time_diff = 0
+        end = False
+        if event_dates.event_start > current_time:
+            # hunt is yet to begin
+            time_diff = (event_dates.event_start - current_time).total_seconds()
+            msg = "Hunt Starts in"
+        elif event_dates.event_end > current_time:
+            time_diff = (event_dates.event_end - current_time).total_seconds()
+            msg = "Hunt Ends in"
+        else:
+            time_diff = (event_dates.event_end - current_time).total_seconds()
+            msg = "Hunt has ended"
+            end = True
+    context['msg'] = msg
+    context['time_diff'] = int(time_diff)
+    context['has_ended'] = end
+    return render(request,'qr/home.html',context)
+
+def profile(request):
+    return render(request,'qr/profile.html')
+
+def scanner(request):
+    return render(request,'qr/scanner.html')
+
+def leaderboard(request):
+    return render(request, 'qr/leaderboard.html')
 def scan(request, code):
     context = {}
 

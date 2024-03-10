@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title%}
+Profile
+{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'gamers/css/profile.css' %}">
+{% endblock %}
+{% block content %}
+<section class="min-h-screen w-full grid place-items-center text-orange-300 font-raleway">
+    <div class="grid place-items-center w-full">
+        <div class="rounded-md w-full max-w-5xl flex flex-col justify-center px-3">
+            <div class="grid place-items-end py-4 rounded px-3 bg-center bg-cover bg-no-repeat origin-bottom w-full max-w-xl lg:max-w-screen-2xl mx-auto" style="background-image: linear-gradient(135deg, rgba(174, 23, 249, 0.604), rgba(0, 4, 22, 0.895)),">
+                <div class="flex flex-row w-full justify-between align-bottom">
+                    <img src="{{profile_img}}" alt="google profile image" class="w-36 h-36 lg:w-24 lg:h-24 rounded-full border-2 border-zinc-50 relative bottom-0">
+                    <li class="list-none flex justify-end flex-col text-right">
+                        <h2 class="text-xl lg:text-4xl font-bold uppercase h-fit">Anshu&nbsp;Agarwal</h2>
+                        <h3 class=" font-bold lowercase h-fit ">anshu@anshu.com</h3>
+                        <h3 class=" font-bold lowercase h-fit ">9007252525</h3>
+                        <h3 class=" font-bold lowercase h-fit ">NIT DGP</h3>
+                    </li>
+                </div>
+            </div>
+            <hr>
+
+            <!-- POINTS AND RANK -->
+
+            <div class="flex justify-between py-8">
+                <div class="text-left">
+                    <h1 class="text-xl lg:text-2xl font-bold uppercase h-fit">Points Scored</h1>
+                    <h1 class="text-xl lg:text-xl font-bold uppercase h-fit">40</h1>
+                </div>
+                <div class="text-right">
+                    <h1 class="text-xl lg:text-2xl font-bold uppercase h-fit">Your Rank</h1>
+                    <h1 class="text-xl lg:text-xl font-bold uppercase h-fit">20/100</h1>
+                </div>
+            </div>
+            <hr>
+
+            <div class="col-span-2 py-3 flex flex-wrap justify-around gap-3">
+                <a href="{% url 'gamers:leaderboard' %}" class="font-bold uppercase bg-yellow-800 px-2 text-sm py-1 rounded">Visit leaderboard</a>
+                <a href="{% url 'hunt:home' %}" class="font-bold uppercase bg-yellow-800 px-2 text-sm py-1 rounded">Visit Hunt Page</a>
+                <a href="{% url 'quiz:home' %}" class="font-bold uppercase bg-yellow-800 px-2 text-sm py-1 rounded">Visit Quiz Page</a>
+            </div>
+
+
+            <div class="my-4 uppercase grid grid-cols-2 lg:grid-cols-4 gap-4 special-grid ">             
+
+                <div class="col-span-2 lg:col-span-4  border-2 border-white bg-gradient-to-tr from-yellow-600 to-yellow-200 text-[#282319] px-3 py-3 mx-auto w-full rounded flex flex-col justify-between">
+                    <h2 class="text-center font-bold lg:text-2xl">Your Scans</h2>
+                    {% if scans %}
+                    <table class="table-auto mx-auto">
+                        <tr class="grid grid-cols-2 gap-3 font-bold tracking-widest">
+                            <td class="">Scan Location</td>
+                            <td>Points Given</td>
+                        </tr>
+                        {% for scan in scans %}
+                            <tr class="grid grid-cols-2 gap-3">
+                                <td class="">{{scan.get_qr_code.location}}</td>
+                                <td>{{scan.points_given}}</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                    {% endif %}
+                </div>
+                
+            </div>
+        </div>
+        <!-- <div class="container mx-auto grid grid-cols-1 place-items-start">
+            <div class="bg-emerald-500 mx-auto w-fit p-6 text-5xl font-bold rounded-xl text-center">
+                <h3 class="text-lg uppercase">Points Scored</h3>
+                <h2>1000{{gamer.points}}</h2>
+                <h2 class="text-xl uppercase">Rank #{{rank}}</h2>
+            </div>
+            <div class="col-span-2 bg-zinc-400/40 px-4 py-2 w-full rounded">
+                <table class="table-auto">
+                    <tr class="grid grid-cols-2">
+                        <td>Name</td>
+                        <td>{{gamer.user.first_name}}&nbsp;{{gamer.user.last_name}}</td>
+                    </tr>
+                    <tr class="grid grid-cols-2">
+                        <td>Email</td>
+                        <td>{{gamer.user.email}}</td>
+                    </tr>
+                </table>
+            </div> -->
+        </div>
+    </div>
+    
+</section>
+<script src="{% static 'gamers/js/clipboard.js' %}"></script>
+{% endblock %}
