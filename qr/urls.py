@@ -4,6 +4,7 @@ from qr.views import *
 app_name = 'qr'
 urlpatterns = [
     path('', home, name='home'),
-    path('scan/', scan, name='scan'),
-    path('leaderboard/', leaderboard, name='leaderboard'),
+    # path('scan/', scan, name='scan'),
+    # path('leaderboard/', leaderboard, name='leaderboard'),
+    path('scan/<slug:code>', scan, name='scan'), 
 ]
