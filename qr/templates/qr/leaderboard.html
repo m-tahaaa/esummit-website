@@ -13,11 +13,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Laila:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="bg-fbfaff  items-center justify-center min-h-screen bg-[#282319] text-yellow-300">
+<body class="bg-fbfaff  items-center justify-center min-h-screen bg-[#282319] text-orange-300 font-Laila">
     {% include 'qr/navbar.html' %}
     {% include 'qr/toaster.html' %}
-    <main class=" w-full rounded-lg shadow-lg  -col items-center justify-start min-h-screen">
-        <h1 class="pt-28 pb-10 text-3xl font-bold text-orange-300 text-center">
+    <main class=" w-full min-h-screen">
+        <!-- <div class="w-full flex justify-center pt-20 gap-20">
+            <div>
+                <img src="{{profiles.0.picture}}" alt="" class="size-24 p-2 rounded-full mx-auto">
+                <h2 class="text-2xl font-bold text-center ">{{profiles.0.name}}</h2>
+                <h3 class="text-2xl font-bold text-center">Points : {{profiles.0.points}}</h3>
+                <h1 class="text-2xl font-bold text-center" >Rank : 1</h1>
+            </div>
+        </div> -->
+        <h1 class="py-10 pt-32 text-3xl font-bold text-orange-300 text-center">
             Leaderboard
         </h1>
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg w-11/12 mx-auto">
