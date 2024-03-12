@@ -1,11 +1,12 @@
-#scan-reader {
+/* #scan-reader {
     width: 80vw !important;
     max-width: 500px !important;
     min-height: 300px !important;
     margin: 0 auto;
-}
-#scan-reader__scan-region img{
-    margin: 0 auto !important;
+} */
+
+#scan-reader__scan_region img{
+    margin: 50px auto !important;
 }
 #html5-qrcode-anchor-scan-type-change{
     display: none !important;
@@ -18,8 +19,17 @@
 #html5-qrcode-input-range-zoom{
     background: transparent !important;
 }
-#scan-reader__dashboard button{
-    background-image: linear-gradient(to bottom left, #f59e0b, #fce68b); /* Background gradient */
+#scan-reader__dashboard{
+    position: absolute;
+    bottom: 0;
+}
+#scan-reader__dashboard_section{
+    padding: 5px !important;
+    color: #282319;
+    font-weight: 600;
+}
+/* #scan-reader__dashboard button{
+    background-image: linear-gradient(to bottom left, #f59e0b, #fce68b); 
     color: #282319;
     border-color: #f59e0b;
     transition-duration: 0.3s;
@@ -31,7 +41,7 @@
     font-size: 0.875rem;
     padding: 0.5rem 1rem; 
     text-align: center;
-}
+} */
 
 #scan-reader__dashboard button:hover{
     opacity: 0.8; /* Hover opacity */

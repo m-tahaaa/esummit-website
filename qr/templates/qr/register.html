@@ -1,0 +1,65 @@
+{% load socialaccount %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>E-Summit'24 | Qr Hunt</title>
+        <link rel="stylesheet" href="{% static 'base/css/tailwind.css' %}">
+        <link rel="stylesheet" href="{% static 'base/css/merch.css' %}">
+        <link rel="shortcut icon" href="{% static 'base/images/favicon.ico' %}" type="image/x-icon" id="faviconTag">
+        <!-- Google font files -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Laila:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    </head>
+    <body class="bg-[#2b1a07] pt-20">
+        {% include 'qr/toaster.html' %}
+        <div class="relative md:w-1/2 pb-5 mx-auto">
+            <div class="contain bg-stone-950 max-w-[500px] w-11/12 min-w-[340px] mx-auto p-10 border-2 border-orange-400 rounded-2xl text-lg clg out text-orange-100 py-16">
+                <!-- <h2 class="text-center text-6xl text-orange-400">Merches Form</h2> -->
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-group relative mb-12 transition-all duration-300">
+                        <input type="text" id="name" name="name"
+                            class="w-full mx-auto bg-transparent pb-3 border-b border-stone-600 outline-none text-sm opacity-50"
+                            value="{{ user.first_name }} {{ user.last_name }}"
+                            readonly
+                            required>
+                        <label for="name"
+                            class="absolute top-0 left-0 translate-x-0 transition-all duration-300 scale-90 opacity-50 transform-origin-left">Name:</label>
+                    </div>
+                    <div class="form-group relative mb-12 transition-all duration-300">
+                        <input type="email" id="email" name="email"
+                            class="w-full mx-auto bg-transparent pb-3 border-b border-stone-600 outline-none text-sm opacity-50"
+                            value="{{ user.email }}"
+                            readonly
+                            required>
+                        <label for="email"
+                            class="absolute top-0 left-0 translate-x-0 transition-all duration-300 scale-90 opacity-50 transform-origin-left">Email:</label>
+                    </div>
+                    <div class="form-group relative mb-12 transition-all duration-300">
+                        <input type="text" id="phone_number" name="phone_number" pattern="\d{10}"
+                            title="Please enter 10 digits"
+                            class="w-full mx-auto bg-transparent pb-3 border-b border-stone-600 outline-none text-sm opacity-50"
+                            required>
+                        <label for="phone_number"
+                            class="absolute top-0 left-0 translate-x-0 transition-all duration-300 scale-90 opacity-50 transform-origin-left">Phone
+                            Number:</label>
+                    </div>
+                    <div class="form-group college relative mb-12 transition-all duration-300">
+                        <label for="reg_no"
+                            class="absolute top-0 left-0 translate-x-0 transition-all duration-300 scale-90 opacity-50 transform-origin-left">Registration
+                            no:</label>
+                        <input type="text" id="reg_no" name="reg"
+                            class="w-full mx-auto bg-transparent pb-3 border-b border-stone-600 outline-none text-sm opacity-50">
+                    </div>
+                    <button type="submit" class="">Play</button>
+                </form>
+            </div>
+        </div>
+    </body>
+    <script src="{% static 'base/js/form.js' %}"></script>
+</html>

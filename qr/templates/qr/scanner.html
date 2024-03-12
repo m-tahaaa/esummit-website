@@ -1,46 +1,45 @@
-{% extends 'base.html' %}
 {% load static %}
-{% block title%}
-Scan QR
-{% endblock %}
-{% block head %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Hunt | Scan</title>
+    <link rel="stylesheet" href="{% static 'qr/css/qr.css' %}">
+    <link rel="shortcut icon" href="{% static 'base/images/favicon.ico' %}" type="image/x-icon" id="faviconTag">
+    <!-- Google font files -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Laila:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-[#282319] font-Laila">
+    {% include 'qr/navbar.html' %}
+    {% include 'qr/toaster.html' %}
+    <section class="min-h-screen w-full grid place-items-center text-orange-300">
+        <div class="flex flex-col gap-4 list-none pt-20 max-w-xl mx-auto w-4/5">
+            <!-- <li><h1 class="text-lg lg:text-2xl uppercase font-bold text-center">The QR hunt has ended</h1></li> -->
+            <div class="bg-[#15120c] rounded-3xl border border-yellow-100 overflow-hidden">
+                <div id="scan-reader" class=""></div>
+            </div>
+            <div>
+                <ul class="list-decimal container mx-auto font-raleway font-light opacity-55">
+                    <li>First allow camera permissions by clicking on the "REQUEST CAMERA PERMISSIONS" button</li>
+                    <li>After allowing camera permissions now start scanning QRs</li>
+                    <li>On mobile devices you have the option to change the cameras.</li>
+                    <br>
+                </ul>
+                <li class="flex flex-row justify-center">
+                    <a href="/qr/profile" class=" md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse md:flex">
+                        <button type="button" class="bg-gradient-to-tr from-yellow-600 to-yellow-200 text-[#282319]
+                        border-yellow-600  hover:opacity-80 duration-300 focus:ring-2 focus:outline-none focus:ring-yellow-700 dark:focus:ring-yellow-800-800 text-md :block border
+                          hover:text-black font-medium rounded-lg text-sm px-4 py-2 text-center ">Go to Profile</button>
+                      </a>
+                </li>
+            </div>
+        </div>
+    </section>
+</body>
 <script src="{% static 'qr/js/html5-qrcode.min.js' %}"></script>
-<link rel="stylesheet" href="{% static 'qr/css/qr.css' %}">
-{% endblock %}
-{% block content %}
-<section class="min-h-screen w-full grid place-items-center text-orange-300">
-    <div class="flex flex-col gap-4 list-none pt-20">
-        <!-- <li><h1 class="text-lg lg:text-2xl uppercase font-bold text-center">The QR hunt has ended</h1></li> -->
-        <div>
-            <li>
-                <div id="scan-reader" class="">
-    
-                </div>
-                <form action="" method="post" class="flex flex-col gap-3 mt-4 w-[90vw] lg:text-lg max-w-[700px]" id="qr-form">
-                    {% csrf_token %}
-                    <input type="text" hidden name="qr-code" id="result" class="w-full px-2 py-1 rounded bg-transparent border-2 border-white/70">
-                    <h2 id="success-result" class="text-lg font-bold m-auto">QR scanned successfully, tap button</h2>
-                    <input type="submit" value="Save" name="save-btn" id="save-btn" class="bg-gradient-to-tr from-yellow-600 to-yellow-200 text-[#282319] border-yellow-600  hover:opacity-80 duration-300 focus:ring-2 focus:outline-none focus:ring-yellow-700 dark:focus:ring-yellow-800-800 text-md :block border hover:text-black font-medium rounded-lg text-sm px-4 py-2 text-center m-auto">
-                    
-                </form>
-            </li>
-        </div>
-        <div>
-            <ul class="list-decimal px-8 container mx-auto">
-                <li>First allow camera permissions by clicking on the "REQUEST CAMERA PERMISSIONS" button</li>
-                <li>After allowing camera permissions now start scanning QRs</li>
-                <li>On mobile devices you have the option to change the cameras.</li>
-                <br>
-            </ul>
-            <li class="flex flex-row justify-center">
-                <a href="{% url 'qr:profile' %}" class=" md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse hidden md:flex">
-                    <button type="button" class="bg-gradient-to-tr from-yellow-600 to-yellow-200 text-[#282319]
-                    border-yellow-600  hover:opacity-80 duration-300 focus:ring-2 focus:outline-none focus:ring-yellow-700 dark:focus:ring-yellow-800-800 text-md :block border
-                      hover:text-black font-medium rounded-lg text-sm px-4 py-2 text-center ">Go to Profile</button>
-                  </a>
-            </li>
-        </div>
-    </div>
-</section>
 <script src="{% static 'qr/js/qr-scan.js' %}" defer></script>
-{% endblock %}
+</html>

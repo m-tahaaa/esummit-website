@@ -1,0 +1,17 @@
+{% load static %}
+{% if messages %}
+    <ul class="messages fixed bottom-10 z-50 w-full">
+        {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }} mx-auto w-fit" {% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    <script>
+        // Function to automatically close messages after 10 seconds
+        setTimeout(function() {
+            var messages = document.querySelectorAll('.messages li');
+            messages.forEach(function(message) {
+                message.style.display = 'none';
+            });
+        }, 10000);  // 10 seconds in milliseconds
+    </script>
+{% endif %}

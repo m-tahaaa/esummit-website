@@ -1,51 +1,76 @@
-# from django.db import models
-# from django.contrib.auth.models import User
+from django.db import models
+from phonenumber_field.modelfields import PhoneNumberField
+from django.contrib.auth.models import User
+import json, uuid
 
 # # Create your models here.
 
-# class Profile(models.Model):
-#     user = models.ForeignKey(User, on_delete=models.CASCADE)
-#     name = models.CharField( max_length=50)
-#     registration = models.CharField( max_length=10)
-#     year = models.IntegerField( max_length=10)
-#     collections = models.ForeignKey(collections, on_delete=models.CASCADE) 
+MAX_TIER = 5
 
-#     def __str__(self):
-#         pass
+def initial(n):
+    triangular_array = []
+    for i in range(n):
+        row = [0] * (i + 1)
+        triangular_array.append(row)
+    return triangular_array
 
-#     class Meta:
-#         db_table = ''
-#         managed = True
-#         verbose_name = 'Profile'
-#         verbose_name_plural = 'Profiles'
+def initial_json():
+    return json.dumps(initial(MAX_TIER))
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    picture = models.TextField(default='https://ui-avatars.com/api/?name=John+Sha&background=fdba74&color=282319')
+    email = models.EmailField(max_length=254)
+    name = models.CharField( max_length=50)
+    registration = models.CharField( max_length=10)
+    mobile = PhoneNumberField()
+    collections = models.JSONField(default= initial_json)
+    points = models.IntegerField(default=0)
 
-# class Collections(models.Model):
+    def __str__(self):
+        return self.name +' | ' + str(self.mobile)
 
-#     tier1 = 
+    class Meta:
+        verbose_name = 'Profile'
+        verbose_name_plural = 'Profiles'
 
-#     class Meta:
-#         '''Meta definition for ModelName.'''
+class Card(models.Model):
+    name = models.CharField(max_length=25)
+    multiplier = models.DecimalField(max_digits=5, decimal_places=2)
+    tier = models.IntegerField()
+    identity = models.IntegerField()
+    point = models.IntegerField()
+    # image = models.ImageField(upload_to='cards/')
 
-#         verbose_name = 'ModelName'
-#         verbose_name_plural = 'ModelNames'
+    class Meta:
+        verbose_name = 'Card'
+        verbose_name_plural = 'Cards'
+        unique_together = ['tier', 'identity']
 
-#     def __str__(self):
-#         pass
+    def __str__(self):
+        return self.name + ' | ' + str(self.tier) + ' | ' + str(self.identity)
 
-# class card(models.Model):
+class Qr(models.Model):
+    card = models.ForeignKey(Card, on_delete=models.CASCADE)
+    uniqueId = models.CharField(primary_key=True, default='', editable=False, unique=True, max_length=12)
+    
+    def generate_unique_id(self):
+        return uuid.uuid4().hex[:12].upper()
 
-#     name = models.CharField(max_length=25)
-#     tier = models.IntegerField()
-#     identity = models.IntegerField()
-#     image = models.ImageField(upload_to='cards/')
+    def save(self, *args, **kwargs):
+        if not self.uniqueId:
+            self.uniqueId = self.generate_unique_id()
+        super().save(*args, **kwargs)
 
-#     class Meta:
-#         verbose_name = _("card")
-#         verbose_name_plural = _("cards")
+    def __str__(self):
+        return str(self.card) + ' | ' + str(self.uniqueId)
 
-#     def __str__(self):
-#         return self.name
+class Scan(models.Model):
+    qr = models.ForeignKey(Qr, on_delete=models.CASCADE)
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    class Meta:
+        unique_together = ['qr', 'profile']
+        verbose_name = 'Scan'
+        verbose_name_plural = 'Scans'
 
-#     def get_absolute_url(self):
-#         return reverse("card_detail", kwargs={"pk": self.pk})
-
+    def __str__(self):
+        return str(self.qr) + ' scanned by ' + self.profile.name

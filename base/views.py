@@ -126,7 +126,7 @@ def merch(request):
 def successPage(request):
     return render(request, 'success.html')
 
-@login_required
+# @login_required
 def passes(request):
     if request.method == 'POST':
         # Create a new Merches instance and save it to the database
@@ -137,7 +137,7 @@ def passes(request):
             phone_number = request.POST.get('phone_number'),
             address = request.POST.get('address'),
             plan = request.POST.get('plan'),
-            ref_id = request.POST.get('ref_id'),
+            payment= request.POST.get('payment'),
             verified=False
         )
         return HttpResponse("success")

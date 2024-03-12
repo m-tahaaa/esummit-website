@@ -1,19 +1,27 @@
-{% extends 'base.html' %}
-{% load static %}
 {% load socialaccount %}
-{% block title %}
-The Hunt
-{% endblock %}
-{% block head %}
-<!-- CSS files -->
-<link rel="stylesheet" href="{% static 'hunt/css/home.css' %}">
-{% endblock %}
-{% block content %}
-<header style="background-image: linear-gradient(90deg, rgba(167, 84, 1, 0.609), rgba(0, 29, 173, 0.621))," class="w-full min-h-screen animation grid place-items-center text-orange-300">
-    <div class="grid lg:grid-rows-2 place-items-center my-auto container mx-auto px-8 pt-12">
-        <div class="grid grid-cols-1 mx-auto">
-            <div class="w-fit">
-                <h1 class="text-8xl text-center font-bold uppercase text-transparent bg-clip-text bg-gradient-to-br from-zinc-50 to-amber-400 pt-32">{{msg}}</h1>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Summit'24 | QR Hunt</title>
+    <link rel="stylesheet" href="{% static 'base/css/tailwind.css' %}">
+    <link rel="shortcut icon" href="{% static 'base/images/favicon.ico' %}" type="image/x-icon" id="faviconTag">
+    <!-- Google font files -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Laila:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-[#282319] font-Laila">
+    {% include 'qr/navbar.html' %}
+    {% include 'qr/toaster.html' %}
+    <header style="background-image: linear-gradient(90deg, rgba(167, 84, 1, 0.609), rgba(0, 29, 173, 0.621))," class="w-full min-h-screen animation grid place-items-center text-orange-300">
+        <div class="place-items-center my-auto container mx-auto px-8 py-12">
+        <div class="mx-auto">
+            <div class="w-fit mx-auto">
+                <h1 class="text-8xl text-center font-bold uppercase text-transparent bg-clip-text bg-gradient-to-br from-zinc-50 to-amber-400 py-16">{{msg}}</h1>
             </div>
             <div class="grid grid-cols-2 lg:grid-cols-3 list-none text-center gap-2" id="counter">
                 <li class="uppercase text-lg"><span id="days" class="text-xl lg:text-5xl font-bold">0</span>Days</li>
@@ -23,30 +31,15 @@ The Hunt
                 <li class="uppercase text-lg hidden col-span-2 lg:col-span-1"><span id="seconds" class="text-xl lg:text-5xl font-bold">34</span>Seconds</li>
             </div>
         </div>
-        <div class="lg:border-zinc-50 flex flex-col justify-center align-middle gap-4 ">
-            <div class="text-lg lg:text-xl px-24 font-raleway text-center md:px-48 opacity-50">
+        <div class="md:border-zinc-50 flex flex-col justify-center align-middle gap-4 ">
+            <div class="text-lg md:text-xl font-raleway text-center md:px-48 opacity-50">
                 <h2>Find QR codes with the EDC logo all over Campus. Login to the website, scan QR earn points and Exchange them during E-Summit for cash prizes, backstage photos and more.</h2>
             </div>
             
-            <div class="flex flex-row flex-wrap justify-center mx-auto align-middle gap-2 ">
-                {% if not has_ended %}
-                {% if user.is_authenticated %}
-                    <a href="{% url 'hunt:scanner' %}" class=" md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse hidden md:flex">
-                        <button type="button" class="bg-gradient-to-tr from-yellow-600 to-yellow-200 text-[#282319]
-                        border-yellow-600  hover:opacity-80 duration-300 focus:ring-2 focus:outline-none focus:ring-yellow-700 dark:focus:ring-yellow-800-800 text-md :block border
-                          hover:text-black font-medium rounded-lg text-sm px-4 py-2 text-center ">Scan QR</button>
-                      </a>
-                      <a href="{% url 'qr:profile' %}" class=" md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse hidden md:flex">
-                        <button type="button" class="bg-gradient-to-tr from-yellow-600 to-yellow-200 text-[#282319]
-                        border-yellow-600  hover:opacity-80 duration-300 focus:ring-2 focus:outline-none focus:ring-yellow-700 dark:focus:ring-yellow-800-800 text-md :block border
-                          hover:text-black font-medium rounded-lg text-sm px-4 py-2 text-center ">Go to Profile</button>
-                      </a>
-                {% else %}
-                    <a href="{% provider_login_url 'google' %}" class="text-xl bg-gradient-to-r from-blue-400 to-purple-500 px-3 py-2 rounded font-bold uppercase">Sign In</a>
-                {% endif %}
-                {% else %}
-                <a href="{% url 'gamers:leaderboard' %}" class="text-xl bg-gradient-to-r from-blue-400 to-purple-500 px-3 py-2 rounded font-bold uppercase">Leaderboard</a>
-                {% endif %}
+            <div class="flex flex-wrap justify-between w-full md:px-48 align-middle gap-2 mt-6">
+                <a href="{% url 'qr:profile' %}" class="md:text-xl bg-gradient-to-tr from-yellow-600 to-yellow-200 text-[#282319] px-2 md:px-10 py-1 rounded font-bold uppercase">Profile</a>
+                <a href="{% url 'qr:leaderboard' %}" class="md:text-xl bg-gradient-to-tr from-yellow-600 to-yellow-200 text-[#282319] px-2 md:px-10 py-1 rounded font-bold uppercase">Leaderboard</a>
+                <a href="{% url 'qr:scanner' %}" class="md:text-xl bg-gradient-to-tr from-yellow-600 to-yellow-200 text-[#282319] px-2 md:px-10 py-1 rounded font-bold uppercase">Scan</a>
             </div>
         </div>
     </div>
@@ -57,7 +50,7 @@ The Hunt
             
             <div class="my-auto p-12">
                 <h1 class="text-lg font-bold uppercase lg:text-4xl">Rules</h1>
-                <ul class="flex flex-col gap-4 mt-3 font-raleway">
+                <ul class="flex flex-col gap-4 mt-3 font-raleway opacity-50">
                     <li class="font-raleway lg:text-lg">You can scan a QR only once, on scanning you get points according to the following criterias:</li>
                     <li>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae necessitatibus tempora debitis alias aperiam ipsa asperiores ad omnis delectus natus, at numquam, commodi pariatur, aspernatur officiis amet totam esse sint iusto rem! Aspernatur, omnis nam ad laborum quisquam animi sint.
@@ -73,7 +66,6 @@ The Hunt
     
         </section>
     </div>
-    
 </main>
 <script src="{% static 'base/js/countdown.js' %}"></script>
-{% endblock %}
+</body>
