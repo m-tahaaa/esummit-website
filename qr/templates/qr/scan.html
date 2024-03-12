@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scan QR</title>
+    <link rel="stylesheet" href="{% static 'qr/css/qr.css' %}">
+    <link rel="shortcut icon" href="{% static 'base/images/favicon.ico' %}" type="image/x-icon" id="faviconTag">
+    <!-- Google font files -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Laila:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+</head>
+<body class="bg-[#282319] font-Laila">
+    {% include 'qr/navbar.html' %}
+    {% include 'qr/toaster.html' %}
+    <div class="parent p-2 flex flex-col md:flex-row h-screen items-center justify-center gap-5">
+        <div class="card p-16 animate-bounce">
+            <img src="{% static 'qr/images/card.png' %}" alt="" srcset="">
+        </div>
+        <div class="desc text-orange-300 text-2xl text-center">
+            {% if duplicate %}
+            <h2>
+                You have already scanned this QR 
+            </h2>
+            <h1 class="text-5xl font-black font-raleway">
+                #Don't Cheat
+            </h1>
+            {% else %}
+            <h2>
+                Congrats! You got {{ card.name }}
+            </h2>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

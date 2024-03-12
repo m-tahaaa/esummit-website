@@ -4,7 +4,6 @@ from django.shortcuts import redirect, render,redirect
 from base.models import EventDates
 from django.utils import timezone
 from . models import *
-from . rules import *
 from django.utils import timezone
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
@@ -18,10 +17,10 @@ def checkBonus(collection, card):
     for i in collection[card.tier] :
         tier_score_initial *= i
 
-    collection[card.tier][card.identifier]+=1
+    collection[card.tier][card.identity]+=1
 
     tier_score_final = 1;
-    for i in collection_obj[card.tier] :
+    for i in collection[card.tier] :
         tier_score_final *= i
     
     if tier_score_initial == 0 and tier_score_final != 0 :
@@ -59,30 +58,29 @@ def home(request):
     context['has_ended'] = end
     return render(request,'qr/home.html',context)
 
-def profile(request):
-    return render(request,'qr/profile.html')
-
-def scanner(request):
-    return render(request,'qr/scanner.html')
-
 def leaderboard(request):
-    return render(request, 'qr/leaderboard.html')
+    profiles = Profile.objects.all().order_by('points')
+    return render(request, 'qr/leaderboard.html', {'profiles': profiles})
+
+@login_required
 def scan(request, code):
     context = {}
-
     profile = Profile.objects.get(user=request.user)
     qr = Qr.objects.get(uniqueId=code)
-
-    duplicate = not Scan.objects.filter(profile=profile, qr=qr).exists()
-
-    if duplicate :                      # check for duplicate
-        context['duplicate'] = duplicate
-        return render('qr/scanner.html', context)
-    
-    Scan.objects.create(profile=profile,qr=qr)     # if not duplicate
+    if profile is None :
+        return redirect('/qr/profile')
+    context['profile'] = profile
 
     card = qr.card
     context['card'] = card
+
+    duplicate = Scan.objects.filter(profile=profile, qr=qr).exists()
+    if duplicate :                      # check for duplicate
+        context['duplicate'] = duplicate
+        messages.error(request, 'You have already scanned this qr')
+        return render(request, 'qr/scan.html', context)
+    
+    Scan.objects.create(profile=profile,qr=qr)     # if not duplicate
 
     profile.points += card.point  #card point added
 
@@ -93,24 +91,54 @@ def scan(request, code):
         profile.points += BONUS_POINTS
     context['bonus'] = bonus
 
-    collection_obj[card.tier][card.identifier]+=1
-
     profile.collections = json.dumps(collection_obj)
 
     profile.save()
 
-    return render(request, 'qr/scanner.html', context)
+    return render(request, 'qr/scan.html', context)
  
+@login_required 
 def profile(request):
-    profile = Profile.objects.get(user=request.user)
+    profile = Profile.objects.filter(user=request.user).first()
     
     if profile is None :
         messages.info(request, 'Please register first')
-        return redirect('/register')
+        return redirect('/qr/register')
     
-    return render('qr/register.html', {'profile': profile})
+    context = {'profile' : profile}
 
+    rank = Profile.objects.filter(points__lt = profile.points).count() + 1
+    context['rank'] = rank
+
+    cards = Card.objects.all()
+    context['cards'] = cards
+
+    collection = json.loads(profile.collections)
+    context['collection'] = collection
+    print(context['collection'])
+    return render(request, 'qr/profile.html', context)
+
+@login_required
 def register(request):
-    if Profile.objects.get(user=request.user).exists():
+    if request.method == 'POST' :
+        profile = Profile.objects.create(
+            user=request.user,
+            name = request.POST.get('name'),
+            email = request.POST.get('email'),
+            mobile = request.POST.get('phone_number'),
+            registration = request.POST.get('reg'),
+        )
+
+        return redirect('/qr/profile')
+
+    if Profile.objects.filter(user=request.user).exists():
         messages.info(request, 'You have already registered')
-        return render('/')
+        return redirect(request, 'qr/profile')
+    return render(request, 'qr/register.html')
+
+@login_required
+def scanner(request):
+    profile = Profile.objects.get(user=request.user)
+    if profile is None:
+        return redirect('/qr/profile')
+    return render(request, 'qr/scanner.html')

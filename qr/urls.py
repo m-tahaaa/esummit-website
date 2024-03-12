@@ -8,5 +8,6 @@ urlpatterns = [
     path('scanner', scanner, name="scanner"),
     # # path('scan/', scan, name='scan'),
     path('leaderboard/', leaderboard, name='leaderboard'),
+    path('register/', register, name='register for hunt'),
     path('scan/<slug:code>', scan, name='scan'), 
 ]

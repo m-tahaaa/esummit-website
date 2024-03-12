@@ -1,92 +1,82 @@
-{% extends 'base.html' %}
 {% load static %}
-{% block title%}
-Profile
-{% endblock %}
-{% block head %}
-<link rel="stylesheet" href="{% static 'gamers/css/profile.css' %}">
-{% endblock %}
-{% block content %}
-<section class="min-h-screen w-full grid place-items-center text-orange-300 font-raleway">
-    <div class="grid place-items-center w-full">
-        <div class="rounded-md w-full max-w-5xl flex flex-col justify-center px-3">
-            <div class="grid place-items-end py-4 rounded px-3 bg-center bg-cover bg-no-repeat origin-bottom w-full max-w-xl lg:max-w-screen-2xl mx-auto" style="background-image: linear-gradient(135deg, rgba(174, 23, 249, 0.604), rgba(0, 4, 22, 0.895)),">
-                <div class="flex flex-row w-full justify-between align-bottom">
-                    <img src="{{profile_img}}" alt="google profile image" class="w-36 h-36 lg:w-24 lg:h-24 rounded-full border-2 border-zinc-50 relative bottom-0">
-                    <li class="list-none flex justify-end flex-col text-right">
-                        <h2 class="text-xl lg:text-4xl font-bold uppercase h-fit">Anshu&nbsp;Agarwal</h2>
-                        <h3 class=" font-bold lowercase h-fit ">anshu@anshu.com</h3>
-                        <h3 class=" font-bold lowercase h-fit ">9007252525</h3>
-                        <h3 class=" font-bold lowercase h-fit ">NIT DGP</h3>
-                    </li>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qr Hunt | Profile</title>
+    <link rel="shortcut icon" href="{% static 'base/images/favicon.ico' %}" type="image/x-icon" id="faviconTag">
+    <!-- Google font files -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Laila:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-[#282319] font-Laila">
+    {% include 'qr/navbar.html' %}    
+    {% include 'qr/toaster.html' %}    
+    <section>
+        <div class="w-full text-orange-300 pt-24">
+            <div class="rounded-md w-full max-w-5xl flex flex-col justify-center px-4 mx-auto">
+                <div class="py-4 rounded w-full">
+                    <div class="flex flex-row w-full justify-between align-bottom">
+                        <img src="{{profile_img}}" alt="google profile image" class="w-24 h-24 md:w-24 md:h-24 rounded-full border-2 border-orange-300 relative bottom-0">
+                        <li class="list-none flex justify-end flex-col text-right">
+                            <h2 class="text-2xl md:text-4xl font-bold uppercase h-fit">{{ profile.name }}</h2>
+                            <h3 class="text-sm md:text-base lowercase h-fit  opacity-60">{{ profile.email }}</h3>
+                            <h3 class="text-sm md:text-base lowercase h-fit  opacity-60">{{ profile.mobile }}</h3>
+                            <h3 class="text-sm md:text-base uppercase h-fit  opacity-60">{{ profile.registration }}</h3>
+                        </li>
+                    </div>
                 </div>
-            </div>
-            <hr>
-
-            <!-- POINTS AND RANK -->
-
-            <div class="flex justify-between py-8">
-                <div class="text-left">
-                    <h1 class="text-xl lg:text-2xl font-bold uppercase h-fit">Points Scored</h1>
-                    <h1 class="text-xl lg:text-xl font-bold uppercase h-fit">40</h1>
-                </div>
-                <div class="text-right">
-                    <h1 class="text-xl lg:text-2xl font-bold uppercase h-fit">Your Rank</h1>
-                    <h1 class="text-xl lg:text-xl font-bold uppercase h-fit">20/100</h1>
-                </div>
-            </div>
-            <hr>
-
-            <div class="col-span-2 py-3 flex flex-wrap justify-around gap-3">
-                <a href="{% url 'gamers:leaderboard' %}" class="font-bold uppercase bg-yellow-800 px-2 text-sm py-1 rounded">Visit leaderboard</a>
-                <a href="{% url 'hunt:home' %}" class="font-bold uppercase bg-yellow-800 px-2 text-sm py-1 rounded">Visit Hunt Page</a>
-                <a href="{% url 'quiz:home' %}" class="font-bold uppercase bg-yellow-800 px-2 text-sm py-1 rounded">Visit Quiz Page</a>
-            </div>
-
-
-            <div class="my-4 uppercase grid grid-cols-2 lg:grid-cols-4 gap-4 special-grid ">             
-
-                <div class="col-span-2 lg:col-span-4  border-2 border-white bg-gradient-to-tr from-yellow-600 to-yellow-200 text-[#282319] px-3 py-3 mx-auto w-full rounded flex flex-col justify-between">
-                    <h2 class="text-center font-bold lg:text-2xl">Your Scans</h2>
-                    {% if scans %}
-                    <table class="table-auto mx-auto">
-                        <tr class="grid grid-cols-2 gap-3 font-bold tracking-widest">
-                            <td class="">Scan Location</td>
-                            <td>Points Given</td>
-                        </tr>
-                        {% for scan in scans %}
-                            <tr class="grid grid-cols-2 gap-3">
-                                <td class="">{{scan.get_qr_code.location}}</td>
-                                <td>{{scan.points_given}}</td>
-                            </tr>
-                        {% endfor %}
-                    </table>
-                    {% endif %}
-                </div>
-                
-            </div>
-        </div>
-        <!-- <div class="container mx-auto grid grid-cols-1 place-items-start">
-            <div class="bg-emerald-500 mx-auto w-fit p-6 text-5xl font-bold rounded-xl text-center">
-                <h3 class="text-lg uppercase">Points Scored</h3>
-                <h2>1000{{gamer.points}}</h2>
-                <h2 class="text-xl uppercase">Rank #{{rank}}</h2>
-            </div>
-            <div class="col-span-2 bg-zinc-400/40 px-4 py-2 w-full rounded">
-                <table class="table-auto">
-                    <tr class="grid grid-cols-2">
-                        <td>Name</td>
-                        <td>{{gamer.user.first_name}}&nbsp;{{gamer.user.last_name}}</td>
-                    </tr>
-                    <tr class="grid grid-cols-2">
-                        <td>Email</td>
-                        <td>{{gamer.user.email}}</td>
-                    </tr>
-                </table>
-            </div> -->
-        </div>
-    </div>
     
-</section>
+                <!-- POINTS AND RANK -->
+    
+                <div class="flex justify-between py-4 border-y-2 border-current">
+                    <div class="text-left">
+                        <h1 class="text-xl md:text-2xl h-fit" >Points Scored</h1>
+                        <h1 class="py-3 text-6xl font-black text-transparent h-fit" style = "-webkit-text-stroke: #fdba74 3px;">{{profile.points}}</h1>
+                    </div>
+                    <div class="text-right">
+                        <h1 class="text-xl md:text-2xl h-fit">Your Rank</h1>
+                        <h1 class="py-3 text-6xl font-black text-transparent uppercase h-fit" style = "-webkit-text-stroke: #fdba74 3px;">{{rank}}</h1>
+                    </div>
+                </div>
+                <div class="col-span-2 py-3 flex flex-wrap justify-between gap-3">
+                    <a href="/qr" class="font-bold uppercase bg-yellow-800 px-2 text-sm py-1 rounded">Home</a>
+                    <a href="/qr/leaderboard" class="font-bold uppercase bg-yellow-800 px-2 text-sm py-1 rounded">Leaderboard</a>
+                    <a href="/qr/scanner" class="font-bold uppercase bg-yellow-800 px-2 text-sm py-1 rounded">Scan</a>
+                </div>
+                <div class="my-12">
+                    <h2 class="w-fit text-4xl text-center mx-auto border-b-2 border-current">Collections</h2>
+                    <div class="grid grid-cols-6 grid-rows-5 gap-x-2 md:gap-x-6 gap-y-5 py-10 justify-center items-center">
+                        {% for tier in collection %}
+                        <div style=" grid-column-start: 1 ;grid-row-start: {{ forloop.counter }} ;">
+                            Tier {{ forloop.counter}}
+                        </div>
+                        {% for number in tier %}
+                        {% if number == 0 %}
+                        <div style=" grid-column-start: {{ forloop.counter|add:1 }} ;grid-row-start: {{ forloop.parentloop.counter }} ; opacity: 0.3; filter: grayscale(.5) blur(2px);" class="relative">
+                            <img src="{% static 'qr/images/card.png' %}" alt="">
+                            {% comment %} <div class="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 rounded-full bg-black size-6 text-center">
+                                {{number}}
+                            </div> {% endcomment %}
+                        </div>
+                        {% else %}
+                        <div style=" grid-column-start: {{ forloop.counter|add:1 }} ;grid-row-start: {{ forloop.parentloop.counter }} ;" class="relative hover:scale-110 duration-200">
+                            <img src="{% static 'qr/images/card.png' %}" alt="">
+                            <div class="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 rounded-full bg-black size-6 text-center">
+                                {{number}}
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                        {% endfor %}
+                    </div>                  
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
 <script src="{% static 'gamers/js/clipboard.js' %}"></script>
-{% endblock %}
+</html>
