@@ -3,7 +3,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 from django.contrib.auth.models import User
 import json, uuid
 
-# Create your models here.
+# # Create your models here.
 
 MAX_TIER = 5
 
