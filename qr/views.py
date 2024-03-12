@@ -124,6 +124,7 @@ def register(request):
         profile = Profile.objects.create(
             user=request.user,
             name = request.POST.get('name'),
+            picture='https://ui-avatars.com/api/?name=' + user.first_name + '+' + user.last_name + '&background=fdba74&color=282319',
             email = request.POST.get('email'),
             mobile = request.POST.get('phone_number'),
             registration = request.POST.get('reg'),

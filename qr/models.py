@@ -18,6 +18,7 @@ def initial_json():
     return json.dumps(initial(MAX_TIER))
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    picture = models.TextField(default='https://ui-avatars.com/api/?name=John+Sha&background=fdba74&color=282319')
     email = models.EmailField(max_length=254)
     name = models.CharField( max_length=50)
     registration = models.CharField( max_length=10)

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Qr Hunt | Profile</title>
+    <title>QR Hunt | Profile</title>
     <link rel="shortcut icon" href="{% static 'base/images/favicon.ico' %}" type="image/x-icon" id="faviconTag">
     <!-- Google font files -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,7 +20,7 @@
             <div class="rounded-md w-full max-w-5xl flex flex-col justify-center px-4 mx-auto">
                 <div class="py-4 rounded w-full">
                     <div class="flex flex-row w-full justify-between align-bottom">
-                        <img src="{{profile_img}}" alt="google profile image" class="w-24 h-24 md:w-24 md:h-24 rounded-full border-2 border-orange-300 relative bottom-0">
+                        <img src="{{profile.picture}}" alt="google profile image" class="w-24 h-24 md:w-24 md:h-24 rounded-full border-2 border-orange-300 relative bottom-0">
                         <li class="list-none flex justify-end flex-col text-right">
                             <h2 class="text-2xl md:text-4xl font-bold uppercase h-fit">{{ profile.name }}</h2>
                             <h3 class="text-sm md:text-base lowercase h-fit  opacity-60">{{ profile.email }}</h3>
@@ -44,11 +44,11 @@
                 </div>
                 <div class="col-span-2 py-3 flex flex-wrap justify-between gap-3">
                     <a href="/qr" class="font-bold uppercase bg-yellow-800 px-2 text-sm py-1 rounded">Home</a>
-                    <a href="/qr/leaderboard" class="font-bold uppercase bg-yellow-800 px-2 text-sm py-1 rounded">Leaderboard</a>
+                    <a href="/qr/result" class="font-bold uppercase bg-yellow-800 px-2 text-sm py-1 rounded">Leaderboard</a>
                     <a href="/qr/scanner" class="font-bold uppercase bg-yellow-800 px-2 text-sm py-1 rounded">Scan</a>
                 </div>
                 <div class="my-12">
-                    <h2 class="w-fit text-4xl text-center mx-auto border-b-2 border-current">Collections</h2>
+                    <h2 class="w-fit text-4xl text-center mx-auto border-b-2 border-current">Your Collections</h2>
                     <div class="grid grid-cols-6 grid-rows-5 gap-x-2 md:gap-x-6 gap-y-5 py-10 justify-center items-center">
                         {% for tier in collection %}
                         <div style=" grid-column-start: 1 ;grid-row-start: {{ forloop.counter }} ;">
