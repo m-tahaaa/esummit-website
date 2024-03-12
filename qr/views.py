@@ -35,3 +35,6 @@ def home(request):
 
 def profile(request):
     return render(request,'qr/profile.html')
+
+def leaderboard(request):
+    return render(request,'qr/leaderboard.html')
