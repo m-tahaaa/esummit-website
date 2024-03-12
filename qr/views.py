@@ -35,8 +35,5 @@ def home(request):
 def profile(request):
     return render(request,'qr/profile.html')
 
-def scanner(request):
-    return render(request,'qr/scanner.html')
-
 def leaderboard(request):
-    return render(request, 'qr/leaderboard.html')
+    return render(request,'qr/leaderboard.html')
