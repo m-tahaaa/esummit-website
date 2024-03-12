@@ -57,14 +57,13 @@
                         {% for number in tier %}
                         {% if number == 0 %}
                         <div style=" grid-column-start: {{ forloop.counter|add:1 }} ;grid-row-start: {{ forloop.parentloop.counter }} ; opacity: 0.3; filter: grayscale(.5) blur(2px);" class="relative">
-                            <img src="{% static 'qr/images/card.png' %}" alt="">
-                            {% comment %} <div class="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 rounded-full bg-black size-6 text-center">
-                                {{number}}
-                            </div> {% endcomment %}
+                            {% static "" as baseUrl %}
+                            <img src="{{ baseUrl }}qr/images/card{{forloop.parentloop.counter0}}{{forloop.counter0}}.png" alt="">
                         </div>
                         {% else %}
                         <div style=" grid-column-start: {{ forloop.counter|add:1 }} ;grid-row-start: {{ forloop.parentloop.counter }} ;" class="relative hover:scale-110 duration-200">
-                            <img src="{% static 'qr/images/card.png' %}" alt="">
+                            {% static "" as baseUrl %}
+                            <img src="{{ baseUrl }}qr/images/card{{forloop.parentloop.counter0}}{{forloop.counter0}}.png" alt="">
                             <div class="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 rounded-full bg-black size-6 text-center">
                                 {{number}}
                             </div>

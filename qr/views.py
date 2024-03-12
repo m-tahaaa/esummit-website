@@ -59,7 +59,7 @@ def home(request):
     return render(request,'qr/home.html',context)
 
 def leaderboard(request):
-    profiles = Profile.objects.all().order_by('points')
+    profiles = Profile.objects.all().order_by('-points')
     return render(request, 'qr/leaderboard.html', {'profiles': profiles})
 
 @login_required
@@ -77,7 +77,6 @@ def scan(request, code):
     duplicate = Scan.objects.filter(profile=profile, qr=qr).exists()
     if duplicate :                      # check for duplicate
         context['duplicate'] = duplicate
-        messages.error(request, 'You have already scanned this qr')
         return render(request, 'qr/scan.html', context)
     
     Scan.objects.create(profile=profile,qr=qr)     # if not duplicate
@@ -119,12 +118,12 @@ def profile(request):
     return render(request, 'qr/profile.html', context)
 
 @login_required
-def register(request):
+def register_for_hunt(request):
     if request.method == 'POST' :
         profile = Profile.objects.create(
             user=request.user,
             name = request.POST.get('name'),
-            picture='https://ui-avatars.com/api/?name=' + user.first_name + '+' + user.last_name + '&background=fdba74&color=282319',
+            picture='https://ui-avatars.com/api/?name=' + request.user.first_name + '+' + request.user.last_name + '&background=fdba74&color=282319',
             email = request.POST.get('email'),
             mobile = request.POST.get('phone_number'),
             registration = request.POST.get('reg'),
