@@ -1,0 +1,47 @@
+#scan-reader {
+    width: 80vw !important;
+    max-width: 500px !important;
+    min-height: 300px !important;
+    margin: 0 auto;
+}
+#scan-reader__scan-region img{
+    margin: 0 auto !important;
+}
+#html5-qrcode-anchor-scan-type-change{
+    display: none !important;
+}
+
+.html5-qrcode-element{
+    text-transform: uppercase !important;
+    background-color: transparent !important;
+}
+#html5-qrcode-input-range-zoom{
+    background: transparent !important;
+}
+#scan-reader__dashboard button{
+    background-image: linear-gradient(to bottom left, #f59e0b, #fce68b); /* Background gradient */
+    color: #282319;
+    border-color: #f59e0b;
+    transition-duration: 0.3s;
+    outline: none;
+    border-width: 2px;
+    border-style: solid;
+    font-weight: 500;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem; 
+    text-align: center;
+}
+
+#scan-reader__dashboard button:hover{
+    opacity: 0.8; /* Hover opacity */
+    color: #000; /* Text color on hover */
+}
+
+#scan-reader__dashboard button:focus{
+    box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.5); /* Focus ring */
+}
+
+#scan-reader__dashboard button:active{
+    transform: translateY(1px);
+}
