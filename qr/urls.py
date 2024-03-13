@@ -10,4 +10,5 @@ urlpatterns = [
     path('result', leaderboard, name='leaderboard'),
     path('register/', register_for_hunt, name='register_for_hunt'),
     path('scan/<slug:code>', scan, name='scan'), 
+    path('generate_qr', generate_qr, name='generate_qr'), 
 ]
