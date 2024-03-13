@@ -7,6 +7,7 @@ from . models import *
 from django.utils import timezone
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
+import csv
 
 BONUS_POINTS = 25
 
@@ -142,3 +143,24 @@ def scanner(request):
     if profile is None:
         return redirect('/qr/profile')
     return render(request, 'qr/scanner.html')
+
+def generate_qr(request):
+    if request.user.is_superuser:
+        if request.method == 'POST':
+            if Qr.objects.all().count() == 0:
+                for card in Card.objects.all():
+                    for i in range(7):
+                        Qr.objects.create(card=card)
+                        
+            response = HttpResponse(content_type='text/csv')
+            response['Content-Disposition'] = 'attachment; filename="qrs.csv"'
+
+            writer = csv.writer(response)
+            writer.writerow(['Card Name', 'Tier', 'Identity', 'Unique ID'])
+
+            for qr in Qr.objects.all():
+                writer.writerow([qr.card.name, qr.card.tier, qr.card.identity, qr.uniqueId])
+            return response
+
+        return render(request, 'qr/generate_qr.html')
+    return redirect('/qr/')
