@@ -114,7 +114,7 @@ def profile(request):
 
     collection = json.loads(profile.collections)
     context['collection'] = collection
-    print(context['collection'])
+    # print(context['collection'])
     return render(request, 'qr/profile.html', context)
 
 @login_required

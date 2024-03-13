@@ -45,14 +45,14 @@ def handleLogin(request):
         email = request.POST.get('email')
         password = request.POST.get('password')
         user = authenticate(username=email, password=password)
-        print(user)
+        # print(user)
         if user is not None:
             login(request, user)
             return redirect('/')
 
         user = User.objects.filter(email=email).first()
         user = authenticate(request, username=user.username, password=password)
-        print(user)
+        # print(user)
         if user is not None:
             login(request, user)
             return redirect('/')
@@ -68,7 +68,7 @@ def handleSignUp(request):
         request.session['password'] = request.POST.get('password')
         # if 'get_otp' in request.POST:
         generated_otp = random.randint(1000, 9999)
-        print(generated_otp)
+        # print(generated_otp)
         request.session['generated_otp'] = generated_otp
         mail(request.POST.get('email'), generated_otp)
         return redirect('/verify')
