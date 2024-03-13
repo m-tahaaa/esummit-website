@@ -1116,10 +1116,6 @@ video {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-.animate-\[anim_2s_2s_cubic-bezier\(\.3\2c 1\.5\2c \.5\2c 1\)_1\] {
-  animation: anim 2s 2s cubic-bezier(.3,1.5,.5,1) 1;
-}
-
 .animate-\[anim_2s_1s_cubic-bezier\(\.3\2c 1\.5\2c \.5\2c 1\)_1\] {
   animation: anim 2s 1s cubic-bezier(.3,1.5,.5,1) 1;
 }
@@ -1491,6 +1487,21 @@ video {
   background-color: rgb(24 24 27 / var(--tw-bg-opacity));
 }
 
+.bg-\[\#191610\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(25 22 16 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#000000\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#321f0f\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(50 31 15 / var(--tw-bg-opacity));
+}
+
 .bg-gradient-to-bl {
   background-image: linear-gradient(to bottom left, var(--tw-gradient-stops));
 }
@@ -1627,10 +1638,6 @@ video {
 
 .p-10 {
   padding: 2.5rem;
-}
-
-.p-12 {
-  padding: 3rem;
 }
 
 .p-2 {
@@ -1795,6 +1802,10 @@ video {
   padding-top: 8rem;
 }
 
+.pt-3 {
+  padding-top: 0.75rem;
+}
+
 .text-left {
   text-align: left;
 }
@@ -1849,11 +1860,6 @@ video {
 
 .text-6xl {
   font-size: 3.75rem;
-  line-height: 1;
-}
-
-.text-8xl {
-  font-size: 6rem;
   line-height: 1;
 }
 
@@ -1988,12 +1994,26 @@ video {
   color: rgb(250 250 250 / var(--tw-text-opacity));
 }
 
+.text-red-500 {
+  --tw-text-opacity: 1;
+  color: rgb(239 68 68 / var(--tw-text-opacity));
+}
+
+.text-blue-500 {
+  --tw-text-opacity: 1;
+  color: rgb(59 130 246 / var(--tw-text-opacity));
+}
+
 .underline {
   text-decoration-line: underline;
 }
 
 .underline-offset-2 {
   text-underline-offset: 2px;
+}
+
+.opacity-100 {
+  opacity: 1;
 }
 
 .opacity-50 {
@@ -2014,10 +2034,6 @@ video {
 
 .opacity-85 {
   opacity: 0.85;
-}
-
-.opacity-100 {
-  opacity: 1;
 }
 
 .shadow-inner {
@@ -2130,10 +2146,10 @@ html {
   justify-content: space-between;
   border-radius: 0.25rem;
   background-image: linear-gradient(to right, var(--tw-gradient-stops));
-  --tw-gradient-from: #f97316 var(--tw-gradient-from-position);
-  --tw-gradient-to: rgb(249 115 22 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-from: #ef4444 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(239 68 68 / 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
-  --tw-gradient-to: #f59e0b var(--tw-gradient-to-position);
+  --tw-gradient-to: #f97316 var(--tw-gradient-to-position);
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0.5rem;
@@ -2149,10 +2165,10 @@ html {
   justify-content: space-between;
   border-radius: 0.25rem;
   background-image: linear-gradient(to right, var(--tw-gradient-stops));
-  --tw-gradient-from: #3b82f6 var(--tw-gradient-from-position);
-  --tw-gradient-to: rgb(59 130 246 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-from: #f97316 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(249 115 22 / 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
-  --tw-gradient-to: #a855f7 var(--tw-gradient-to-position);
+  --tw-gradient-to: #f59e0b var(--tw-gradient-to-position);
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0.5rem;
@@ -2168,17 +2184,17 @@ html {
   justify-content: space-between;
   border-radius: 0.25rem;
   background-image: linear-gradient(to right, var(--tw-gradient-stops));
-  --tw-gradient-from: #14b8a6 var(--tw-gradient-from-position);
-  --tw-gradient-to: rgb(20 184 166 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-from: #fde047 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(253 224 71 / 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
-  --tw-gradient-to: #10b981 var(--tw-gradient-to-position);
+  --tw-gradient-to: #fef9c3 var(--tw-gradient-to-position);
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   vertical-align: middle;
   --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
+  color: rgb(40 35 25 / var(--tw-text-opacity));
 }
 
 .font-Laila {

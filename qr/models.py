@@ -22,7 +22,7 @@ class Profile(models.Model):
     email = models.EmailField(max_length=254)
     name = models.CharField( max_length=50)
     registration = models.CharField( max_length=10)
-    mobile = PhoneNumberField()
+    mobile = models.CharField(max_length=15)
     collections = models.JSONField(default= initial_json)
     points = models.IntegerField(default=0)
 

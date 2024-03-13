@@ -133,7 +133,7 @@ def register_for_hunt(request):
 
     if Profile.objects.filter(user=request.user).exists():
         messages.info(request, 'You have already registered')
-        return redirect(request, 'qr/profile')
+        return redirect('/qr/profile')
     return render(request, 'qr/register.html')
 
 @login_required

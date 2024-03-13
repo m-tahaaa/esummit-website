@@ -36,11 +36,19 @@
                 <h2>Find QR codes all over Campus. Login to the website, scan QR earn points and Exchange them during E-Summit for goodies, backstage photos and more.</h2>
             </div>
             
+            {% if user.isauthenticated %}
             <div class="flex flex-wrap justify-between w-full md:px-48 align-middle gap-2 mt-6">
+                
                 <a href="{% url 'qr:profile' %}" class="md:text-xl bg-gradient-to-tr from-yellow-600 to-yellow-200 text-[#282319] px-2 md:px-10 py-1 rounded font-bold uppercase">Profile</a>
                 <a href="{% url 'qr:leaderboard' %}" class="md:text-xl bg-gradient-to-tr from-yellow-600 to-yellow-200 text-[#282319] px-2 md:px-10 py-1 rounded font-bold uppercase">Leaderboard</a>
                 <a href="{% url 'qr:scanner' %}" class="md:text-xl bg-gradient-to-tr from-yellow-600 to-yellow-200 text-[#282319] px-2 md:px-10 py-1 rounded font-bold uppercase">Scan</a>
             </div>
+            {% else %}
+            <div class="flex flex-wrap justify-around w-full md:px-48 align-middle gap-2 mt-6">
+                <a href="{% url 'qr:profile' %}" class="md:text-xl bg-gradient-to-tr from-yellow-600 to-yellow-200 text-[#282319] px-2 md:px-10 py-1 rounded font-bold uppercase">Register</a>
+                <a href="{% url 'qr:leaderboard' %}" class="md:text-xl bg-gradient-to-tr from-yellow-600 to-yellow-200 text-[#282319] px-2 md:px-10 py-1 rounded font-bold uppercase">Leaderboard</a>
+            </div>
+            {% endif %}
         </div>
     </div>
 </header>
@@ -75,5 +83,6 @@
         </section>
     </div>
 </main>
+{% include 'qr/footer.html' %}
 <script src="{% static 'base/js/countdown.js' %}"></script>
 </body>
