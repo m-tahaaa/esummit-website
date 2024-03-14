@@ -66,7 +66,7 @@ def leaderboard(request):
 @login_required
 def scan(request, code):
     context = {}
-    profile = Profile.objects.get(user=request.user)
+    profile = Profile.objects.filter(user=request.user).first() 
     qr = Qr.objects.get(uniqueId=code)
     if profile is None :
         return redirect('/qr/profile')
@@ -76,8 +76,8 @@ def scan(request, code):
     context['card'] = card
 
     duplicate = Scan.objects.filter(profile=profile, qr=qr).exists()
+    context['duplicate'] = duplicate
     if duplicate :                      # check for duplicate
-        context['duplicate'] = duplicate
         return render(request, 'qr/scan.html', context)
     
     Scan.objects.create(profile=profile,qr=qr)     # if not duplicate
@@ -107,7 +107,7 @@ def profile(request):
     
     context = {'profile' : profile}
 
-    rank = Profile.objects.filter(points__lt = profile.points).count() + 1
+    rank = Profile.objects.filter(points__gt = profile.points).count() + 1
     context['rank'] = rank
 
     cards = Card.objects.all()
@@ -129,7 +129,7 @@ def register_for_hunt(request):
             mobile = request.POST.get('phone_number'),
             registration = request.POST.get('reg'),
         )
-
+        messages.success(request, 'Profile created successfully')
         return redirect('/qr/profile')
 
     if Profile.objects.filter(user=request.user).exists():
@@ -139,7 +139,7 @@ def register_for_hunt(request):
 
 @login_required
 def scanner(request):
-    profile = Profile.objects.get(user=request.user)
+    profile = Profile.objects.filter(user=request.user).first()
     if profile is None:
         return redirect('/qr/profile')
     return render(request, 'qr/scanner.html')
