@@ -7,10 +7,10 @@
       <img src="{% static 'base/images/edc-logo.png' %}" class="h-8 px2" alt="EDC Logo">
   </a>
   <div class="buttons flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-      <a href="/merch" class=" md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse hidden md:flex">
+      <a href="/qr" class=" md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse hidden md:flex">
         <button type="button" class="bg-gradient-to-tr from-yellow-600 to-yellow-200 text-[#282319]
         border-yellow-600  hover:opacity-80 duration-300 focus:ring-2 focus:outline-none focus:ring-yellow-700 dark:focus:ring-yellow-800-800 text-md :block border
-          hover:text-black font-medium rounded-lg text-sm px-4 py-2 text-center ">Buy Merch</button>
+          hover:text-black font-medium rounded-lg text-sm px-4 py-2 text-center ">QR Hunt</button>
       </a>
       <a href="{% url 'google_login' %}"class=" md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse hidden md:flex">
         <button type="button" class="border-yellow-600  hover:opacity-90 duration-300 focus:ring-2 focus:outline-none focus:ring-yellow-700 dark:focus:ring-yellow-800-800 mx-2 text-md :block border
@@ -42,7 +42,10 @@
         <a href="/#speakers" class="block py-2 px-3 text-yellow-100 rounded hover:bg-transparent md:hover:text-orange-500 md:p-0 text-center">Speakers</a>
       </li>
       <li class="md:hidden">
-        <a href="https://esummit.edcnitd.co.in/merch" class="block py-2 px-3 text-yellow-100 rounded hover:bg-transparent md:hover:text-orange-500 md:p-0 text-center">Buy Merch</a>
+        <a href="/merch" class="block py-2 px-3 text-yellow-100 rounded hover:bg-transparent md:hover:text-orange-500 md:p-0 text-center">Buy Merch</a>
+      </li>
+      <li class="md:hidden">
+        <a href="/qr" class="block py-2 px-3 text-yellow-100 rounded hover:bg-transparent md:hover:text-orange-500 md:p-0 text-center">QR Hunt</a>
       </li>
       {% if user.is_authenticated %}
       <li class="md:hidden">
