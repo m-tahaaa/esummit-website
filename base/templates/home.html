@@ -12,25 +12,43 @@
 {% block content %}
   <main>
     <section class="hero-section w-full h-screen md:h-screen gradient overflow-hidden text-center relative" id="hero">
-      <div class="container flex flex-col justify-center items-center h-full">
-        <div class="hero-content">
-          <h1 id="zoomText" class="text-4xl md:text-6xl font-semibold text-orange-300 text-shadow">E-Summit'24</h1>
-          <p class="text-xl md:text-2xl text-orange-300 text-shadow">The Entrepreneurship Cell, NIT Durgapur</p>
-        </div>
+      <div class="layer title absolute w-full h-full flex items-center justify-center" data-depth='-0.7' data-scale='.5'>
+        <h1 class="text-white text-4xl md:text-6xl font-bold">E-Summit'25</h1>
       </div>
+    </section>
+    <section class="next-page w-full h-screen bg-gray-200 text-center flex items-center justify-center">
+      <h1>Welcome to E-Summit 25</h1>
     </section>
   </main>
   <script>
-    gsap.registerPlugin(ScrollTrigger);
+    document.addEventListener("DOMContentLoaded", function() {
+      gsap.registerPlugin(ScrollTrigger);
 
-    gsap.to("#zoomText", {
-      scale: 2,
-      scrollTrigger: {
-        trigger: "#zoomText",
-        start: "top center",
-        end: "bottom center",
-        scrub: true,
-      }
+      gsap.to("#hero .title", {
+        scrollTrigger: {
+          trigger: "#hero",
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+          pin: true
+        },
+        scale: 10,
+        rotation: -10,
+        opacity: 0,
+        ease: "power1.inOut"
+      });
+
+      gsap.to(".next-page", {
+        scrollTrigger: {
+          trigger: ".next-page",
+          start: "top bottom",
+          end: "top top",
+          scrub: true,
+          pin: true
+        },
+        scale: 1,
+        opacity: 1
+      });
     });
   </script>
 {% endblock %}
