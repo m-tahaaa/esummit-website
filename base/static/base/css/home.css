@@ -9,7 +9,7 @@ body, html {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    color: black;
+    /* color: black; */
 }
 
 a {
@@ -58,7 +58,7 @@ button:hover {
 }
 
 .layer.title h1 {
-    color: black;
+    /* color: black; */
     font-size: 6rem; /* Increase the font size */
     font-weight: bold;
 }
