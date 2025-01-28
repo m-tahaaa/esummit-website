@@ -27,10 +27,54 @@
           <p>We don't just meet expectations; we exceed them</p>
         </div>
     </section>
-    <section class="h-screen w-screen bg-black text-white justify-center items-center text-center">
-      <h1>3rd page</h1>
-    </section>
   </main>
+  <!-- Third page with at least 3 columns -->
+  <section class="h-screen w-screen bg-black text-white">
+    <div class="service-transition grid grid-cols-3 gap-4 place-items-center h-full">
+      <!-- Example: 9 items; adjust as needed -->
+      <div class="transition-text translate-y-2">Services</div>
+      <div class="transition-text translate-y-2">Services</div>
+      <div class="transition-text translate-y-2">Services</div>
+      <div class="transition-text translate-y-2">Services</div>
+      <div class="transition-text translate-y-2">Services</div>
+      <div class="transition-text translate-y-2">Services</div>
+      <div class="transition-text translate-y-2">Services</div>
+      <div class="transition-text translate-y-2">Services</div>
+      <div class="transition-text translate-y-2">Services</div>
+
+
+      <div class="transition-text translate-y-2">Services</div>
+      <div class="transition-text translate-y-2">Services</div>
+      <div class="transition-text translate-y-2">Services</div>
+      <div class="transition-text translate-y-2">Services</div>
+      <div class="transition-text translate-y-2">Services</div>
+      <div class="transition-text translate-y-2">Services</div>
+      <div class="transition-text translate-y-2">Services</div>
+      <div class="transition-text translate-y-2">Services</div>
+      <div class="transition-text translate-y-2">Services</div>
+
+
+      <div class="transition-text translate-y-2">Services</div>
+      <div class="transition-text translate-y-2">Services</div>
+      <div class="transition-text translate-y-2">Services</div>
+      <div class="transition-text translate-y-2">Services</div>
+      <div class="transition-text translate-y-2">Services</div>
+      <div class="transition-text translate-y-2">Services</div>
+      <div class="transition-text translate-y-2">Services</div>
+      <div class="transition-text translate-y-2">Services</div>
+      <div class="transition-text translate-y-2">Services</div>
+
+      <div class="transition-text translate-y-2">Services</div>
+      <div class="transition-text translate-y-2">Services</div>
+      <div class="transition-text translate-y-2">Services</div>
+      <div class="transition-text translate-y-2">Services</div>
+      <div class="transition-text translate-y-2">Services</div>
+      <div class="transition-text translate-y-2">Services</div>
+      <div class="transition-text translate-y-2">Services</div>
+      <div class="transition-text translate-y-2">Services</div>
+      <div class="transition-text translate-y-2">Services</div>
+    </div>
+  </section>
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       gsap.registerPlugin(ScrollTrigger);
@@ -59,6 +103,30 @@
           scrub: true
         },
         opacity: 1
+      });
+
+      // Initial state
+      gsap.set(".service-transition .transition-text", { opacity: 0});
+
+      // Fade in all at once
+      gsap.to(".service-transition .transition-text", {
+        scrollTrigger: {
+          trigger: ".service-transition",
+          start: "top center",
+          end: "bottom center",
+          onLeave: () => {
+            // Fade out all at once
+            gsap.to(".service-transition .transition-text", {
+              opacity: 0,
+              duration: 0.6,
+              ease: "power1.inOut"
+            });
+          },
+          scrub: false
+        },
+        opacity: 1,
+        duration: 2,
+        ease: "power1.inOut"
       });
     });
   </script>
