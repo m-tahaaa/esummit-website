@@ -75,3 +75,21 @@ button:hover {
 .next-page h1 {
     font-size: 2rem;;
 }
+
+#glowSection {
+    background-color: black;
+}
+
+/* Example CSS for grid cells */
+.grid-cell {
+    border-top: 1px solid #333;
+    border-right: 1px solid #333;
+    border-bottom: 1px solid #333;
+    border-left: 1px solid #333;
+    box-sizing: border-box;
+  }
+
+/* Remove bottom border from cells in the last row */
+.grid-cell:nth-last-child(-n + var(--cols)) {
+border-bottom: none;
+}
