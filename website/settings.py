@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'quiz',
     'gamers',
     'qr',
+    'django_extensions',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',

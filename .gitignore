@@ -7,4 +7,5 @@ migrations/
 env/
 node_modules/
 staticfiles/
+venv
 # **/tailwind.css

@@ -126,24 +126,31 @@ def merch(request):
 def successPage(request):
     return render(request, 'success.html')
 
-# @login_required
+
 def passes(request):
     if request.method == 'POST':
-        # Create a new Merches instance and save it to the database
-        passes = Pass.objects.create(
-            user=request.user,
-            name = request.POST.get('name'),
-            email = request.POST.get('email'),
-            phone_number = request.POST.get('phone_number'),
-            address = request.POST.get('address'),
-            plan = request.POST.get('plan'),
-            payment= request.POST.get('payment'),
-            verified=False
+        plan = request.POST.get('plan')
+        proof_image = request.FILES.get('image')
+
+        if not proof_image:
+            return HttpResponse("No image uploaded", status=400)
+
+        new_pass = Pass.objects.create(
+            name=request.POST['name'],
+            email=request.POST['email'],
+            phone_number=request.POST['phone_number'],
+            plan=plan, 
+            verified=False,
+            image=proof_image
         )
+
         return HttpResponse("success")
 
-    # Render the form template for GET requests
+
     return render(request, 'pass.html')
+
+
+
 
 def comingsoonPage(request):
     return render(request, "pass2.html")

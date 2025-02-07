@@ -57,16 +57,20 @@ class Proof(models.Model):
         return self.user.email + " | Payment proof" 
     
 class Pass(models.Model):
-    PLANS = (
-        ('Gold','Gold'),
-        ('Platinum','Platinum'),
-        ('VIP','VIP')
-    )
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    name = models.CharField(max_length=50)
-    email = models.EmailField(max_length=254)
-    phone_number = models.CharField(max_length=10, validators=[RegexValidator(r'^\d{10}$')])
-    address = models.CharField(max_length=100)
-    plan = models.CharField(choices=PLANS,max_length=10)
-    ref_id = models.CharField(max_length=50)
-    verified = models.BooleanField()
+    PLAN_CHOICES = [
+        ('gold', 'Gold 300/-'),
+        ('platinum', 'Platinum 600/-'),
+        ('vip', 'VIP 900/-'),
+    ]
+    
+    name = models.CharField(max_length=255)
+    email = models.EmailField()
+    phone_number = models.CharField(max_length=15)
+    plan = models.CharField(max_length=10, choices=PLAN_CHOICES)
+    verified = models.BooleanField(default=False)
+    image = models.FileField(upload_to="images/", blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.name} - {self.plan}"
+
+
