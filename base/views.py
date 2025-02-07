@@ -144,8 +144,7 @@ def passes(request):
             image=proof_image
         )
 
-        return HttpResponse("success")
-
+        return render(request, 'success.html')
 
     return render(request, 'pass.html')
 

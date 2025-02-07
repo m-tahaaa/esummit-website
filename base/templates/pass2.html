@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %} E-Summit'24 {% endblock %}
+{% block title %} E-Summit'25 {% endblock %}
 {% block head %}
   <!-- CSS files -->
   <!-- <link rel="stylesheet" href="{% static 'base/css/home.css' %}"> -->
   <link rel="stylesheet" href="{% static 'base/css/home.css' %}" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 {% endblock %}
+
 {% comment %} 
 <!DOCTYPE html>
 <html lang="en">
@@ -47,7 +48,17 @@
         <h1 class="content text-4xl md:text-6xl font-bold text-orange-300 text-center text-shadow mx-auto">Coming Soon!<h1>
     </div>
 </section> {% endcomment %}
-<section class="bg-[#282319] p-2" style="width: 100vw; height: 75vh; display: flex; justify-content: center; align-items: center;">
-    <h1 class="text-6xl font-bold text-orange-300 text-shadow text-center">Coming Soon!</h1>
+<section id="glowSection" class="relative w-screen min-h-screen flex flex-col items-center justify-center p-4" 
+    style="background: rgba(249, 128, 158, 1);">
+    
+    <h1 class="text-center font-extrabold uppercase" 
+        style="color: #1e1e1e; font-family: 'Poppins', sans-serif; font-size: 40px; letter-spacing: 2px; text-shadow: 3px 3px 10px rgba(249, 128, 158, 0.5);">
+        Coming Soon!
+    </h1>
+
+    <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+    <dotlottie-player src="https://lottie.host/de2221b0-90a9-4cdb-adf1-e0404c1b9f19/ETPsBCsICP.lottie" background="transparent" speed="1" style="width: 250px; height: 250px" loop autoplay></dotlottie-player>
+
 </section>
+
 {% endblock  %}

@@ -567,3 +567,10 @@ document.addEventListener('scroll', () => {
     }
   }
 });
+
+
+const buybtn = document.querySelector('.buying');
+buybtn.addEventListener('click', () => {
+  console.log('clicked');
+  window.href = 'https://127.0.0.1:8000/passes';
+});
