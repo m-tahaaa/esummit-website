@@ -21,7 +21,7 @@
     /* --color-primary: #f96489; */
     --color-primary: #f96489;
     --color-secondary: #f36086;
-    --color-danger: #eb4545;
+    --color-danger: #ff7070;
     --color-white: #ffffff;
     --color-light: #ffd2ff;
     --color-light-50: #ffffff;
@@ -552,6 +552,40 @@ h2.count-down-title {
     color: var(--color-light);
 }
 
+.destroyed-dates {
+    font-size: 100px;
+    width: 600px;
+    color: var(--color-light);
+}
+
+@media (max-width: 1200px) {
+    .destroyed-dates {
+        font-size: 90px;
+        width: 500px;
+    }
+}
+
+@media (max-width: 992px) {
+    .destroyed-dates {
+        font-size: 60px;
+        width: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    .destroyed-dates {
+        font-size: 40px;
+        width: 300px;
+    }
+}
+
+@media (max-width: 576px) {
+    .destroyed-dates {
+        font-size: 30px;
+        width: 200px;
+    }
+}
+
 .destroyed-four-svg {
     width: 155px;
     color: var(--color-light);
@@ -682,7 +716,12 @@ h2.count-down-title {
 }
 
 .they-are-fade {
-    background-image: linear-gradient(180deg, var(--color-dark)5%, transparent 38%, #0000 62%, var(--color-dark)95%);
+background-image: linear-gradient(
+  180deg, 
+  black 9%, 
+  rgba(255, 255, 255, 0) 50%, /* Lightened section */
+  black 91%
+);
 }
 
 .footer-text-combo {
@@ -1139,9 +1178,29 @@ svg.gameplan-arrow.sceond {
 }
 
 .catalogue-slider-fade {
-    --color-dark-rgb: 24, 24, 24;
-    background: linear-gradient(to right, rgba(var(--color-dark-rgb), 1) 0%, rgba(var(--color-dark-rgb), 0.738) 19%, rgba(var(--color-dark-rgb), 0.541) 34%, rgba(var(--color-dark-rgb), 0.382) 47%, rgba(var(--color-dark-rgb), 0.278) 56.5%, rgba(var(--color-dark-rgb), 0.194) 65%, rgba(var(--color-dark-rgb), 0.126) 73%, rgba(var(--color-dark-rgb), 0.075) 80.2%, rgba(var(--color-dark-rgb), 0.042) 86.1%, rgba(var(--color-dark-rgb), 0.021) 91%, rgba(var(--color-dark-rgb), 0.008) 95.2%, rgba(var(--color-dark-rgb), 0.002) 98.2%, transparent 100%);
-    pointer-events: none;
+background-image: 
+    radial-gradient(
+        circle at center,
+        rgba(0, 0, 0, 0.99) 40%,  /* Strong black center covering more area */
+        rgba(0, 0, 0, 0.9) 65%,  
+        rgba(0, 0, 0, 0.7) 85%,  
+        rgba(0, 0, 0, 0) 100%  /* Completely faded at the far edges */
+    ),
+    radial-gradient(
+        circle at center,
+        rgba(0, 0, 0, 0.97) 45%,  
+        rgba(0, 0, 0, 0.8) 75%,  
+        rgba(0, 0, 0, 0) 100%
+    ),
+    radial-gradient(
+        circle at center,
+        rgba(0, 0, 0, 0.95) 50%,  
+        rgba(0, 0, 0, 0.6) 85%,  
+        rgba(0, 0, 0, 0) 100%
+    );
+
+
+ pointer-events: none;
     width: 20%;
     height: 100%;
     position: absolute;

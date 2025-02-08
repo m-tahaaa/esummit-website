@@ -4,122 +4,240 @@
 {% block title %}E-Summit'25{% endblock %}
 
 {% block head %}
-<!-- CSS files -->
 <link rel="stylesheet" href="{% static 'base/css/home.css' %}" />
 <link rel="stylesheet" href="{% static 'base/css/tailwind.css' %}">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollTrigger.min.js"></script>
 
 <style>
+  body {
+    background: linear-gradient(135deg, #1e1e1e 0%, #2d2d2d 100%);
+  }
+  
   #gridContainer div {
-    border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle grid lines */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
   }
+  
+  #gridContainer div:hover {
+    background: rgba(255, 102, 153, 0.2);
+    transform: scale(1.1);
+  }
+  
   .form-container {
-    background: rgba(246, 210, 210, 255);
+    background: rgba(255, 255, 255, 0.95);
     color: #333;
-    border: 2px solid rgba(255, 102, 153, 0.6);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(255, 102, 153, 0.2);
+    backdrop-filter: blur(8px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
+  
+  .form-header {
+    background: linear-gradient(135deg, #ff6699 0%, #ff3366 100%);
+    color: white;
+    padding: 1.5rem;
+    border-radius: 16px 16px 0 0;
+    text-align: center;
+  }
+  
+  .input-field {
+    background: white;
+    border: 2px solid rgba(255, 102, 153, 0.2);
+    border-radius: 8px;
+    padding: 10px 16px;
+    width: 100%;
+    transition: all 0.3s ease;
+    margin-top: 0.5rem;
+    font-size: 1rem;
+  }
+  
+  .input-field:hover {
+    border-color: #ff6699;
+  }
+  
+  .input-field:focus {
+    outline: none;
+    border-color: #ff3366;
+    box-shadow: 0 0 0 3px rgba(255, 102, 153, 0.2);
+  }
+  
+  .form-label {
+    color: #4a5568;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  
   .register-button {
-    background-color: #ff6699;
+    background: linear-gradient(135deg, #ff6699 0%, #ff3366 100%);
     color: white;
     font-weight: bold;
-    padding: 12px 20px;
+    padding: 14px 28px;
     border-radius: 8px;
     display: block;
     width: 100%;
     text-align: center;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 6px rgba(255, 102, 153, 0.3);
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    margin-top: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
   }
-
+  
   .register-button:hover {
-    background-color: #ff3366; /* Slightly Darker Pink */
-    box-shadow: 0 6px 12px rgba(255, 51, 102, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 51, 102, 0.4);
+  }
+  
+  .success-message {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2rem;
+    border-radius: 16px;
+    text-align: center;
+    max-width: 500px;
+    margin: 2rem auto;
+    box-shadow: 0 8px 32px rgba(255, 102, 153, 0.2);
+    animation: slideIn 0.5s ease-out;
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  .file-upload-label {
+    display: block;
+    padding: 12px;
+    background: #f7f7f7;
+    border: 2px dashed rgba(255, 102, 153, 0.3);
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .file-upload-label:hover {
+    background: #f0f0f0;
+    border-color: #ff6699;
   }
 </style>
-
 {% endblock %}
 
 {% block content %}
 <main>
-  <section id="glowSection" class="relative w-screen min-h-screen text-white bg-glow-grid flex items-center justify-center p-4" style="background: #1e1e1e;">
+  <section id="glowSection" class="relative w-screen min-h-screen text-white flex items-center justify-center p-4">
     <div id="gridContainer" class="grid w-full h-full absolute top-0 left-0"></div>
 
-    <!-- FORM CONTAINER -->
-    <div class="relative z-10 form-container p-6 md:p-8 rounded-xl shadow-lg w-full max-w-md">
-      <h2 class="text-2xl font-bold text-center mb-6">Register for E-Summit'25</h2>
-      <form action="{% url 'base:passes' %}" method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-
-        <!-- Name Field -->
-        <div>
-          <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
-          <input type="text" id="name" name="name" required
-                 class="w-full px-4 py-2 mt-1 bg-white text-black border border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition duration-200">
-        </div>
-
-        <!-- Email Field -->
-        <div>
-          <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-          <input type="email" id="email" name="email" required
-                 class="w-full px-4 py-2 mt-1 bg-white text-black border border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition duration-200">
-        </div>
-
-        <!-- Phone Number Field -->
-        <div>
-          <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
-          <input type="tel" id="phone" name="phone_number" required
-                 class="w-full px-4 py-2 mt-1 bg-white text-black border border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition duration-200">
-        </div>
-
-        <!-- Pass Selection -->
-        <div>
-          <label for="pass_type" class="block text-sm font-medium text-gray-700">Select Pass</label>
-          <select id="pass_type" name="plan" required
-                  class="w-full px-4 py-2 mt-1 bg-white text-black border border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition duration-200">
-            <option value="gold">Gold 300/-</option>
-            <option value="platinum">Platinum 600/-</option>
-            <option value="vip">VIP 900/-</option>
-          </select>
-        </div>
-
-        <!-- Payment Screenshot Upload -->
-        <div>
-          <label for="payment_screenshot" class="block text-sm font-medium text-gray-700">UPI ID: thekul143@oksbi<br>Upload Payment Screenshot</label>
-          <input type="file" id="payment_screenshot" name="image" accept="image/png, image/jpeg, image/jpg" required
-                 class="w-full px-4 py-2 mt-1 bg-white text-black border border-gray-500 rounded-md cursor-pointer focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition duration-200 file:bg-gray-800 file:text-white file:px-3 file:py-2 file:border-0 file:rounded-md file:cursor-pointer file:hover:bg-pink-700">
-        </div>
-
-        <!-- Submit Button -->
-        <button type="submit" class="register-button">
-          Register Now
-        </button>
-      </form>
+    {% if messages %}
+    {% for message in messages %}
+    <div class="success-message">
+      <svg class="w-16 h-16 mx-auto mb-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+      </svg>
+      <h2 class="text-2xl font-bold text-gray-800 mb-2">Registration Successful!</h2>
+      <p class="text-gray-600">{{ message }}</p>
+      <p class="text-gray-600 mt-4">We will verify your details and contact you shortly.</p>
     </div>
+    {% endfor %}
+    {% else %}
+    <div class="relative z-10 form-container w-full max-w-md">
+      <div class="form-header">
+        <h2 class="text-2xl font-bold mb-2">Register for E-Summit'25</h2>
+        <p class="text-pink-100">Join us for an incredible entrepreneurial journey</p>
+      </div>
+      
+      <div class="p-6 md:p-8">
+        <form action="{% url 'base:passes' %}" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          
+          <div class="form-group">
+            <label class="form-label">Full Name</label>
+            <input type="text" name="name" required class="input-field" placeholder="Enter your full name">
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Email Address</label>
+            <input type="email" name="email" required class="input-field" placeholder="you@example.com">
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Phone Number</label>
+            <input type="tel" name="phone_number" required class="input-field" placeholder="Enter your phone number">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Select Pass</label>
+            <select name="plan" required class="input-field">
+              <option value="">Choose your pass type</option>
+              <option value="gold">Gold Pass - ₹300</option>
+              <option value="platinum">Platinum Pass - ₹600</option>
+              <option value="vip">VIP Pass - ₹900</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Upload Payment Screenshot</label>
+            <label class="file-upload-label">
+              <input type="file" name="image" accept="image/png, image/jpeg" required class="hidden" onchange="updateFileName(this)">
+              <span id="fileName">Click to upload screenshot</span>
+            </label>
+          </div>
+
+          <button type="submit" class="register-button">
+            Complete Registration
+          </button>
+        </form>
+        
+        <div class="text-center mt-6 text-gray-600 text-sm">
+          <p>Need help? Contact us at support@esummit25.com</p>
+        </div>
+      </div>
+    </div>
+    {% endif %}
   </section>
 </main>
 
 <script>
+  // Grid animation
   document.addEventListener("DOMContentLoaded", function () {
     const gridContainer = document.getElementById("gridContainer");
     const cellSize = 35;
 
     function populateGrid() {
-        gridContainer.innerHTML = "";
-        const cols = Math.floor(gridContainer.clientWidth / cellSize);
-        const rows = Math.floor(gridContainer.clientHeight / cellSize);
-        gridContainer.style.gridTemplateColumns = `repeat(${cols}, ${cellSize}px)`;
-
-        for (let i = 0; i < rows * cols; i++) {
-            const cell = document.createElement("div");
-            cell.className = "h-9 w-9 border border-white opacity-10"; // Ensure grid lines are always visible
-            gridContainer.appendChild(cell);
-        }
+      gridContainer.innerHTML = "";
+      const cols = Math.floor(gridContainer.clientWidth / cellSize);
+      const rows = Math.floor(gridContainer.clientHeight / cellSize);
+      gridContainer.style.gridTemplateColumns = `repeat(${cols}, ${cellSize}px)`;
+      
+      for (let i = 0; i < rows * cols; i++) {
+        const cell = document.createElement("div");
+        cell.className = "h-9 w-9 border border-white opacity-10";
+        gridContainer.appendChild(cell);
+      }
     }
 
     populateGrid();
     window.addEventListener("resize", populateGrid);
-});
+  });
 
+  // File upload name display
+  function updateFileName(input) {
+    const fileName = input.files[0]?.name || 'Click to upload screenshot';
+    document.getElementById('fileName').textContent = fileName;
+  }
 </script>
 {% endblock %}

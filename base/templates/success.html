@@ -4,99 +4,270 @@
 {% block title %}E-Summit'25 | Success{% endblock %}
 
 {% block head %}
-<!-- CSS files -->
-<link rel="stylesheet" href="{% static 'base/css/home.css' }}" />
-<link rel="stylesheet" href="{% static 'base/css/tailwind.css' }}">
+<link rel="stylesheet" href="{% static 'base/css/home.css' %}" />
+<link rel="stylesheet" href="{% static 'base/css/tailwind.css' %}">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollTrigger.min.js"></script>
 
 <style>
-  #gridContainer div {
-    border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle grid lines */
+  body {
+    background: linear-gradient(135deg, #1e1e1e 0%, #2d2d2d 100%);
   }
-    .success-container {
-    background: rgba(246, 210, 210, 255); /* Light Pink */
+
+  #gridContainer div {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  #gridContainer div:hover {
+    background: rgba(255, 102, 153, 0.15);
+    transform: scale(1.1);
+  }
+
+  .success-container {
+    background: rgba(255, 255, 255, 0.95);
     color: #333;
-    border: 2px solid rgba(255, 102, 153, 0.6);
-    padding: 40px;
+    border: none;
+    padding: 3rem;
     text-align: center;
-    border-radius: 20px;
-    box-shadow: 0 6px 12px rgba(255, 102, 153, 0.3);
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
     max-width: 500px;
     width: 100%;
+    position: relative;
+    overflow: hidden;
+    animation: containerAppear 0.6s ease-out;
+    backdrop-filter: blur(10px);
+  }
+
+  .success-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, #ff6699, #ff3366);
+  }
+
+  .success-icon-container {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 1.5rem;
+    animation: iconScale 0.5s ease-out 0.3s backwards;
   }
 
   .success-icon {
-    font-size: 80px;
-    color: #ff6699;
-    margin-bottom: 10px;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #ff6699, #ff3366);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    color: white;
+    box-shadow: 0 10px 20px rgba(255, 102, 153, 0.3);
+  }
+
+  .success-icon::after {
+    content: '✔';
+    animation: checkmark 0.5s ease-out 0.8s backwards;
   }
 
   .success-text {
-    font-size: 24px;
+    font-size: 32px;
     font-weight: bold;
+    background: linear-gradient(135deg, #ff6699, #ff3366);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
+    animation: textSlide 0.5s ease-out 0.4s backwards;
   }
 
   .success-message {
     font-size: 18px;
-    margin-top: 10px;
+    line-height: 1.6;
     color: #555;
+    margin-bottom: 2rem;
+    animation: textSlide 0.5s ease-out 0.5s backwards;
   }
 
   .back-button {
-    background-color: #ff6699;
+    background: linear-gradient(135deg, #ff6699, #ff3366);
     color: white;
     font-weight: bold;
-    padding: 12px 20px;
-    border-radius: 8px;
+    padding: 1rem 2rem;
+    border-radius: 12px;
     display: inline-block;
     text-align: center;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 6px rgba(255, 102, 153, 0.3);
-    margin-top: 20px;
+    box-shadow: 0 8px 16px rgba(255, 102, 153, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    animation: buttonSlide 0.5s ease-out 0.6s backwards;
+    position: relative;
+    overflow: hidden;
   }
 
   .back-button:hover {
-    background-color: #ff3366;
-    box-shadow: 0 6px 12px rgba(255, 51, 102, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(255, 102, 153, 0.4);
+  }
+
+  .back-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: 0.5s;
+  }
+
+  .back-button:hover::before {
+    left: 100%;
+  }
+
+  .confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    opacity: 0;
+  }
+
+  @keyframes containerAppear {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes iconScale {
+    from {
+      transform: scale(0);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes checkmark {
+    from {
+      transform: scale(0);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes textSlide {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes buttonSlide {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes confettiFall {
+    0% {
+      transform: translateY(0) rotate(0deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100vh) rotate(360deg);
+      opacity: 0;
+    }
   }
 </style>
 {% endblock %}
 
 {% block content %}
 <main>
-  <section id="glowSection" class="relative w-screen min-h-screen text-white bg-glow-grid flex items-center justify-center p-4" style="background: #1e1e1e;">
+  <section id="glowSection" class="relative w-screen min-h-screen text-white flex items-center justify-center p-4">
     <div id="gridContainer" class="grid w-full h-full absolute top-0 left-0"></div>
 
     <div class="relative z-10 success-container">
-      <div class="success-icon">✔</div>
-      <div class="success-text">Thank You!</div>
-      <p class="success-message">We will reach back to you shortly.<br> See you at <b>E-Summit 2025</b>!</p>
-      <a href="{% url 'base:home' %}" class="back-button">Go to Homepage</a>
+      <div class="success-icon-container">
+        <div class="success-icon"></div>
+      </div>
+      <div class="success-text">Registration Successful!</div>
+      <p class="success-message">
+        Thank you for registering for <b>E-Summit'25</b>!<br>
+        We're excited to have you join us on this entrepreneurial journey.<br>
+        Our team will verify your details and contact you shortly.
+      </p>
+      <a href="{% url 'base:home' %}" class="back-button">Return to Homepage</a>
     </div>
   </section>
 </main>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const gridContainer = document.getElementById("gridContainer");
-    const cellSize = 35;
+document.addEventListener("DOMContentLoaded", function () {
+  // Grid animation
+  const gridContainer = document.getElementById("gridContainer");
+  const cellSize = 35;
 
-    function populateGrid() {
-      gridContainer.innerHTML = "";
-      const cols = Math.floor(gridContainer.clientWidth / cellSize);
-      const rows = Math.floor(gridContainer.clientHeight / cellSize);
-      gridContainer.style.gridTemplateColumns = `repeat(${cols}, ${cellSize}px)`;
+  function populateGrid() {
+    gridContainer.innerHTML = "";
+    const cols = Math.floor(gridContainer.clientWidth / cellSize);
+    const rows = Math.floor(gridContainer.clientHeight / cellSize);
+    gridContainer.style.gridTemplateColumns = `repeat(${cols}, ${cellSize}px)`;
 
-      for (let i = 0; i < rows * cols; i++) {
-        const cell = document.createElement("div");
-        cell.className = "h-9 w-9 border border-white opacity-40";
-        gridContainer.appendChild(cell);
-      }
+    for (let i = 0; i < rows * cols; i++) {
+      const cell = document.createElement("div");
+      cell.className = "h-9 w-9 border border-white opacity-10";
+      gridContainer.appendChild(cell);
     }
+  }
 
-    populateGrid();
-    window.addEventListener("resize", populateGrid);
-  });
+  populateGrid();
+  window.addEventListener("resize", populateGrid);
+
+  // Confetti animation
+  function createConfetti() {
+    const colors = ['#ff6699', '#ff3366', '#ffcc00', '#33cc33', '#3366ff'];
+    for (let i = 0; i < 50; i++) {
+      const confetti = document.createElement('div');
+      confetti.className = 'confetti';
+      confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+      confetti.style.left = Math.random() * 100 + 'vw';
+      confetti.style.animationDelay = Math.random() * 2 + 's';
+      confetti.style.animation = 'confettiFall ' + (Math.random() * 3 + 2) + 's linear forwards';
+      document.body.appendChild(confetti);
+
+      setTimeout(() => {
+        confetti.remove();
+      }, 5000);
+    }
+  }
+
+  // Trigger confetti
+  createConfetti();
+  setInterval(createConfetti, 5000);
+});
 </script>
 {% endblock %}
