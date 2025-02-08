@@ -638,10 +638,19 @@
                             <h2 data-animation="bounce" class="count-down-title mb-0"><span class="d-block">the next
                                     season</span> 'ESUMMIT</h2>
                         </div>
-                        <div data-animation="bounce" class="count-down-desc d-flex justify-content-md-end">
-                            <p class="mb-0"><span>This time, we bring you a theme that’s sweeping the world by storm.
-                                </span> Innovate with Smart Automation at E-Summit 2025!</p>
+                        {% load static %}
+                        {% load static %}
+                        <div class="d-flex align-items-center justify-content-md-end">
+                            
+                            <div data-animation="bounce" class="count-down-desc">
+                                <p class="mb-0">
+                                    <span>This time, we bring you a theme that’s sweeping the world by storm.</span> 
+                                    Innovate with Smart Automation at E-Summit 2025!
+                                </p>
+                            </div>
                         </div>
+                        
+                                             
                         <div data-animation="bounce" class="count-down-right-text d-flex justify-content-end">
                             <div class="d-flex gap-3 px-md-5 pb-3">
                                 <div class="text-combo position-relative">
@@ -667,6 +676,7 @@
                                 </svg>
                             </div>
                         </div>
+                        <img data-animation="bounce" class="count-down-image-absolute" src="{% static 'base/images/whatposerobo.png' %}" alt="Icon" class="me-4" style="height: 300px; margin-top: -50px;">
                         <!-- TODO:Add mascot here -->
                         <!-- <img data-animation="bounce" class="count-down-image-absolute position-absolute"
                             src="{% static 'base/images/count-down.png" alt=""> -->
@@ -3715,13 +3725,17 @@
                             <div class="modal-image">
                                 <div class="modal-founder__image pb-5">
                                     <img class="w-100"
-                                        src="{% static 'base/images/670f9a0b849006def0ba2853_nicole-and-mathijs.png'%}" alt=""
-                                        class="modal-founder-img">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 287 170"
-                                        fill="none" class="modal-founder-svg">
-                                        <path
-                                            d="M62.0127 60.2984L66.0951 66.4843L59.9093 70.5667L56.755 85.9643L67.0233 88.0678L70.1775 72.6702L85.58 75.8254L87.6834 65.5571L72.281 62.4019L73.3337 57.263L93.8703 61.4699L92.8176 66.6088L103.086 68.7123L106.241 53.3099L65.168 44.896L62.0127 60.2984Z"
-                                            fill="var(--color-light)"></path>
+                                    {% load static %}
+                                    <img src="{% static 'base/images/image-removebg.png' %}" 
+                                         alt="Image description" 
+                                         class="modal-founder-img"
+                                         style="width: 350px; padding-top: 180px;">  <!-- Push down -->
+                                    
+                                    <img src="{% static 'base/images/edc-logo.png' %}" 
+                                         alt="Image description" 
+                                         class="modal-founder-svg"
+                                         style="width: 150px; height: auto; transform: rotate(-10deg);">  <!-- Push down -->
+                                    
                                         <path
                                             d="M149.284 78.1757L152.439 62.7733L111.371 54.3604L108.215 69.7628L112.298 75.9486L106.112 80.031L102.958 95.4287L144.026 103.842L147.18 88.444L136.917 86.3415L135.865 91.4756L115.328 87.2686L119.535 66.7321L140.072 70.9391L139.019 76.078L149.283 78.1805L149.284 78.1757Z"
                                             fill="var(--color-light)"></path>
