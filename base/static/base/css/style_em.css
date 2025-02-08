@@ -75,10 +75,10 @@ body {
     mix-blend-mode: color-dodge;
 }
 .loading-screen {
-    background-color: var(--color-light);
+    background-image: url(../images/66ff9d3bd441ad25203ef758_noise-repeat-5.jpg);
 }
 .numbers-wrapper {
-    color: var(--color-secondary);
+    color: whitesmoke;
     bottom: 3em;
     right: 3em;
     justify-content: flex-start;
