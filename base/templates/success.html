@@ -1,50 +1,102 @@
-<html>
-  <head>
-    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700,900&display=swap" rel="stylesheet">    
-    <link rel="icon" href="https://audition.edcnitd.co.in/static/assets/favicon.ico" type="image/x-icon">
-    <title>E-Summit'24 | Merchandise | Success</title>
-  </head>
-    <style>
-      body {
-        text-align: center;
-        padding: 40px 0;
-        background: #261c02;
+{% extends 'base.html' %}
+{% block navbar %}{% endblock %}
+{% load static %}
+{% block title %}E-Summit'25 | Success{% endblock %}
+
+{% block head %}
+<!-- CSS files -->
+<link rel="stylesheet" href="{% static 'base/css/home.css' }}" />
+<link rel="stylesheet" href="{% static 'base/css/tailwind.css' }}">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollTrigger.min.js"></script>
+
+<style>
+  #gridContainer div {
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle grid lines */
+  }
+    .success-container {
+    background: rgba(246, 210, 210, 255); /* Light Pink */
+    color: #333;
+    border: 2px solid rgba(255, 102, 153, 0.6);
+    padding: 40px;
+    text-align: center;
+    border-radius: 20px;
+    box-shadow: 0 6px 12px rgba(255, 102, 153, 0.3);
+    max-width: 500px;
+    width: 100%;
+  }
+
+  .success-icon {
+    font-size: 80px;
+    color: #ff6699;
+    margin-bottom: 10px;
+  }
+
+  .success-text {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  .success-message {
+    font-size: 18px;
+    margin-top: 10px;
+    color: #555;
+  }
+
+  .back-button {
+    background-color: #ff6699;
+    color: white;
+    font-weight: bold;
+    padding: 12px 20px;
+    border-radius: 8px;
+    display: inline-block;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(255, 102, 153, 0.3);
+    margin-top: 20px;
+  }
+
+  .back-button:hover {
+    background-color: #ff3366;
+    box-shadow: 0 6px 12px rgba(255, 51, 102, 0.4);
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<main>
+  <section id="glowSection" class="relative w-screen min-h-screen text-white bg-glow-grid flex items-center justify-center p-4" style="background: #1e1e1e;">
+    <div id="gridContainer" class="grid w-full h-full absolute top-0 left-0"></div>
+
+    <div class="relative z-10 success-container">
+      <div class="success-icon">✔</div>
+      <div class="success-text">Thank You!</div>
+      <p class="success-message">We will reach back to you shortly.<br> See you at <b>E-Summit 2025</b>!</p>
+      <a href="{% url 'base:home' %}" class="back-button">Go to Homepage</a>
+    </div>
+  </section>
+</main>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const gridContainer = document.getElementById("gridContainer");
+    const cellSize = 35;
+
+    function populateGrid() {
+      gridContainer.innerHTML = "";
+      const cols = Math.floor(gridContainer.clientWidth / cellSize);
+      const rows = Math.floor(gridContainer.clientHeight / cellSize);
+      gridContainer.style.gridTemplateColumns = `repeat(${cols}, ${cellSize}px)`;
+
+      for (let i = 0; i < rows * cols; i++) {
+        const cell = document.createElement("div");
+        cell.className = "h-9 w-9 border border-white opacity-40";
+        gridContainer.appendChild(cell);
       }
-        h1 {
-          color: #e09615;
-          font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
-          font-weight: 900;
-          font-size: 40px;
-          margin-bottom: 10px;
-        }
-        p {
-          color: #e09615;
-          font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
-          font-size:20px;
-          margin: 0;
-        }
-      i {
-        color: #e09615;
-        font-size: 100px;
-        line-height: 200px;
-        margin-left:-15px;
-      }
-      .card {
-        background: white;
-        padding: 60px;
-        border-radius: 40px;
-        box-shadow: 0 2px 3px #C8D0D8;
-        display: inline-block;
-        margin: 0 auto;
-      }
-    </style>
-    <body>
-      <div class="card">
-      <div style="border-radius:200px; height:200px; width:200px; background: #F8FAF5; margin:0 auto;">
-        <i class="checkmark">✓</i>
-      </div>
-        <h1>Success</h1> 
-        <p>We received your purchase request;<br/> we'll be in touch shortly!</p>
-      </div>
-    </body>
-</html>
+    }
+
+    populateGrid();
+    window.addEventListener("resize", populateGrid);
+  });
+</script>
+{% endblock %}

@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% block navbar %}{% endblock %}
 {% load static %}
 {% block title %}E-Summit'25{% endblock %}
 
@@ -8,45 +9,74 @@
 <link rel="stylesheet" href="{% static 'base/css/tailwind.css' %}">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollTrigger.min.js"></script>
+
+<style>
+  #gridContainer div {
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle grid lines */
+  }
+  .form-container {
+    background: rgba(246, 210, 210, 255);
+    color: #333;
+    border: 2px solid rgba(255, 102, 153, 0.6);
+  }
+  .register-button {
+    background-color: #ff6699;
+    color: white;
+    font-weight: bold;
+    padding: 12px 20px;
+    border-radius: 8px;
+    display: block;
+    width: 100%;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(255, 102, 153, 0.3);
+  }
+
+  .register-button:hover {
+    background-color: #ff3366; /* Slightly Darker Pink */
+    box-shadow: 0 6px 12px rgba(255, 51, 102, 0.4);
+  }
+</style>
+
 {% endblock %}
 
 {% block content %}
 <main>
-  <section id="glowSection" class="relative w-screen min-h-screen bg-black text-white bg-glow-grid flex items-center justify-center p-4">
+  <section id="glowSection" class="relative w-screen min-h-screen text-white bg-glow-grid flex items-center justify-center p-4" style="background: #1e1e1e;">
     <div id="gridContainer" class="grid w-full h-full absolute top-0 left-0"></div>
 
     <!-- FORM CONTAINER -->
-    <div class="relative z-10 bg-black bg-opacity-70 p-6 md:p-8 rounded-xl shadow-lg border border-white/20 w-full max-w-md">
+    <div class="relative z-10 form-container p-6 md:p-8 rounded-xl shadow-lg w-full max-w-md">
       <h2 class="text-2xl font-bold text-center mb-6">Register for E-Summit'25</h2>
       <form action="{% url 'base:passes' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
 
         <!-- Name Field -->
         <div>
-          <label for="name" class="block text-sm font-medium text-gray-300">Name</label>
+          <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
           <input type="text" id="name" name="name" required
-                 class="w-full px-4 py-2 mt-1 bg-black text-white border border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200">
+                 class="w-full px-4 py-2 mt-1 bg-white text-black border border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition duration-200">
         </div>
 
         <!-- Email Field -->
         <div>
-          <label for="email" class="block text-sm font-medium text-gray-300">Email</label>
+          <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
           <input type="email" id="email" name="email" required
-                 class="w-full px-4 py-2 mt-1 bg-black text-white border border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200">
+                 class="w-full px-4 py-2 mt-1 bg-white text-black border border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition duration-200">
         </div>
 
         <!-- Phone Number Field -->
         <div>
-          <label for="phone" class="block text-sm font-medium text-gray-300">Phone Number</label>
+          <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
           <input type="tel" id="phone" name="phone_number" required
-            class="w-full px-4 py-2 mt-1 bg-black text-white border border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200">
+                 class="w-full px-4 py-2 mt-1 bg-white text-black border border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition duration-200">
         </div>
 
         <!-- Pass Selection -->
         <div>
-          <label for="pass_type" class="block text-sm font-medium text-gray-300">Select Pass</label>
+          <label for="pass_type" class="block text-sm font-medium text-gray-700">Select Pass</label>
           <select id="pass_type" name="plan" required
-                  class="w-full px-4 py-2 mt-1 bg-black text-white border border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200">
+                  class="w-full px-4 py-2 mt-1 bg-white text-black border border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition duration-200">
             <option value="gold">Gold 300/-</option>
             <option value="platinum">Platinum 600/-</option>
             <option value="vip">VIP 900/-</option>
@@ -55,15 +85,13 @@
 
         <!-- Payment Screenshot Upload -->
         <div>
-          <label for="payment_screenshot" class="block text-sm font-medium text-gray-300">UPI ID: thekul143@oksbi<br>Upload Payment Screenshot</label>
-          </label>
+          <label for="payment_screenshot" class="block text-sm font-medium text-gray-700">UPI ID: thekul143@oksbi<br>Upload Payment Screenshot</label>
           <input type="file" id="payment_screenshot" name="image" accept="image/png, image/jpeg, image/jpg" required
-                 class="w-full px-4 py-2 mt-1 bg-black text-white border border-gray-500 rounded-md cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 file:bg-gray-800 file:text-white file:px-3 file:py-2 file:border-0 file:rounded-md file:cursor-pointer file:hover:bg-blue-700">
+                 class="w-full px-4 py-2 mt-1 bg-white text-black border border-gray-500 rounded-md cursor-pointer focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition duration-200 file:bg-gray-800 file:text-white file:px-3 file:py-2 file:border-0 file:rounded-md file:cursor-pointer file:hover:bg-pink-700">
         </div>
 
         <!-- Submit Button -->
-        <button type="submit"
-                class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md transition duration-200">
+        <button type="submit" class="register-button">
           Register Now
         </button>
       </form>
@@ -77,35 +105,21 @@
     const cellSize = 35;
 
     function populateGrid() {
-      gridContainer.innerHTML = "";
-      const cols = Math.floor(gridContainer.clientWidth / cellSize);
-      const rows = Math.floor(gridContainer.clientHeight / cellSize);
-      gridContainer.style.gridTemplateColumns = `repeat(${cols}, ${cellSize}px)`;
+        gridContainer.innerHTML = "";
+        const cols = Math.floor(gridContainer.clientWidth / cellSize);
+        const rows = Math.floor(gridContainer.clientHeight / cellSize);
+        gridContainer.style.gridTemplateColumns = `repeat(${cols}, ${cellSize}px)`;
 
-      for (let i = 0; i < rows * cols; i++) {
-        const cell = document.createElement("div");
-        cell.className = "h-9 w-9 border border-white opacity-40";
-        gridContainer.appendChild(cell);
-      }
+        for (let i = 0; i < rows * cols; i++) {
+            const cell = document.createElement("div");
+            cell.className = "h-9 w-9 border border-white opacity-10"; // Ensure grid lines are always visible
+            gridContainer.appendChild(cell);
+        }
     }
 
     populateGrid();
     window.addEventListener("resize", populateGrid);
+});
 
-    document.addEventListener("mousemove", e => {
-      const cells = document.querySelectorAll('#gridContainer div');
-      const threshold = 120;
-      cells.forEach(cell => {
-        const rect = cell.getBoundingClientRect();
-        const cellCenterX = rect.left + rect.width / 2;
-        const cellCenterY = rect.top + rect.height / 2;
-        const distance = Math.hypot(e.clientX - cellCenterX, e.clientY - cellCenterY);
-
-        let opacity = distance < threshold ? 1 - (distance / threshold) : 0.4;
-        cell.style.borderColor = `rgba(255,255,255, ${opacity})`;
-        cell.style.filter = opacity > 0.4 ? `drop-shadow(0 0 10px rgba(255,255,255, ${opacity * 0.8}))` : "none";
-      });
-    });
-  });
 </script>
 {% endblock %}
